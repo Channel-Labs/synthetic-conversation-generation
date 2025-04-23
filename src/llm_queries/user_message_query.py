@@ -6,7 +6,7 @@ from data_models.conversation import Conversation, Message, ROLE
 from data_models.character_card import CharacterCard
 from llm_queries.llm_query import LLMQuery, ModelProvider
 
-class UserMessageGenerator(LLMQuery):
+class UserMessageQuery(LLMQuery):
 
     def __init__(self, model_provider: ModelProvider, model_id: str, conversation: Conversation, user_persona: CharacterCard, assistant: Assistant):
         super().__init__(model_provider, model_id)

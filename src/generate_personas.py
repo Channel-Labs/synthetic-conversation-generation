@@ -6,9 +6,9 @@ from openai import OpenAI
 
 from data_models.assistant import Assistant
 from data_models.character_card import CharacterCard
-from data_models.data_generation_config import DataGenerationConfig, ConversationLength
+from data_models.conversation_characters import ConversationCharacters
 
-from llm_queries.llm_query import ModelProvider, OpenAIModelProvider, AnthropicModelProvider, BedrockModelProvider
+from llm_queries.llm_query import ModelProvider, OpenAIModelProvider, AnthropicModelProvider
 from llm_queries.user_persona_query import UserPersonaQuery
 
 # Configure root logger to WARNING to silence third-party libraries
@@ -43,7 +43,7 @@ if __name__ == "__main__":
     parser.add_argument("--assistant-description", type=str, required=True)
     parser.add_argument("--num-personas", type=int, default=5)
     parser.add_argument("--output-path", type=str, required=True)
-    parser.add_argument("--model-provider", type=str, choices=["openai", "anthropic", "bedrock"], default="openai")
+    parser.add_argument("--model-provider", type=str, choices=["openai", "anthropic"], default="openai")
     parser.add_argument("--user-persona-model", type=str, default="o4-mini")
     args = parser.parse_args()
 
@@ -58,6 +58,5 @@ if __name__ == "__main__":
         persona = persona_generator.generate_persona()
         persona_generator.previous_personas.append(persona)
 
-    # TODO: Don't hardcode conversation length
-    data_generation_config = DataGenerationConfig(assistant, persona_generator.previous_personas, ConversationLength(min_turns=1, max_turns=5))
-    data_generation_config.to_yaml(args.output_path)
+    conversation_characters = ConversationCharacters(assistant, persona_generator.previous_personas)
+    conversation_characters.to_yaml(args.output_path)

@@ -32,10 +32,6 @@ class InferenceEndpoint:
         # Prepare request payload
         payload = self.body.copy()
         payload['messages'] = [{'role': msg.role.name, 'content': msg.content} for msg in conversation.messages]
-
-        print("MAKING REQUEST TO: ", self.url)
-        print("payload: ", payload)
-        print("headers: ", self.headers)
         
         # Make request to the inference endpoint
         response = requests.post(self.url, json=payload, headers=self.headers)
