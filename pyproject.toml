@@ -12,11 +12,11 @@ license = {file = "LICENSE"}
 authors = [
     {name = "Channel Labs"}
 ]
-
-[project.dependencies]
-anthropic = "*"
-openai = "*"
-pyyaml = "*"
+dependencies = [
+    "anthropic",
+    "openai",
+    "pyyaml",
+]
 
 [tool.setuptools]
 packages = [{ include = "synthetic_conversation_generator", from = "src" }]
