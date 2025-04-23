@@ -17,7 +17,7 @@ class DataGenerationConfig:
     assistant: Assistant
     user_personas: List[UserPersona]
     conversation_length: ConversationLength
-    
+
     @classmethod
     def from_yaml(cls, schema_path: str):
         """
@@ -84,4 +84,63 @@ class DataGenerationConfig:
             user_personas=user_personas,
             conversation_length=conversation_length
         )
+    
+    def to_yaml(self, output_path: str):
+        """
+        Convert this DataGenerationConfig object to YAML format and write it to the specified path.
+        
+        Args:
+            output_path: Path where the YAML file will be written
+            
+        Returns:
+            str: YAML representation of the config
+        """
+        data = {
+            'assistant': {
+                'name': self.assistant.name,
+                'description': self.assistant.description
+            },
+            'user_personas': [],
+            'conversation_length': {
+                'min_turns': self.conversation_length.min_turns,
+                'max_turns': self.conversation_length.max_turns
+            }
+        }
+        
+        # Convert user personas to dictionaries
+        for persona in self.user_personas:
+            persona_dict = {
+                'name': persona.name,
+                'overview': persona.overview,
+                'numeric_attributes': [],
+                'text_attributes': []
+            }
+            
+            # Convert numeric attributes
+            for attr in persona.numeric_attributes:
+                attr_dict = {'name': attr.name, 'value': attr.value}
+                if attr.description:
+                    attr_dict['description'] = attr.description
+                if attr.min_value is not None:
+                    attr_dict['min_value'] = attr.min_value
+                if attr.max_value is not None:
+                    attr_dict['max_value'] = attr.max_value
+                persona_dict['numeric_attributes'].append(attr_dict)
+            
+            # Convert text attributes
+            for attr in persona.text_attributes:
+                attr_dict = {'name': attr.name, 'value': attr.value}
+                if attr.description:
+                    attr_dict['description'] = attr.description
+                persona_dict['text_attributes'].append(attr_dict)
+            
+            data['user_personas'].append(persona_dict)
+        
+        yaml_content = yaml.dump(data, sort_keys=False)
+        
+        # Write to the output file
+        with open(output_path, 'w') as f:
+            f.write(yaml_content)
+            
+        return yaml_content
     
