@@ -1,83 +1,63 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict
 import json
-from typing import List
+from typing import List, Dict, Any
 
 import yaml
 
 from data_models.assistant import Assistant
-from data_models.user_persona import UserPersona, NumericAttribute, TextAttribute
+from data_models.character_card import CharacterCard
 
 @dataclass
 class ConversationLength:
     min_turns: int
     max_turns: int
+    
+    @classmethod
+    def from_dict(cls, data: Dict):
+        """
+        Create a ConversationLength instance from a dictionary.
+        
+        Args:
+            data: Dictionary containing conversation length data
+            
+        Returns:
+            ConversationLength instance
+        """
+        return cls(
+            min_turns=data['min_turns'],
+            max_turns=data['max_turns']
+        )
 
 @dataclass
 class DataGenerationConfig:
     assistant: Assistant
-    user_personas: List[UserPersona]
+    user_personas: List[CharacterCard]
     conversation_length: ConversationLength
 
     @classmethod
     def from_yaml(cls, schema_path: str):
         """
-        Load a YAML schema file and convert it into a DataSchema object.
+        Load a YAML schema file and convert it into a DataGenerationConfig object.
         
         Args:
             schema_path: Path to the YAML schema file
             
         Returns:
-            DataSchema object containing the parsed schema
+            DataGenerationConfig object containing the parsed schema
         """
         with open(schema_path, 'r') as f:
             schema_data = yaml.safe_load(f)
         
         # Parse assistant data
-        assistant_data = schema_data['assistant']
-        assistant = Assistant(
-            name=assistant_data['name'],
-            description=assistant_data['description']
-        )
+        assistant = Assistant.from_dict(schema_data['assistant'])
         
         # Parse user personas
         user_personas = []
         for persona_data in schema_data.get('user_personas', []):
-            numeric_attributes = []
-            for attr in persona_data.get('numeric_attributes', []):
-                numeric_attributes.append(
-                    NumericAttribute(
-                        name=attr['name'],
-                        description=attr.get('description'),
-                        min_value=attr.get('min_value'),
-                        max_value=attr.get('max_value'),
-                        value=attr['value']
-                    )
-                )
-            
-            text_attributes = []
-            for attr in persona_data.get('text_attributes', []):
-                text_attributes.append(
-                    TextAttribute(
-                        name=attr['name'],
-                        description=attr.get('description'),
-                        value=attr['value']
-                    )
-                )
-            
-            user_personas.append(
-                UserPersona(
-                    name=persona_data['name'],
-                    overview=persona_data['overview'],
-                    numeric_attributes=numeric_attributes,
-                    text_attributes=text_attributes
-                )
-            )
+            user_personas.append(CharacterCard.from_dict(persona_data))
 
         # Parse conversation length
-        conversation_length = ConversationLength(
-            min_turns=schema_data['conversation_length']['min_turns'],
-            max_turns=schema_data['conversation_length']['max_turns']
-        )
+        conversation_length = ConversationLength.from_dict(schema_data['conversation_length'])
         
         return cls(
             assistant=assistant,
@@ -95,46 +75,8 @@ class DataGenerationConfig:
         Returns:
             str: YAML representation of the config
         """
-        data = {
-            'assistant': {
-                'name': self.assistant.name,
-                'description': self.assistant.description
-            },
-            'user_personas': [],
-            'conversation_length': {
-                'min_turns': self.conversation_length.min_turns,
-                'max_turns': self.conversation_length.max_turns
-            }
-        }
-        
-        # Convert user personas to dictionaries
-        for persona in self.user_personas:
-            persona_dict = {
-                'name': persona.name,
-                'overview': persona.overview,
-                'numeric_attributes': [],
-                'text_attributes': []
-            }
-            
-            # Convert numeric attributes
-            for attr in persona.numeric_attributes:
-                attr_dict = {'name': attr.name, 'value': attr.value}
-                if attr.description:
-                    attr_dict['description'] = attr.description
-                if attr.min_value is not None:
-                    attr_dict['min_value'] = attr.min_value
-                if attr.max_value is not None:
-                    attr_dict['max_value'] = attr.max_value
-                persona_dict['numeric_attributes'].append(attr_dict)
-            
-            # Convert text attributes
-            for attr in persona.text_attributes:
-                attr_dict = {'name': attr.name, 'value': attr.value}
-                if attr.description:
-                    attr_dict['description'] = attr.description
-                persona_dict['text_attributes'].append(attr_dict)
-            
-            data['user_personas'].append(persona_dict)
+        # Convert the dataclass to a dictionary
+        data = asdict(self)
         
         yaml_content = yaml.dump(data, sort_keys=False)
         

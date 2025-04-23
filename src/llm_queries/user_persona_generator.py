@@ -1,7 +1,7 @@
 from typing import List
 
 from data_models.assistant import Assistant
-from data_models.user_persona import UserPersona, NumericAttribute, TextAttribute
+from data_models.character_card import CharacterCard
 from llm_queries.llm_query import LLMQuery, ModelProvider
 
 class UserPersonaGenerator(LLMQuery):
@@ -12,7 +12,7 @@ class UserPersonaGenerator(LLMQuery):
         self.num_personas = num_personas
 
     def generate_prompt(self):
-        return f"""Generate {self.num_personas} user personas that are likely to interact with the assistant. The personas should be distinct and diverse, in order to cover a range of user types.
+        return f"""Generate {self.num_personas} users that are likely to interact with the assistant. The generated usersshould be as distinct and diverse as possible, in order to cover a wide range of user personas.
 
 ### Assistant
 {self.assistant}
@@ -24,38 +24,24 @@ class UserPersonaGenerator(LLMQuery):
             properties[f"user_persona_{i}"] = {
                 "type": "object",
                 "properties": {
-                    "name": {"type": "string"},
-                    "overview": {"type": "string"},
-                    "numeric_attributes": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "name": {"type": "string"},
-                                "value": {"type": "number"},
-                                "description": {"type": "string"},
-                                "min_value": {"type": "number"},
-                                "max_value": {"type": "number"}
-                            },
-                            "required": ["name", "value", "description", "min_value", "max_value"],
-                            "additionalProperties": False
-                        }
+                    "name": {
+                        "type": "string",
+                        "description": "The user's name"
                     },
-                    "text_attributes": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "name": {"type": "string"},
-                                "value": {"type": "string"},
-                                "description": {"type": "string"}
-                            },
-                            "required": ["name", "value", "description"],
-                            "additionalProperties": False
-                        }
+                    "description": {
+                        "type": "string",
+                        "description": "An overview of the user's physical and mental traits."
+                    },
+                    "personality": {
+                        "type": "string",
+                        "description": "A description of the user's personality."
+                    },
+                    "scenario": {
+                        "type": "string",
+                        "description": "The context and circumstances in which the user enters the conversation."      
                     }
                 },
-                "required": ["name", "overview", "numeric_attributes", "text_attributes"],
+                "required": ["name", "description", "personality", "scenario"],
                 "additionalProperties": False
             }
 
@@ -66,38 +52,17 @@ class UserPersonaGenerator(LLMQuery):
             "additionalProperties": False
         }
     
-    def parse_response(self, json_response) -> List[UserPersona]:   
+    def parse_response(self, json_response) -> List[CharacterCard]:   
         user_personas = []
         for i in range(self.num_personas):
             persona_json = json_response[f"user_persona_{i}"]
-            
-            # Convert JSON to NumericAttribute and TextAttribute objects
-            numeric_attributes = [
-                NumericAttribute(
-                    name=attr["name"],
-                    value=attr["value"],
-                    description=attr.get("description"),
-                    min_value=attr.get("min_value"),
-                    max_value=attr.get("max_value")
-                ) for attr in persona_json["numeric_attributes"]
-            ]
-            
-            text_attributes = [
-                TextAttribute(
-                    name=attr["name"],
-                    value=attr["value"],
-                    description=attr.get("description")
-                ) for attr in persona_json["text_attributes"]
-            ]
-            
-            # Create the UserPersona object
-            user_persona = UserPersona(
+            user_persona = CharacterCard(
                 name=persona_json["name"],
-                overview=persona_json["overview"],
-                numeric_attributes=numeric_attributes,
-                text_attributes=text_attributes
+                description=persona_json["description"],
+                personality=persona_json["personality"],
+                scenario=persona_json["scenario"]
             )
-            
+                        
             user_personas.append(user_persona)
         
         return user_personas

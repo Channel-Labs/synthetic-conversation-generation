@@ -1,11 +1,28 @@
 import json
 from dataclasses import dataclass
+from typing import Dict
 
 
 @dataclass
 class Assistant:
     name: str
     description: str
+
+    @classmethod
+    def from_dict(cls, data: Dict):
+        """
+        Create an Assistant instance from a dictionary.
+        
+        Args:
+            data: Dictionary containing assistant data
+            
+        Returns:
+            Assistant instance
+        """
+        return cls(
+            name=data['name'],
+            description=data['description']
+        )
 
     @property
     def prompt_object(self) -> dict:

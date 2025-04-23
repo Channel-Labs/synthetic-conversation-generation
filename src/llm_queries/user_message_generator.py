@@ -3,12 +3,12 @@ from datetime import datetime
 
 from data_models.assistant import Assistant
 from data_models.conversation import Conversation, Message, ROLE
-from data_models.user_persona import UserPersona
+from data_models.character_card import CharacterCard
 from llm_queries.llm_query import LLMQuery, ModelProvider
 
 class UserMessageGenerator(LLMQuery):
 
-    def __init__(self, model_provider: ModelProvider, model_id: str, conversation: Conversation, user_persona: UserPersona, assistant: Assistant):
+    def __init__(self, model_provider: ModelProvider, model_id: str, conversation: Conversation, user_persona: CharacterCard, assistant: Assistant):
         super().__init__(model_provider, model_id)
         self.conversation = conversation
         self.user_persona = user_persona
