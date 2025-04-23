@@ -28,7 +28,8 @@ logging.getLogger('anthropic').setLevel(logging.WARNING)
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--data-generation-config-path", type=str, required=True)
-    parser.add_argument("--endpoint-config-path", type=str, required=True)
+    parser.add_argument("--inference-endpoint-config-path", type=str, required=True)
+    parser.add_argument("--output-path", type=str, required=True)
     parser.add_argument("--model-provider", type=str, choices=["openai", "anthropic", "bedrock"], default="openai")
     parser.add_argument("--user-message-model", type=str, default="gpt-4.1")
     args = parser.parse_args()
@@ -57,7 +58,7 @@ if __name__ == "__main__":
         conversation_length = random.randint(conversation_length_params.min_turns, conversation_length_params.max_turns)
         
         conversation = Conversation(
-            conversation_id=conversation_id,
+            id=str(conversation_id),
             user_id=user_persona.name,
             messages=[]
         )
@@ -81,7 +82,21 @@ if __name__ == "__main__":
         conversations.append(conversation)
 
     ## Save conversations to file
-    with open(args.data_path, "w") as f:
-        json.dump(conversations, f)
+    with open(args.output_path, "w") as f:
+        for conversation in conversations:
+            # Convert each conversation to the desired format
+            formatted_messages = []
+            
+            # Add user and assistant messages
+            for message in conversation.messages:
+                formatted_message = {
+                    "role": message.role.name,
+                    "content": message.content
+                }
+                formatted_messages.append(formatted_message)
+            
+            # Create the final jsonl object and write to file
+            jsonl_object = {"messages": formatted_messages}
+            f.write(json.dumps(jsonl_object) + "\n")
 
 

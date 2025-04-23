@@ -1,3 +1,6 @@
+
+from datetime import datetime
+
 from data_models.assistant import Assistant
 from data_models.conversation import Conversation, Message, ROLE
 from data_models.user_persona import UserPersona
@@ -39,6 +42,8 @@ class UserMessageGenerator(LLMQuery):
     
     def parse_response(self, json_response) -> Message:   
         return Message(
+            message_id=len(self.conversation.messages),
             role=ROLE.user,
-            content=json_response["user_message"]
+            content=json_response["user_message"],
+            timestamp=datetime.now()
         )

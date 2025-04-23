@@ -1,0 +1,113 @@
+assistant:
+  name: "MindfulMe"
+  description: "A supportive mental health companion trained to provide emotional support, mindfulness techniques, and general mental health guidance."
+
+user_personas:
+  - name: "Alex"
+    overview: "College student experiencing stress and anxiety due to academic pressure and social challenges."
+    numeric_attributes:
+      - name: "anxiety_level"
+        description: "Self-reported anxiety level on a scale of 1-10"
+        min_value: 1
+        max_value: 10
+        value: 7
+      - name: "sleep_hours"
+        description: "Average hours of sleep per night"
+        min_value: 0
+        max_value: 12
+        value: 5
+    text_attributes:
+      - name: "coping_strategies"
+        description: "Current methods used to manage stress"
+        value: "Occasionally exercises, uses social media as distraction"
+      - name: "support_network"
+        description: "Available support from friends and family"
+        value: "Limited. Family lives far away, has a small circle of friends who are also busy with studies"
+
+  - name: "Morgan"
+    overview: "Mid-career professional dealing with burnout and work-life balance issues while raising young children."
+    numeric_attributes:
+      - name: "stress_level"
+        description: "Self-reported stress level on a scale of 1-10"
+        min_value: 1
+        max_value: 10
+        value: 8
+      - name: "work_hours"
+        description: "Average hours worked per week"
+        min_value: 0
+        max_value: 80
+        value: 55
+    text_attributes:
+      - name: "main_concerns"
+        description: "Primary worries or challenges"
+        value: "Feeling stretched too thin between work demands and family responsibilities, not having personal time"
+      - name: "health_issues"
+        description: "Physical manifestations of stress"
+        value: "Tension headaches, disrupted sleep, digestive issues"
+
+  - name: "Jordan"
+    overview: "Retired individual experiencing social isolation and grief after losing their spouse."
+    numeric_attributes:
+      - name: "loneliness_rating"
+        description: "Self-reported feelings of loneliness on a scale of 1-10"
+        min_value: 1
+        max_value: 10
+        value: 9
+      - name: "months_since_loss"
+        description: "Time since spouse's passing"
+        min_value: 0
+        max_value: 60
+        value: 14
+    text_attributes:
+      - name: "daily_routine"
+        description: "Typical daily activities"
+        value: "Watches television, prepares simple meals, occasionally goes for short walks, calls adult child once a week"
+      - name: "grief_expression"
+        description: "How grief is expressed or managed"
+        value: "Tends to avoid talking about feelings, keeps spouse's belongings untouched, sometimes talks to spouse's photo"
+
+  - name: "Riley"
+    overview: "Teenager struggling with self-esteem issues and social media comparison."
+    numeric_attributes:
+      - name: "self_esteem"
+        description: "Self-reported self-esteem on a scale of 1-10"
+        min_value: 1
+        max_value: 10
+        value: 4
+      - name: "social_media_hours"
+        description: "Hours spent on social media daily"
+        min_value: 0
+        max_value: 24
+        value: 6
+    text_attributes:
+      - name: "interests"
+        description: "Activities and topics of interest"
+        value: "Digital art, music, fashion, but hesitant to share creations publicly"
+      - name: "thought_patterns"
+        description: "Common negative thoughts"
+        value: "Frequently compares self to peers and influencers, feels inadequate, worries about judgment from others"
+
+  - name: "Casey"
+    overview: "Military veteran transitioning to civilian life while managing PTSD symptoms."
+    numeric_attributes:
+      - name: "ptsd_severity"
+        description: "Self-reported severity of PTSD symptoms on a scale of 1-10"
+        min_value: 1
+        max_value: 10
+        value: 6
+      - name: "years_since_service"
+        description: "Years since active military service"
+        min_value: 0
+        max_value: 50
+        value: 2
+    text_attributes:
+      - name: "triggers"
+        description: "Situations that may trigger PTSD symptoms"
+        value: "Loud noises, crowded spaces, fireworks, certain news stories"
+      - name: "career_goals"
+        description: "Professional aspirations in civilian life"
+        value: "Interested in emergency management or security consulting, but uncertain about how to translate military skills"
+
+conversation_length:
+  min_turns: 4
+  max_turns: 12
