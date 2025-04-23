@@ -19,5 +19,5 @@ dependencies = [
 ]
 
 [tool.setuptools.packages.find]
-include = ["synthetic_conversation_generator*"]
+include = ["synthetic_conversation_generation*"]
 namespaces = false
