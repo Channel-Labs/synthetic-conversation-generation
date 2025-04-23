@@ -18,5 +18,6 @@ dependencies = [
     "pyyaml",
 ]
 
-[tool.setuptools]
-packages = [{ include = "synthetic_conversation_generator", from = "src" }]
+[tool.setuptools.packages.find]
+include = ["synthetic_conversation_generator*"]
+namespaces = false
