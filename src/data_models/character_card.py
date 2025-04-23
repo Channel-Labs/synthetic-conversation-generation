@@ -10,11 +10,6 @@ class CharacterCard:
     personality: str
     scenario: str
 
-
-    # overview: str
-    # numeric_attributes: List[NumericAttribute]
-    # text_attributes: List[TextAttribute]
-
     @classmethod
     def from_dict(cls, data: Dict):
         """
@@ -32,14 +27,5 @@ class CharacterCard:
             personality=data['personality'],
             scenario=data['scenario']
         )
-
-
-    # {{input}}: User input insertion
-# {{name}}: Character name
-# {{description}}: Character description
-# {{scenario}}: Scenario information
-# {{first_mes}}: First message
-# {{mes_example}}: Message examples
-# {{personality}}: Personality traits
 
 
