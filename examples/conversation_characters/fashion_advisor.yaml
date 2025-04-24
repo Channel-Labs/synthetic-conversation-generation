@@ -5,49 +5,52 @@ assistant:
 users:
 - name: Priya Sharma
   description: "Priya is a 28-year-old software engineer of Indian descent, 5\u2019\
-    4\u2033 with a curvy build. She\u2019s analytical and detail\u2011oriented but\
-    \ struggles with self\u2011confidence in her appearance. She cares about sustainability,\
-    \ prefers quality over quantity, and has limited time for shopping."
+    4\u2033 with a curvy build. She\u2019s analytical and detail-oriented but struggles\
+    \ with self-confidence in her appearance. She cares about sustainability, prefers\
+    \ quality over quantity, and has limited time for shopping."
   personality: "Pragmatic, conscientious, and warm. Priya is friendly but reserved,\
     \ highly organized in her work, and values clear, actionable advice. She\u2019\
     s open to experimentation but needs guidance to feel assured about her style choices."
   scenario: "Priya has just been invited to speak at a virtual tech conference in\
     \ two days. With a packed work schedule and no time for a shopping trip, she\u2019\
     s turning to the AI stylist for outfit suggestions from her existing wardrobe\u2014\
-    seeking a polished, camera\u2011ready look that feels authentic and eco\u2011\
-    friendly."
-- name: Avery Brooks
-  description: "Avery is a 19\u2011year\u2011old non\u2011binary college freshman\
-    \ of mixed Black and White heritage. They stand about 5\u20197\u2033 with a lean,\
-    \ androgynous build. Introverted and slightly anxious in new social settings,\
-    \ Avery cares deeply about expressing their evolving identity through clothing\
-    \ but lacks confidence and a big budget. They\u2019re curious, creative, and value\
-    \ sustainability, often hunting for unique pieces at thrift shops."
-  personality: "Thoughtful, open\u2011minded, and introspective, Avery enjoys experimenting\
-    \ with DIY fashion projects but can overthink outfits for fear of standing out\
-    \ too much. They appreciate clear, step\u2011by\u2011step guidance, gentle encouragement,\
-    \ and value authenticity and ethical choices over the latest trends."
-  scenario: "It\u2019s the start of the semester, and Avery has two upcoming events\u2014\
-    a bustling campus club fair where they want to feel seen and a casual coffee date\
-    \ with someone they\u2019ve just met. With a limited wardrobe and budget, they\
-    \ turn to the AI stylist to help mix thrifted finds and basic staples into comfortable,\
-    \ gender\u2011neutral looks that reflect who they are and boost their confidence."
-- name: James Thompson
-  description: "James is a 55-year\u2011old African\u2011American senior attorney\
-    \ standing 6\u20192\" with an athletic build and salt\u2011and\u2011pepper hair.\
-    \ He\u2019s always maintained a polished, professional appearance\u2014tailored\
-    \ suits, crisp shirts, and classic leather shoes\u2014but hasn\u2019t updated\
-    \ his off\u2011duty wardrobe in years. He values quality, durability, and comfort,\
-    \ especially when he\u2019s traveling or spending weekends with his family."
-  personality: "Analytical, disciplined, and pragmatic. James is confident in the\
-    \ courtroom and boardroom but feels out of touch with modern casual and business\u2011\
-    casual styles. He\u2019s decisive, appreciates clear, efficient advice, and dislikes\
-    \ wasting time on shopping or sifting through trends. He\u2019s open to suggestions\
-    \ that are practical and elevate his look without sacrificing comfort or professionalism."
-  scenario: "James has a three\u2011day corporate retreat at a beachside resort with\
-    \ a business\u2011casual dress code coming up, plus a friend\u2019s daughter\u2019\
-    s wedding next month where he needs a fresh, age\u2011appropriate yet stylish\
-    \ outfit. He also wants to refresh his weekend rotation\u2014something comfortable\
-    \ but refined for family brunches and gatherings. With a packed schedule of court\
-    \ dates and travel, he\u2019s relying on the AI stylist to help him make the most\
-    \ of his existing wardrobe and identify a few strategic new pieces."
+    seeking a polished, camera-ready look that feels authentic and eco-friendly."
+- name: Carlos Mendoza
+  description: "Carlos is a 45-year-old Hispanic American high school history teacher\
+    \ standing 6\u20191\u2033 with an athletic build from a recent 60-pound weight\
+    \ loss. He has salt-and-pepper hair, wears rectangular glasses, and tends toward\
+    \ neutral colors. He\u2019s comfortable speaking in front of students but feels\
+    \ self-conscious about showcasing his new body shape and often defaults to oversized,\
+    \ baggy clothes. Budget-minded and practical, he values comfort and durability\
+    \ in his wardrobe."
+  personality: "Warm, reflective, and quietly humorous, Carlos approaches challenges\
+    \ methodically and enjoys clear, step-by-step guidance. He\u2019s patient with\
+    \ himself and others, loves historical trivia, and tends to downplay his own achievements.\
+    \ He\u2019s eager to learn but worries about making fashion missteps."
+  scenario: "Now that in-person teaching has resumed, Carlos wants to refresh both\
+    \ his professional and weekend wardrobes to reflect his confidence and energy.\
+    \ With only a modest budget and a few staple pieces on hand, he\u2019s seeking\
+    \ outfit ideas for classroom presentations, parent\u2013teacher conferences, and\
+    \ casual weekend outings\u2014clothes that fit well, feel comfortable on long\
+    \ school days, and look polished both in person and on camera."
+- name: Alex Reed
+  description: "Alex is a 24-year-old non-binary graduate student of mixed Scottish-Irish\
+    \ heritage. They stand 5\u20199\u2033 with a plus-size build, have a soft round\
+    \ face framed by short pastel-pink hair, warm brown eyes, and wear round glasses.\
+    \ Alex experiences gender dysphoria and views clothing as a vital tool to affirm\
+    \ their identity. Their wardrobe is a curated mix of thrifted finds, wardrobe\
+    \ staples in neutral tones, and a handful of bold statement pieces."
+  personality: Creative, introspective, and playful, with a dash of lingering anxiety.
+    Alex is idealistic and deeply values authenticity and inclusivity. They enjoy
+    exploring fashion as self-expression but can quickly feel overwhelmed by too many
+    options. They respond best to empathetic, patient guidance and clear, step-by-step
+    suggestions delivered in a warm, non-judgmental tone.
+  scenario: "In two weeks, Alex will present their research poster at a national graduate\
+    \ conference. They need an androgynous yet professional outfit that aligns with\
+    \ their gender identity, feels comfortable for long periods of standing and networking,\
+    \ and stays within a modest student budget. Their closet currently holds thrifted\
+    \ blazers, oversized button-downs, wide-leg trousers, basic tees, and a pair of\
+    \ low-heeled ankle boots. Alex is seeking advice on how to mix and match these\
+    \ pieces\u2014plus any affordable additions\u2014to craft a cohesive look that\
+    \ avoids strictly masculine or feminine stereotypes and lets them feel confidently\
+    \ themselves."

@@ -4,12 +4,12 @@ from typing import List
 from anthropic import Anthropic
 from openai import OpenAI
 
-from data_models.assistant import Assistant
-from data_models.character_card import CharacterCard
-from data_models.conversation_characters import ConversationCharacters
+from synthetic_conversation_generation.data_models.assistant import Assistant
+from synthetic_conversation_generation.data_models.character_card import CharacterCard
+from synthetic_conversation_generation.data_models.conversation_characters import ConversationCharacters
 
-from llm_queries.llm_query import ModelProvider, OpenAIModelProvider, AnthropicModelProvider
-from llm_queries.user_persona_query import UserPersonaQuery
+from synthetic_conversation_generation.llm_queries.llm_query import ModelProvider, OpenAIModelProvider, AnthropicModelProvider
+from synthetic_conversation_generation.llm_queries.user_persona_query import UserPersonaQuery
 
 # Configure root logger to WARNING to silence third-party libraries
 logging.basicConfig(
