@@ -1,9 +1,9 @@
 from dataclasses import dataclass, asdict
 from typing import List
 
-from data_models.assistant import Assistant
-from data_models.character_card import CharacterCard
-from llm_queries.llm_query import LLMQuery, ModelProvider
+from synthetic_conversation_generation.data_models.assistant import Assistant
+from synthetic_conversation_generation.data_models.character_card import CharacterCard
+from synthetic_conversation_generation.llm_queries.llm_query import LLMQuery, ModelProvider
 
 class UserPersonaQuery(LLMQuery):
 

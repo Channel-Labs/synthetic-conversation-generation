@@ -1,10 +1,10 @@
 
 from datetime import datetime
 
-from data_models.assistant import Assistant
-from data_models.conversation import Conversation, Message, ROLE
-from data_models.character_card import CharacterCard
-from llm_queries.llm_query import LLMQuery, ModelProvider
+from synthetic_conversation_generation.data_models.assistant import Assistant
+from synthetic_conversation_generation.data_models.conversation import Conversation, Message, ROLE
+from synthetic_conversation_generation.data_models.character_card import CharacterCard
+from synthetic_conversation_generation.llm_queries.llm_query import LLMQuery, ModelProvider
 
 class UserMessageQuery(LLMQuery):
 

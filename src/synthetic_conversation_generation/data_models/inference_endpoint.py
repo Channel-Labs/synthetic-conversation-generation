@@ -4,7 +4,7 @@ from typing import Dict, Any, Optional, List, Union
 import requests
 import yaml
 
-from data_models.conversation import Conversation, Message, ROLE
+from synthetic_conversation_generation.data_models.conversation import Conversation, Message, ROLE
 
 @dataclass
 class InferenceEndpoint:

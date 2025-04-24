@@ -6,13 +6,13 @@ from typing import List
 from anthropic import Anthropic
 from openai import OpenAI
 
-from data_models.assistant import Assistant
-from data_models.character_card import CharacterCard
-from data_models.conversation import Conversation
-from data_models.conversation_characters import ConversationCharacters
-from data_models.inference_endpoint import InferenceEndpoint
-from llm_queries.llm_query import LLMQuery, ModelProvider, OpenAIModelProvider, AnthropicModelProvider
-from llm_queries.user_message_query import UserMessageQuery
+from synthetic_conversation_generation.data_models.assistant import Assistant
+from synthetic_conversation_generation.data_models.character_card import CharacterCard
+from synthetic_conversation_generation.data_models.conversation import Conversation
+from synthetic_conversation_generation.data_models.conversation_characters import ConversationCharacters
+from synthetic_conversation_generation.data_models.inference_endpoint import InferenceEndpoint
+from synthetic_conversation_generation.llm_queries.llm_query import LLMQuery, ModelProvider, OpenAIModelProvider, AnthropicModelProvider
+from synthetic_conversation_generation.llm_queries.user_message_query import UserMessageQuery
 
 # Configure root logger to WARNING to silence third-party libraries
 logging.basicConfig(

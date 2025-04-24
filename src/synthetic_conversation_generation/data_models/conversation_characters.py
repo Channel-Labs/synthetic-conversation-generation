@@ -3,8 +3,8 @@ from typing import List
 
 import yaml
 
-from data_models.assistant import Assistant
-from data_models.character_card import CharacterCard
+from synthetic_conversation_generation.data_models.assistant import Assistant
+from synthetic_conversation_generation.data_models.character_card import CharacterCard
 
 
 @dataclass

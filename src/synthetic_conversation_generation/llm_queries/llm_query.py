@@ -5,8 +5,6 @@ import json
 import time
 import logging
 from typing import Dict
-import boto3
-from botocore.config import Config
 
 import anthropic
 import openai
