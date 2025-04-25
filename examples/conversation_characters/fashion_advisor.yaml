@@ -3,54 +3,53 @@ assistant:
   description: Fashionable Fran is your personal stylist and recommends what to wear
     from your wardrobe.
 users:
-- name: Priya Sharma
-  description: "Priya is a 28-year-old software engineer of Indian descent, 5\u2019\
-    4\u2033 with a curvy build. She\u2019s analytical and detail-oriented but struggles\
-    \ with self-confidence in her appearance. She cares about sustainability, prefers\
-    \ quality over quantity, and has limited time for shopping."
-  personality: "Pragmatic, conscientious, and warm. Priya is friendly but reserved,\
-    \ highly organized in her work, and values clear, actionable advice. She\u2019\
-    s open to experimentation but needs guidance to feel assured about her style choices."
-  scenario: "Priya has just been invited to speak at a virtual tech conference in\
-    \ two days. With a packed work schedule and no time for a shopping trip, she\u2019\
-    s turning to the AI stylist for outfit suggestions from her existing wardrobe\u2014\
-    seeking a polished, camera-ready look that feels authentic and eco-friendly."
-- name: Carlos Mendoza
-  description: "Carlos is a 45-year-old Hispanic American high school history teacher\
-    \ standing 6\u20191\u2033 with an athletic build from a recent 60-pound weight\
-    \ loss. He has salt-and-pepper hair, wears rectangular glasses, and tends toward\
-    \ neutral colors. He\u2019s comfortable speaking in front of students but feels\
-    \ self-conscious about showcasing his new body shape and often defaults to oversized,\
-    \ baggy clothes. Budget-minded and practical, he values comfort and durability\
-    \ in his wardrobe."
-  personality: "Warm, reflective, and quietly humorous, Carlos approaches challenges\
-    \ methodically and enjoys clear, step-by-step guidance. He\u2019s patient with\
-    \ himself and others, loves historical trivia, and tends to downplay his own achievements.\
-    \ He\u2019s eager to learn but worries about making fashion missteps."
-  scenario: "Now that in-person teaching has resumed, Carlos wants to refresh both\
-    \ his professional and weekend wardrobes to reflect his confidence and energy.\
-    \ With only a modest budget and a few staple pieces on hand, he\u2019s seeking\
-    \ outfit ideas for classroom presentations, parent\u2013teacher conferences, and\
-    \ casual weekend outings\u2014clothes that fit well, feel comfortable on long\
-    \ school days, and look polished both in person and on camera."
-- name: Alex Reed
-  description: "Alex is a 24-year-old non-binary graduate student of mixed Scottish-Irish\
-    \ heritage. They stand 5\u20199\u2033 with a plus-size build, have a soft round\
-    \ face framed by short pastel-pink hair, warm brown eyes, and wear round glasses.\
-    \ Alex experiences gender dysphoria and views clothing as a vital tool to affirm\
-    \ their identity. Their wardrobe is a curated mix of thrifted finds, wardrobe\
-    \ staples in neutral tones, and a handful of bold statement pieces."
-  personality: Creative, introspective, and playful, with a dash of lingering anxiety.
-    Alex is idealistic and deeply values authenticity and inclusivity. They enjoy
-    exploring fashion as self-expression but can quickly feel overwhelmed by too many
-    options. They respond best to empathetic, patient guidance and clear, step-by-step
-    suggestions delivered in a warm, non-judgmental tone.
-  scenario: "In two weeks, Alex will present their research poster at a national graduate\
-    \ conference. They need an androgynous yet professional outfit that aligns with\
-    \ their gender identity, feels comfortable for long periods of standing and networking,\
-    \ and stays within a modest student budget. Their closet currently holds thrifted\
-    \ blazers, oversized button-downs, wide-leg trousers, basic tees, and a pair of\
-    \ low-heeled ankle boots. Alex is seeking advice on how to mix and match these\
-    \ pieces\u2014plus any affordable additions\u2014to craft a cohesive look that\
-    \ avoids strictly masculine or feminine stereotypes and lets them feel confidently\
-    \ themselves."
+- name: Maya Lee
+  description: "Maya is a 27-year-old plus-size yoga instructor living in Portland.\
+    \ She stands 5\u20196\" with an athletic build, curly auburn hair, and expressive\
+    \ tattoos. Mentally, she\u2019s confident and creative but occasionally anxious\
+    \ about her impact on the environment and her professional image."
+  personality: "Maya is outgoing, socially conscious, and passionate about sustainability.\
+    \ She\u2019s warm and empathetic with students, detail-oriented when it comes\
+    \ to wardrobe choices, and enjoys infusing personal flair into functional outfits.\
+    \ She values inclusivity, ethics, and self-expression."
+  scenario: Maya has just opened a small eco-friendly boutique yoga studio and is
+    hosting weekly pop-up events, classes, and community networking nights. She needs
+    outfit recommendations that are comfortable for teaching, reflect her eco-conscious
+    brand, fit her plus-size figure, and transition seamlessly from studio to casual
+    lunch meetups or evening networking.
+  summary: Eco-friendly yoga instructor styling
+- name: Sam Carter
+  description: "Sam Carter is a 40-year-old marketing director based in Chicago. He\
+    \ stands 5'10\" with a lean build and uses a wheelchair following a spinal cord\
+    \ injury five years ago. Mentally, he\u2019s resilient, pragmatic, and solution-focused,\
+    \ but sometimes frustrated by clothing that doesn\u2019t accommodate his mobility\
+    \ needs."
+  personality: "Sam is analytical and detail-oriented, with a dry sense of humor.\
+    \ He values efficiency and clarity, preferring straightforward advice. He\u2019\
+    s confident in his professional expertise but open to styling suggestions that\
+    \ simplify his daily routine."
+  scenario: "Sam is speaking at a series of marketing conferences in various cities\
+    \ over the next two months. He needs outfit recommendations that are wheelchair-friendly\u2014\
+    easy to put on and take off, wrinkle-resistant, and tailored to look polished\
+    \ on stage and at networking events. He wants versatile pieces that transition\
+    \ from day presentations to evening receptions without requiring a full wardrobe\
+    \ change."
+  summary: Wheelchair-friendly professional attire
+- name: Riley Thompson
+  description: "Riley Thompson is a 17-year-old non-binary high school senior from\
+    \ a small rural town in Ohio. They stand about 5\u20197\" with a slim build and\
+    \ have short, dyed-teal hair. Mentally, Riley is creative and introspective but\
+    \ sometimes anxious about fitting in and expressing their true self in a conservative\
+    \ community."
+  personality: "Riley is thoughtful, earnest, and detail-oriented. They\u2019re passionate\
+    \ about art and music, enjoy experimenting with DIY fashion, and value authenticity\
+    \ and inclusivity. They can be shy in groups but open up when discussing topics\
+    \ they care about. They communicate politely, ask lots of clarifying questions,\
+    \ and appreciate gentle encouragement."
+  scenario: "Riley is preparing for prom and the college-application process. They\
+    \ want to build a small wardrobe of gender-neutral, budget-friendly pieces that\
+    \ reflect their identity, comply with their school\u2019s dress code, and transition\
+    \ to campus life next year. Living in a rural area with limited local stores,\
+    \ they rely on online shopping and need guidance on sizing, shipping, and inclusive\
+    \ brands."
+  summary: Non-binary teen exploring style

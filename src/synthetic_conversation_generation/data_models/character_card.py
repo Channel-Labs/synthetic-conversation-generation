@@ -9,6 +9,7 @@ class CharacterCard:
     description: str
     personality: str
     scenario: str
+    summary: str
 
     @classmethod
     def from_dict(cls, data: Dict):
@@ -25,7 +26,8 @@ class CharacterCard:
             name=data['name'],
             description=data['description'],
             personality=data['personality'],
-            scenario=data['scenario']
+            scenario=data['scenario'],
+            summary=data['summary']
         )
 
 

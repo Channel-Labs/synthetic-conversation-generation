@@ -46,13 +46,17 @@ These personas will be utilized to generate simulated conversations and evaluate
             "scenario": {
                 "type": "string",
                 "description": "The context and circumstances in which the user enters the conversation."      
+            },
+            "summary": {
+                "type": "string",
+                "description": "A concise (~5 word) summary of the user, with the main focus on the user's scenario."
             }
         }
 
         return {
             "type": "object",
             "properties": properties,
-            "required": ["name", "description", "personality", "scenario"],
+            "required": ["name", "description", "personality", "scenario", "summary"],
             "additionalProperties": False
         }
     
@@ -61,5 +65,6 @@ These personas will be utilized to generate simulated conversations and evaluate
             name=json_response["name"],
             description=json_response["description"],
             personality=json_response["personality"],
-            scenario=json_response["scenario"]
+            scenario=json_response["scenario"],
+            summary=json_response["summary"]
         )
