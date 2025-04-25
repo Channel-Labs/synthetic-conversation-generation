@@ -1,4 +1,5 @@
-from dataclasses import dataclass, asdict
+from dataclasses import asdict
+import json
 from typing import List
 
 from synthetic_conversation_generation.data_models.assistant import Assistant
@@ -22,10 +23,10 @@ These personas will be utilized to generate simulated conversations and evaluate
 2. Invent a new persona (name, background, personality, goals, motivations, communication style, etc.) that is likely to seek out the assistant.
 
 ### Assistant
-{asdict(self.assistant)}
+{json.dumps(asdict(self.assistant), indent=4)}
 
 ### Previous User Personas
-{[asdict(persona) for persona in self.previous_personas]}
+{json.dumps([asdict(persona) for persona in self.previous_personas], indent=4)}
 """
     
     def response_schema(self):

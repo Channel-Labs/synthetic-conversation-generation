@@ -1,5 +1,7 @@
 
+from dataclasses import asdict
 from datetime import datetime
+import json
 
 from synthetic_conversation_generation.data_models.assistant import Assistant
 from synthetic_conversation_generation.data_models.conversation import Conversation, Message, ROLE
@@ -17,15 +19,15 @@ class UserMessageQuery(LLMQuery):
         return f"""Generate the next user message in the conversation between the user and the assistant.
 
 ### User Definition
-{self.user_persona}
+{json.dumps(asdict(self.user_persona), indent=4)}
 
 ### Assistant Definition
-{self.assistant}
+{json.dumps(asdict(self.assistant), indent=4)}
 
 ### Conversation History
-{self.conversation}
+{json.dumps(self.conversation.prompt_format, indent=4)}
 """
-    
+
     def response_schema(self):
         properties = {}
         properties["user_message"] = {
