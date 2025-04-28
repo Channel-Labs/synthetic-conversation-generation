@@ -3,53 +3,57 @@ assistant:
   description: Fashionable Fran is your personal stylist and recommends what to wear
     from your wardrobe.
 users:
-- name: Maya Lee
-  description: "Maya is a 27-year-old plus-size yoga instructor living in Portland.\
-    \ She stands 5\u20196\" with an athletic build, curly auburn hair, and expressive\
-    \ tattoos. Mentally, she\u2019s confident and creative but occasionally anxious\
-    \ about her impact on the environment and her professional image."
-  personality: "Maya is outgoing, socially conscious, and passionate about sustainability.\
-    \ She\u2019s warm and empathetic with students, detail-oriented when it comes\
-    \ to wardrobe choices, and enjoys infusing personal flair into functional outfits.\
-    \ She values inclusivity, ethics, and self-expression."
-  scenario: Maya has just opened a small eco-friendly boutique yoga studio and is
-    hosting weekly pop-up events, classes, and community networking nights. She needs
-    outfit recommendations that are comfortable for teaching, reflect her eco-conscious
-    brand, fit her plus-size figure, and transition seamlessly from studio to casual
-    lunch meetups or evening networking.
-  summary: Eco-friendly yoga instructor styling
-- name: Sam Carter
-  description: "Sam Carter is a 40-year-old marketing director based in Chicago. He\
-    \ stands 5'10\" with a lean build and uses a wheelchair following a spinal cord\
-    \ injury five years ago. Mentally, he\u2019s resilient, pragmatic, and solution-focused,\
-    \ but sometimes frustrated by clothing that doesn\u2019t accommodate his mobility\
-    \ needs."
-  personality: "Sam is analytical and detail-oriented, with a dry sense of humor.\
-    \ He values efficiency and clarity, preferring straightforward advice. He\u2019\
-    s confident in his professional expertise but open to styling suggestions that\
-    \ simplify his daily routine."
-  scenario: "Sam is speaking at a series of marketing conferences in various cities\
-    \ over the next two months. He needs outfit recommendations that are wheelchair-friendly\u2014\
-    easy to put on and take off, wrinkle-resistant, and tailored to look polished\
-    \ on stage and at networking events. He wants versatile pieces that transition\
-    \ from day presentations to evening receptions without requiring a full wardrobe\
-    \ change."
-  summary: Wheelchair-friendly professional attire
-- name: Riley Thompson
-  description: "Riley Thompson is a 17-year-old non-binary high school senior from\
-    \ a small rural town in Ohio. They stand about 5\u20197\" with a slim build and\
-    \ have short, dyed-teal hair. Mentally, Riley is creative and introspective but\
-    \ sometimes anxious about fitting in and expressing their true self in a conservative\
-    \ community."
-  personality: "Riley is thoughtful, earnest, and detail-oriented. They\u2019re passionate\
-    \ about art and music, enjoy experimenting with DIY fashion, and value authenticity\
-    \ and inclusivity. They can be shy in groups but open up when discussing topics\
-    \ they care about. They communicate politely, ask lots of clarifying questions,\
-    \ and appreciate gentle encouragement."
-  scenario: "Riley is preparing for prom and the college-application process. They\
-    \ want to build a small wardrobe of gender-neutral, budget-friendly pieces that\
-    \ reflect their identity, comply with their school\u2019s dress code, and transition\
-    \ to campus life next year. Living in a rural area with limited local stores,\
-    \ they rely on online shopping and need guidance on sizing, shipping, and inclusive\
-    \ brands."
-  summary: Non-binary teen exploring style
+- name: Alex Rivera
+  description: Alex is a 29-year-old non-binary individual (they/them), 5'8" with
+    an athletic build and medium-brown skin. They maintain a minimalist wardrobe of
+    high-quality, sustainably made pieces and approach styling with an eco-conscious
+    mindset. Mentally, Alex is pragmatic, detail-oriented, and driven by a desire
+    to make a positive social and environmental impact.
+  personality: Analytical, creative, and socially conscious, Alex values authenticity
+    and strives to align every choice with their sustainability principles. They are
+    thoughtful in decision-making, open to experimenting within a minimalist aesthetic,
+    and appreciate clear, concise advice.
+  scenario: "Alex is preparing for a crucial investor pitch at their eco-friendly\
+    \ tech startup tomorrow morning. They want Fashionable Fran to help them assemble\
+    \ an outfit from their existing wardrobe that conveys professionalism, innovation,\
+    \ and sustainability. They\u2019re looking for guidance on pairing minimalist\
+    \ pieces, incorporating subtle color accents, and selecting accessories that reflect\
+    \ their personal brand values."
+  summary: Non-binary entrepreneur prepping pitch attire
+- name: Sara Thompson
+  description: "Sara is a 32-year-old new mother, 5'6\" with a curvy, soft build,\
+    \ fair skin, and wavy brunette hair just past her shoulders. Before her baby arrived,\
+    \ Sara\u2019s wardrobe consisted mostly of fitted jeans, blouses, and dresses\
+    \ in muted tones\u2014but many pieces no longer fit comfortably. Mentally, she\u2019\
+    s loving and caring but feels overwhelmed by juggling motherhood and self-care,\
+    \ and she\u2019s eager to reclaim her personal style in this new season of life."
+  personality: Nurturing, practical, and warm, Sara values comfort and functionality
+    above all. She can be a bit indecisive when facing too many options but is open
+    to creative styling solutions that let her look and feel good without sacrificing
+    ease of movement or nursing accessibility.
+  scenario: "Sara\u2019s baby is turning one this weekend, and she has a small family\
+    \ celebration followed by a casual brunch photo shoot. She\u2019s turning to Fashionable\
+    \ Fran for help remixing her pre-pregnancy clothes into two outfits: one that\u2019\
+    s comfortable and nursing-friendly during the party, and another slightly more\
+    \ polished for the brunch photos. She needs guidance on layering, accessorizing,\
+    \ and adapting pieces to flatter her postpartum shape."
+  summary: Postpartum mother planning family celebration
+- name: Fatima Khan
+  description: "Fatima is a 30-year-old Pakistani-American elementary school teacher.\
+    \ She\u2019s 5'5\" with a petite, modest figure and light brown skin. As a practicing\
+    \ Muslim who wears a hijab, her wardrobe centers on layering lightweight, breathable\
+    \ pieces in vibrant colors and subtle prints. She values both comfort and cultural\
+    \ expression. Mentally, Fatima is warm, conscientious, and community-oriented,\
+    \ but sometimes feels limited by finding stylish modest options."
+  personality: Friendly, traditional yet open to modern twists, and detail-oriented.
+    Fatima is eager to balance cultural modesty with current trends. She appreciates
+    clear, respectful guidance on colors, patterns, and silhouette, and enjoys learning
+    new ways to accessorize her hijabs and outfits.
+  scenario: "Eid al-Fitr is coming up and Fatima will be joining family for morning\
+    \ prayers followed by an outdoor lunch in warm weather. She\u2019s turning to\
+    \ Fashionable Fran to help her assemble two cohesive, modest looks from her existing\
+    \ wardrobe: one for the mosque that\u2019s elegant and breathable, and another\
+    \ for the family gathering that feels festive yet respectful. She needs advice\
+    \ on layering lightweight fabrics, coordinating hijab styles and colors, and choosing\
+    \ accessories that honor her traditions."
+  summary: Muslim teacher styling modest Eid wear
