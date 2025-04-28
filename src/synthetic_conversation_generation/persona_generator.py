@@ -44,16 +44,19 @@ if __name__ == "__main__":
     parser.add_argument("--num-personas", type=int, default=5)
     parser.add_argument("--output-path", type=str, required=True)
     parser.add_argument("--model-provider", type=str, choices=["openai", "anthropic"], default="openai")
-    parser.add_argument("--user-persona-model", type=str, default="o4-mini")
+    parser.add_argument("--model-id", type=str, default="o4-mini")
     args = parser.parse_args()
 
     if args.model_provider == "openai":
         openai_client = OpenAI()
         model_provider = OpenAIModelProvider(openai_client)
+    else:
+        anthropic_client = Anthropic()
+        model_provider = AnthropicModelProvider(anthropic_client)
 
     assistant = Assistant(name=args.assistant_name, description=args.assistant_description)
 
-    persona_generator = PersonaGenerator(model_provider, args.user_persona_model, assistant, list())
+    persona_generator = PersonaGenerator(model_provider, args.model_id, assistant, list())
     for _ in range(args.num_personas):
         persona = persona_generator.generate_persona()
         persona_generator.previous_personas.append(persona)

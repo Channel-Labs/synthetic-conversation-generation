@@ -14,15 +14,16 @@ class UserPersonaQuery(LLMQuery):
         self.previous_personas = previous_personas
 
     def generate_prompt(self):
-        return f"""Create a distinct, realistic, and well-defined user persona that represents someone likely to interact with the AI assistant. You'll later use these personas to drive simulated conversations and evaluate the assistant's performance. Thus should fill a gap left by existing personas.
+        return f"""Create a distinct, realistic, and well-defined user persona that represents someone likely to interact with the AI assistant defined below. You'll later use these personas to drive simulated conversations and evaluate the assistant's performance. Thus, each generated persona should fill a gap left by existing personas.
 
 ### Background
 These personas will be utilized to generate simulated conversations and evaluate the performance of the AI assistant. Thus, the new persona should be distinct from the previous personas in order to test the assistant's performance across diverse user types, identify potential gaps in the assistant's response capabilities, and ensure comprehensive test coverage across a wide range of potential interactions.
 
-1. Read the assistant and the previous user personas.
-2. Invent a new persona (name, background, personality, goals, motivations, communication style, etc.) that is likely to seek out the assistant.
+### Instructions
+1. Review the assistant definition and the previous user personas.
+2. Invent a new persona (name, background, personality, goals, motivations, communication style, etc.) that is likely to seek out the definedassistant, as well as a scenario for why the user is seeking out this assistant's help.
 
-### Assistant
+### Assistant Definition
 {json.dumps(asdict(self.assistant), indent=4)}
 
 ### Previous User Personas
@@ -45,7 +46,7 @@ These personas will be utilized to generate simulated conversations and evaluate
             },
             "scenario": {
                 "type": "string",
-                "description": "The context and circumstances in which the user enters the conversation."      
+                "description": "The context and circumstances for why the user is interacting with the assistant."      
             },
             "summary": {
                 "type": "string",

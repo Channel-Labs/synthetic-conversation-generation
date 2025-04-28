@@ -75,9 +75,9 @@ if __name__ == "__main__":
     if args.model_provider == "openai":
         openai_client = OpenAI()
         model_provider = OpenAIModelProvider(openai_client)
-    # elif args.model_provider == "anthropic":
-    #     anthropic_client = Anthropic()
-    #     model_provider = AnthropicModelProvider(anthropic_client)
+    else:
+        anthropic_client = Anthropic()
+        model_provider = AnthropicModelProvider(anthropic_client)
 
     convo_characters = ConversationCharacters.from_yaml(args.conversation_characters_path)
     assistant = convo_characters.assistant
