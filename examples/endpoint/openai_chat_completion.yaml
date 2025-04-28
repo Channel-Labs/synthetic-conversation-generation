@@ -4,7 +4,7 @@ body:
   temperature: 0.0
 headers:
   Content-Type: application/json
-  Authorization: Bearer YOUR_OPENAI_API_KEY
+  Authorization: Bearer ${OPENAI_API_KEY}
 response_path:
   - choices
   - 0

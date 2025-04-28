@@ -3,6 +3,8 @@ from datetime import datetime
 from typing import Dict, Any, Optional, List, Union
 import requests
 import yaml
+import os
+import re
 
 from synthetic_conversation_generation.data_models.conversation import Conversation, Message, ROLE
 
@@ -17,6 +19,9 @@ class InferenceEndpoint:
     def from_yaml(cls, schema_path: str):
         with open(schema_path, 'r') as f:
             schema_data = yaml.safe_load(f)
+        
+        # Process environment variables in the schema
+        schema_data = cls._interpolate_env_vars(schema_data)
 
         return cls(
             url=schema_data['url'],
@@ -24,6 +29,30 @@ class InferenceEndpoint:
             headers=schema_data.get('headers', {}),
             response_path=schema_data['response_path']
         )
+    
+    @staticmethod
+    def _interpolate_env_vars(data: Any) -> Any:
+        """
+        Recursively interpolate environment variables in the data structure.
+        Environment variables should be in the format ${VAR_NAME}.
+        """
+        if isinstance(data, str):
+            # Replace ${VAR_NAME} with the corresponding environment variable
+            pattern = r'\${([A-Za-z0-9_]+)}'
+            matches = re.findall(pattern, data)
+            result = data
+            for var_name in matches:
+                env_value = os.environ.get(var_name)
+                if env_value is None:
+                    raise ValueError(f"Environment variable '{var_name}' not found")
+                result = result.replace(f"${{{var_name}}}", env_value)
+            return result
+        elif isinstance(data, dict):
+            return {k: InferenceEndpoint._interpolate_env_vars(v) for k, v in data.items()}
+        elif isinstance(data, list):
+            return [InferenceEndpoint._interpolate_env_vars(item) for item in data]
+        else:
+            return data
         
     def get_assistant_message(self, conversation: Conversation) -> Message:
         """
