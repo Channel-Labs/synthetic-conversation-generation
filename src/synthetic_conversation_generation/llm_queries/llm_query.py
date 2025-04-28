@@ -71,7 +71,7 @@ class OpenAIModelProvider(ModelProvider):
     def __init__(self, client: openai.OpenAI):
         self.client = client
 
-    def query(self, user_msg: str, response_schema: Dict, model_id: str, timeout: int=60):        
+    def query(self, user_msg: str, response_schema: Dict, model_id: str, timeout: int=60):       
         # The reasoning models don't support temperature
         if model_id.startswith("o"):
             response = self.client.chat.completions.create(
