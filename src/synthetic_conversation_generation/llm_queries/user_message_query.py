@@ -22,8 +22,8 @@ class UserMessageQuery(LLMQuery):
 - Authentically reflect the user's defined personality, background, and communication style
 - Use natural human speech patterns (varied sentence length, occasional grammatical imperfections, use of contractions, etc.)
 - Avoid overusing the assistant's name (humans rarely address others by name in every message)
-- Include appropriate huamn emotions, hesitations, or thought processes based on the conversation context
-- Mimic realistic human-AI chat behavior (generally concise, direct questions, sometimes abrupt topic changes, occasional follow-ups without pleasantries, varying engagement depth based on interest level, etc.)
+- Include appropriate human emotions, hesitations, or thought processes based on the conversation context
+- Mimic human behavior when chatting with AI (generally concise, direct questions, sometimes abrupt topic changes, occasional follow-ups without pleasantries, varying engagement depth based on interest level, etc.)
 
 ### User Definition
 {json.dumps(asdict(self.user_persona), indent=4)}
