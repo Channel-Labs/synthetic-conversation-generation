@@ -25,7 +25,6 @@ Generate conversations between your AI and synthetic users to test, refine, and 
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#examples">Examples</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
