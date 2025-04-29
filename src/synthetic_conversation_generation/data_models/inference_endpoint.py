@@ -71,7 +71,7 @@ class InferenceEndpoint:
         result = response_data
         for key in self.response_path:
             result = result[key]
-        
+                
         # Create and return the assistant message
         return Message(
             role=ROLE.assistant,

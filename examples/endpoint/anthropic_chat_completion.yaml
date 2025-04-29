@@ -1,0 +1,12 @@
+url: https://api.anthropic.com/v1/messages
+body:
+  model: claude-3-7-sonnet-20250219
+  max_tokens: 1024
+headers:
+  Content-Type: application/json
+  x-api-key: ${ANTHROPIC_API_KEY}
+  anthropic-version: '2023-06-01'
+response_path:
+  - content
+  - 0
+  - text
