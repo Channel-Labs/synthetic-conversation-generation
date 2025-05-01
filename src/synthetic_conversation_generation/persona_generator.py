@@ -32,6 +32,7 @@ class PersonaGenerator:
         self.assistant = assistant
         self.previous_personas = previous_personas
         self.persona_guidance = persona_guidance
+
     def generate_persona(self) -> CharacterCard:
         user_persona_generator = UserPersonaQuery(self.model_provider, self.model_id, self.assistant, self.previous_personas, self.persona_guidance)
         return user_persona_generator.query()

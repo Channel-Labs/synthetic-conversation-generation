@@ -17,10 +17,9 @@ class LLMQuery(ABC):
     """Base abstract class for LLM queries that defines the common interface."""
     
     @abstractmethod
-    def __init__(self, model_provider: ModelProvider, model_id: str, temperature: float=0):
+    def __init__(self, model_provider: ModelProvider, model_id: str):
         self.model_provider = model_provider
         self.model_id = model_id
-        self.temperature = temperature
     
     @abstractmethod
     def generate_prompt(self) -> str:
@@ -73,28 +72,15 @@ class OpenAIModelProvider(ModelProvider):
         self.client = client
 
     def query(self, user_msg: str, response_schema: Dict, model_id: str, timeout: int=60):       
-        # The reasoning models don't support temperature
-        if model_id.startswith("o"):
-            response = self.client.chat.completions.create(
-                model=model_id,
-                messages=[
-                    {"role": "user", "content": user_msg}
-                ],
-                seed=42,
-                response_format=self.response_format(response_schema),
-                timeout=timeout
-            ).choices[0].message.content
-        else:
-            response = self.client.chat.completions.create(
-                model=model_id,
-                messages=[
-                    {"role": "user", "content": user_msg}
-                ],
-                temperature=self.temperature,
-                seed=42,
-                response_format=self.response_format(response_schema),
-                timeout=timeout
-            ).choices[0].message.content
+        response = self.client.chat.completions.create(
+            model=model_id,
+            messages=[
+                {"role": "user", "content": user_msg}
+            ],
+            seed=42,
+            response_format=self.response_format(response_schema),
+            timeout=timeout
+        ).choices[0].message.content
 
         return json.loads(response)
     
@@ -120,7 +106,6 @@ class AnthropicModelProvider(ModelProvider):
         response = self.client.messages.create(
             model=model_id,
             max_tokens=4096,
-            temperature=self.temperature,
             messages=[
                 {"role": "user", "content": user_msg}
             ],
