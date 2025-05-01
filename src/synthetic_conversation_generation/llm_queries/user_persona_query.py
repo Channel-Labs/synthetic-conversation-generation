@@ -21,6 +21,7 @@ class UserPersonaQuery(LLMQuery):
         self.assistant = assistant
         self.previous_personas = previous_personas
         self.persona_guidance = persona_guidance
+        
     def generate_prompt(self):
         return f"""Create a distinct, realistic, and well-defined user persona that represents someone likely to interact with the AI assistant defined below. You'll later use these personas to drive simulated conversations and evaluate the assistant's performance. Thus, each generated persona should fill a gap left by existing personas.
 

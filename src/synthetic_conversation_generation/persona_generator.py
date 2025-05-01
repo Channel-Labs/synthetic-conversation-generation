@@ -1,6 +1,6 @@
 import argparse
 import logging
-from typing import List
+from typing import List, Optional
 from anthropic import Anthropic
 from openai import OpenAI
 
@@ -26,14 +26,14 @@ logging.getLogger('anthropic').setLevel(logging.WARNING)
 
 class PersonaGenerator:
     
-    def __init__(self, model_provider: ModelProvider, model_id: str, assistant: Assistant, previous_personas: List[CharacterCard]):
+    def __init__(self, model_provider: ModelProvider, model_id: str, assistant: Assistant, previous_personas: List[CharacterCard], persona_guidance: Optional[str]=None):
         self.model_provider = model_provider
         self.model_id = model_id
         self.assistant = assistant
         self.previous_personas = previous_personas
-
+        self.persona_guidance = persona_guidance
     def generate_persona(self) -> CharacterCard:
-        user_persona_generator = UserPersonaQuery(self.model_provider, self.model_id, self.assistant, self.previous_personas)
+        user_persona_generator = UserPersonaQuery(self.model_provider, self.model_id, self.assistant, self.previous_personas, self.persona_guidance)
         return user_persona_generator.query()
 
 
