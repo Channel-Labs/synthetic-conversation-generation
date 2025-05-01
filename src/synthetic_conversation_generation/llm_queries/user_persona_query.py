@@ -8,8 +8,8 @@ from synthetic_conversation_generation.llm_queries.llm_query import LLMQuery, Mo
 
 class UserPersonaQuery(LLMQuery):
 
-    def __init__(self, model_provider: ModelProvider, model_id: str, assistant: Assistant, previous_personas: List[CharacterCard]):
-        super().__init__(model_provider, model_id)
+    def __init__(self, model_provider: ModelProvider, model_id: str, assistant: Assistant, previous_personas: List[CharacterCard], temperature: float=1.0):
+        super().__init__(model_provider, model_id, temperature)
         self.assistant = assistant
         self.previous_personas = previous_personas
 

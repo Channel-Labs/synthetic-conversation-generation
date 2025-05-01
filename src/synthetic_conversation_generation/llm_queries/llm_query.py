@@ -17,9 +17,10 @@ class LLMQuery(ABC):
     """Base abstract class for LLM queries that defines the common interface."""
     
     @abstractmethod
-    def __init__(self, model_provider: ModelProvider, model_id: str):
+    def __init__(self, model_provider: ModelProvider, model_id: str, temperature: float=0):
         self.model_provider = model_provider
         self.model_id = model_id
+        self.temperature = temperature
     
     @abstractmethod
     def generate_prompt(self) -> str:
@@ -89,7 +90,7 @@ class OpenAIModelProvider(ModelProvider):
                 messages=[
                     {"role": "user", "content": user_msg}
                 ],
-                temperature=0,
+                temperature=self.temperature,
                 seed=42,
                 response_format=self.response_format(response_schema),
                 timeout=timeout
@@ -119,7 +120,7 @@ class AnthropicModelProvider(ModelProvider):
         response = self.client.messages.create(
             model=model_id,
             max_tokens=4096,
-            temperature=0,
+            temperature=self.temperature,
             messages=[
                 {"role": "user", "content": user_msg}
             ],
