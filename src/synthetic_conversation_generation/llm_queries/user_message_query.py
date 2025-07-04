@@ -15,6 +15,7 @@ class UserMessageQuery(LLMQuery):
         self.conversation = conversation
         self.user_persona = user_persona
         self.assistant = assistant
+        
     def generate_prompt(self):
         return f"""Generate a realistic, conversational user response that would naturally follow next in this dialogue between a human user and an AI assistant.
 

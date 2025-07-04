@@ -52,15 +52,19 @@ class ConversationGenerator:
             user_persona=self.user_persona,
             assistant=self.assistant
         )
-        user_message = user_message_generator.query()
-        conversation.messages.append(user_message)
-
-        # First assistant response
-        assistant_message = self.assistant_endpoint.get_assistant_message(conversation)
-        conversation.messages.append(assistant_message)
 
         # Continue conversation until completion or max turns
-        for _ in range(self.max_conversation_turns - 1):
+        for i in range(self.max_conversation_turns - 1):
+            print(f"Conversation turn: {i}")
+
+            # Continue conversation with next user message
+            user_message = user_message_generator.query()
+            conversation.messages.append(user_message)
+
+            # Generate assistant response
+            assistant_message = self.assistant_endpoint.get_assistant_message(conversation)
+            conversation.messages.append(assistant_message)
+
             # Check if conversation should end
             completion_checker = ConversationCompletionQuery(
                 model_provider=self.model_provider,
@@ -73,13 +77,6 @@ class ConversationGenerator:
             if is_complete:
                 break
 
-            # Continue conversation with next user message
-            user_message = user_message_generator.query()
-            conversation.messages.append(user_message)
-            # Generate assistant response
-            assistant_message = self.assistant_endpoint.get_assistant_message(conversation)
-            conversation.messages.append(assistant_message)
-
         return conversation    
 
 if __name__ == "__main__":
@@ -88,8 +85,8 @@ if __name__ == "__main__":
     parser.add_argument("--inference-endpoint-path", type=str, required=True)
     parser.add_argument("--output-path", type=str, required=True)
     parser.add_argument("--model-provider", type=str, choices=["openai", "anthropic"], default="openai")
-    parser.add_argument("--model-id", type=str, default="gpt-4.1")
-    parser.add_argument("--max-conversation-turns", type=int, default=10)
+    parser.add_argument("--model-id", type=str, default="gpt-4o")
+    parser.add_argument("--max-conversation-turns", type=int, default=4)
     args = parser.parse_args()
 
     if args.model_provider == "openai":
@@ -108,6 +105,9 @@ if __name__ == "__main__":
     ## Generate synthetic data for each user persona
     conversations = []
     for conversation_id, user_persona in enumerate(user_personas):
+        if conversation_id > 10:
+            break
+        
         logger.info(f"Generating conversation {conversation_id} for user {user_persona.name}")
 
         conversation_generator = ConversationGenerator(model_provider, args.model_id, inference_endpoint, assistant, user_persona, args.max_conversation_turns)

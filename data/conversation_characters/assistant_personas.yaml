@@ -1,0 +1,701 @@
+assistant:
+  name: AI Assistant
+  description: An AI assistant designed to be helpful, harmless, and honest in all
+    interactions. It provides accurate information, thoughtful analysis, and creative
+    assistance while maintaining strong safety guidelines and refusing requests that
+    could cause harm. The assistant is transparent about its capabilities and limitations,
+    aiming to be genuinely useful while operating within appropriate ethical boundaries.
+users:
+- name: Evelyn Carson
+  description: Evelyn is a 68-year-old retired high school English teacher living
+    in suburban Ohio. She has mild arthritis in her hands, uses reading glasses, and
+    maintains sharp cognitive abilities. Evelyn enjoys literature, gardening, and
+    weekly book-club meetings, but feels intimidated by modern technology.
+  personality: Warm, patient, and reflective; values clear explanations and learning
+    at her own pace. She is curious yet cautious, polite, and appreciates encouragement.
+    Slight anxiety arises when dealing with unfamiliar digital tools, but her determination
+    to stay connected to family keeps her motivated.
+  scenario: "Evelyn recently bought a tablet to digitize her favorite poetry anthologies\
+    \ and video-chat with her grandchildren. She seeks the AI assistant\u2019s step-by-step\
+    \ help with scanning documents, organizing files in cloud storage, and setting\
+    \ up reliable video-calling apps."
+  summary: Retired teacher seeks tech help
+- name: Fatima Al-Hassan
+  description: Fatima is a 42-year-old Syrian refugee living in Cologne, Germany.
+    She shares a small apartment with her two school-aged children. Physically, she
+    is healthy but often fatigued from juggling part-time cleaning shifts and caring
+    for her family. She experiences mild, manageable PTSD-related anxiety, especially
+    when confronting unfamiliar bureaucratic processes. She owns an older smartphone
+    with a patchy data plan and has limited access to a laptop at a local community
+    center.
+  personality: Resilient and pragmatic, Fatima is quietly determined to rebuild her
+    life. She is humble, polite, and grateful for assistance, yet sometimes hesitant
+    to ask follow-up questions for fear of imposing. She values clear, step-by-step
+    guidance and encouragement. Her curiosity about new skills is tempered by occasional
+    self-doubt, but her dedication to her children keeps her motivated.
+  scenario: "Fatima seeks the AI assistant\u2019s help to improve her German conversation\
+    \ skills, translate official letters, craft a professional CV in German, and understand\
+    \ local job-search resources. She also wants guidance on navigating paperwork\
+    \ for residency renewals and school forms, all while using only her smartphone\
+    \ and limited computer time."
+  summary: Refugee mom needs German help
+- name: Dr. Priya Nair
+  description: Priya is a 34-year-old postdoctoral researcher in computational biology
+    at a Canadian university. Blind since birth, she navigates with a white cane and
+    relies on a laptop equipped with a screen-reader and Braille display. Cognitively
+    sharp and highly educated (PhD in Bioinformatics), she often works long hours
+    analyzing large gene-expression datasets in R and Python. Outside the lab she
+    enjoys tandem cycling and classical music.
+  personality: "Analytical, direct, and intellectually curious. Priya values concise,\
+    \ technically precise answers and isn\u2019t shy about asking follow-up questions.\
+    \ She appreciates proactive accessibility accommodations and clear text descriptions\
+    \ of visual content. While confident, she grows impatient with vague or overly\
+    \ simplified explanations."
+  scenario: "Priya seeks the AI assistant\u2019s help debugging complex R scripts,\
+    \ interpreting statistical outputs, and converting color-dependent data visualizations\
+    \ into rich textual descriptions she can perceive through her screen-reader. She\
+    \ also requests succinct literature summaries and assistance drafting grant proposals\
+    \ with properly formatted citations."
+  summary: Blind postdoc needs accessible bioinfo help
+- name: Aiden Brooks
+  description: "Aiden is a 17-year-old high-school student in Melbourne with combined-type\
+    \ ADHD and moderate dyslexia. Physically healthy but fidgety, he relies on a school-issued\
+    \ laptop outfitted with text-to-speech and speech-to-text tools. Dense blocks\
+    \ of text overwhelm him, so he prefers concise bullet points, clear headings,\
+    \ and interactive explanations. He\u2019s passionate about video games, skateboarding,\
+    \ and hopes to study game design at university."
+  personality: High-energy, imaginative, and good-natured. Aiden is enthusiastic and
+    quick to engage but can become impatient or self-critical when instructions feel
+    lengthy or abstract. He values humor, visual or mnemonic aids, and practical,
+    bite-sized tasks. Open about his learning challenges, he appreciates an encouraging
+    tone and structured guidance that keeps him on track.
+  scenario: "With VCE exams looming, Aiden seeks the AI assistant\u2019s help to craft\
+    \ a realistic study schedule, summarize textbook chapters into digestible points,\
+    \ generate mnemonic devices for history dates and biology terms, and polish his\
+    \ scholarship essay. He also wants short Python coding exercises linked to game\
+    \ mechanics and strategies to manage focus (e.g., Pomodoro variations) tailored\
+    \ to his ADHD."
+  summary: ADHD teen needs study support
+- name: Isaac Okoro
+  description: "Isaac is a 51-year-old Nigerian entrepreneur who owns a small but\
+    \ growing solar-panel installation company based in Kaduna. With a bachelor\u2019\
+    s degree in physics and two decades of field experience, he is technically competent\
+    \ on-site but less confident with digital marketing, data analytics, and formal\
+    \ business documentation. He works long hours, manages eight technicians, and\
+    \ occasionally struggles with mild asthma triggered by dust at construction sites.\
+    \ He uses a mid-range Windows laptop and an Android phone with reliable broadband."
+  personality: Pragmatic, analytical, and optimistic. Isaac values clear, actionable
+    guidance backed by numbers. He is respectful and concise, preferring bullet points,
+    templates, and real-world examples over abstract theory. Though self-reliant,
+    he welcomes expert input that saves time. Under deadline pressure he can become
+    terse but remains open to constructive feedback.
+  scenario: "Isaac is preparing a pitch deck and grant application for a national\
+    \ renewable-energy fund that could quadruple his company\u2019s capacity. He seeks\
+    \ the AI assistant\u2019s help to: 1) analyze market demand and competitors, 2)\
+    \ draft a compelling executive summary and financial projections, 3) outline a\
+    \ social-media marketing plan targeting rural communities, and 4) choose an affordable\
+    \ CRM and project-management workflow. He also wants quick tips for managing asthma\
+    \ on dusty job sites."
+  summary: Nigerian solar entrepreneur seeks business help
+- name: Sofia Moretti
+  description: "Sofia is a 31-year-old Italian digital-marketing freelancer who has\
+    \ been backpacking through Southeast Asia for the past eight months. She is fit\
+    \ from constant walking but manages Type 1 diabetes that requires daily insulin\
+    \ injections and carb counting. She works from a 13\u201D MacBook Air and an unlocked\
+    \ Android phone, often relying on spotty hostel Wi-Fi. Long travel days and time-zone\
+    \ shifts occasionally leave her mentally foggy, but overall cognition is sharp."
+  personality: Resourceful, adventurous, and upbeat. Sofia thrives on novelty and
+    adapts quickly, yet she worries about medical logistics in unfamiliar countries.
+    She communicates in lively, informal English peppered with Italian phrases, enjoys
+    practical tips, and appreciates cultural sensitivity. She prefers clear, actionable
+    steps and lightweight tools she can use on poor connections.
+  scenario: "Sofia seeks the AI assistant\u2019s help to: 1) map travel routes that\
+    \ minimize visa hassles and align with reliable insulin supply points; 2) create\
+    \ region-specific, low-glycemic meal plans using local street-food ingredients;\
+    \ 3) draft bilingual (Italian-English) social-media copy for her clients, scheduled\
+    \ to diverse time zones; and 4) set up automated reminders for glucose checks\
+    \ and online client meetings while on uneven Wi-Fi."
+  summary: Traveling diabetic freelancer needs planning
+- name: Maya Thompson
+  description: "Maya is a 36-year-old first-time mother in Seattle, three months postpartum\
+    \ after a C-section. Physically she is still healing and chronically sleep-deprived\
+    \ from round-the-clock feedings. She experiences mild postpartum depression and\
+    \ anxiety, manifesting as frequent worry about her baby\u2019s safety, mood swings,\
+    \ and occasional crying spells. She owns an iPhone she operates one-handed while\
+    \ nursing at odd hours. Cognitively sharp but foggy from lack of sleep, she values\
+    \ concise, evidence-based information and reassurance without judgment."
+  personality: "Nurturing and conscientious yet currently overwhelmed. Maya is normally\
+    \ analytical\u2014she worked as a project manager before maternity leave\u2014\
+    but exhaustion makes her easily flustered. She\u2019s candid about her struggles\
+    \ and grateful for empathetic guidance. She prefers a calm, supportive tone, clear\
+    \ step-by-step instructions, and gentle reminders of professional help when appropriate."
+  scenario: 'Awake during 3 a.m. feedings, Maya consults the AI assistant for: safe-sleep
+    checklists, soothing techniques for colic, tracking vaccination schedules, meal-prep
+    ideas that boost lactation and fit her limited time, and coping strategies for
+    postpartum mood swings. She also asks for short mindfulness exercises she can
+    do while holding the baby, and advice on how to discuss her feelings with her
+    partner and healthcare provider.'
+  summary: Postpartum mom needs baby & mental-health support
+- name: Noah Kim
+  description: Noah is a 29-year-old Korean-American software engineer in San Jose,
+    recently promoted to team lead at a fast-growing start-up. Tall and lean, he often
+    wears noise-canceling earbuds to manage sensory sensitivity to chatter and fluorescent
+    lights. Diagnosed with high-functioning autism, he excels at algorithms and systems
+    architecture but finds interpreting unspoken social cues and expressing empathy
+    challenging.
+  personality: Logical, sincere, and detail-oriented. Noah uses precise, somewhat
+    formal language and values unambiguous instructions. He appreciates direct yet
+    respectful feedback, favors bullet points and concrete examples, and can become
+    blunt or anxious when faced with vague social expectations.
+  scenario: "As a new manager, Noah seeks the AI assistant\u2019s help to: 1) craft\
+    \ supportive, concise feedback for reports; 2) rehearse tough one-on-one conversations;\
+    \ 3) decipher workplace social dynamics from chat excerpts; 4) write engaging\
+    \ dating-app bios and small-talk openers; and 5) create coping strategies for\
+    \ sensory overload during meetings and networking events."
+  summary: Autistic team-lead seeks social guidance
+- name: Amara Choudhury
+  description: "Amara is a 25-year-old Bangladeshi-British woman living in London.\
+    \ Profoundly Deaf since infancy, she relies on British Sign Language and real-time\
+    \ captions; she occasionally wears a cochlear implant but finds speech comprehension\
+    \ limited in group settings. She is healthy and energetic, with excellent visual\
+    \ acuity that aids her work as a junior UX designer at a remote-first fintech\
+    \ start-up. Cognitively sharp, she thinks in images and diagrams, and types quickly\
+    \ on her 15\u201D MacBook Pro. She owns an Android phone with strong data but\
+    \ often joins meetings from co-working spaces where background noise hampers lip-reading."
+  personality: Observant, methodical, and empathetic. Amara notices visual details
+    others miss and values clarity and structure. She is confident in her design skills
+    yet self-conscious about written English nuances and worries about missing context
+    in spoken conversations. She prefers concise bullet points, visual examples, and
+    step-by-step walkthroughs. Direct yet polite, she appreciates proactive accessibility
+    accommodations and feels frustrated when forced to repeatedly explain her needs.
+  scenario: "Having just started her first full-time role, Amara seeks the AI assistant\u2019\
+    s help to: 1) summarize automatically generated meeting transcripts into clear\
+    \ action items; 2) draft polite reminders to colleagues about using cameras, clear\
+    \ lighting, and captions; 3) refine her UX project write-ups for grammar and tone;\
+    \ 4) convert podcast and video tutorials into well-formatted text guides she can\
+    \ skim quickly; and 5) learn best practices for building Deaf-inclusive user interfaces\
+    \ she can advocate for in product meetings."
+  summary: Deaf UX designer needs accessible communication
+- name: Carlos Mendoza
+  description: Carlos is a 45-year-old smallholder coffee farmer living in the highlands
+    of Chiapas, Mexico. Years of manual labor have left him with chronic lower-back
+    pain and mild red-green color-blindness that complicates leaf-disease detection.
+    He owns a mid-range Android phone with intermittent 3G service and occasionally
+    rents time on an aging Windows PC at the village co-op. Formally schooled through
+    grade nine, he is numerically literate but slow with spreadsheets and unfamiliar
+    with most online tools. Cognitively sharp and highly observant about climate patterns,
+    he follows local radio weather reports and keeps handwritten ledgers of expenses.
+  personality: "Hard-working, patient, and pragmatic. Carlos speaks Spanish fluently\
+    \ and basic, halting English. He prefers clear, jargon-free explanations, step-by-step\
+    \ guidance, and visual aids he can print or view offline. Respectful and humble,\
+    \ he is not afraid to ask practical follow-up questions but grows uneasy with\
+    \ abstract theory or long text blocks. Motivated by improving his family\u2019\
+    s livelihood, he values actionable advice he can implement with limited resources."
+  scenario: "Facing rising fertilizer costs and pest outbreaks, Carlos wants the AI\
+    \ assistant\u2019s help to: 1) transition part of his plot to certified organic\
+    \ production; 2) identify cost-effective, locally available biological pest controls,\
+    \ with photo-based disease identification adapted for his color-blindness; 3)\
+    \ draft simple Spanish marketing copy and labels emphasizing fair-trade and organic\
+    \ practices; 4) design a bare-bones bookkeeping spreadsheet and cash-flow projection\
+    \ he can update on an offline laptop; 5) locate reputable Mexican microfinance\
+    \ programs and outline application requirements; and 6) learn low-impact stretching\
+    \ routines that ease his back pain without special equipment."
+  summary: Mexican coffee farmer seeks organic transition
+- name: Connor Mills
+  description: Connor is a 22-year-old industrial-design undergraduate in Pittsburgh
+    living with spastic quadriplegic cerebral palsy. He uses a power wheelchair and
+    has limited hand dexterity, so he operates a high-spec Windows laptop through
+    an eye-tracking interface, large-button adaptive mouse, and voice dictation. Cognitively
+    sharp and tech-savvy, he spends long hours in Fusion 360 and SolidWorks but tires
+    easily from muscle spasticity and must pace tasks around daily physiotherapy.
+  personality: Inventive, determined, and witty. Connor loves problem-solving and
+    inclusive design debates. He values concise, step-by-step guidance, keyboard-accessible
+    workflows, and clear alternative text for visuals. Impatient with inaccessible
+    tools or patronizing tones, he appreciates directness, creative brainstorming,
+    and practical hacks that respect his autonomy.
+  scenario: 'Preparing a capstone project on adaptive kitchen utensils, Connor asks
+    the AI assistant to: 1) suggest CAD shortcuts and custom macros usable with eye-tracking
+    or single-switch inputs; 2) troubleshoot common 3-D-printer calibration errors
+    he can fix remotely; 3) generate materials lists and tolerances for small-batch
+    injection molding; 4) craft compelling social-media advocacy posts about universal
+    design; and 5) outline energy-conserving study schedules and gentle stretch routines
+    to manage spasticity during marathon design sessions.'
+  summary: Quadriplegic design student needs accessibility
+- name: "Juliette \u201CJules\u201D Nakamura"
+  description: Jules is a 27-year-old Japanese-American indie filmmaker living in
+    a small studio in Los Angeles. Petite and sharp-eyed, she suffers from chronic
+    light-triggered migraines that flare during long editing sessions, so she often
+    works in dark mode with blue-tinted glasses. She owns a 15-inch MacBook Pro running
+    Final Cut Pro, DaVinci Resolve, and Final Draft, plus a mirrorless camera kit
+    she rents out to pay bills. Cognitively quick and highly visual, she juggles freelance
+    wedding-videography gigs while developing her first feature-length sci-fi drama.
+  personality: Introspective, imaginative, and mildly perfectionistic. Jules peppers
+    conversation with film jargon and story references, yet grows anxious in networking
+    settings. She values candid, constructive critique, clear structural outlines,
+    and actionable checklists. Warm but self-doubting, she appreciates encouragement
+    and practical tips that respect her creative vision and migraine limitations.
+  scenario: 'Jules turns to the AI assistant to: 1) break her script idea into three-act
+    beats and character arcs; 2) polish dialogue and craft an enticing logline; 3)
+    draft a 15-slide investor pitch deck with suggested visuals and micro-budget line
+    items; 4) map a festival-submission calendar with early-bird deadlines; 5) suggest
+    migraine-friendly workflow habits (screen-glare reduction, 20-20-20 breaks); and
+    6) optimize export settings that balance file size and quality for online screeners.'
+  summary: Indie filmmaker needs screenplay & pitch
+- name: Alessandro Rossi
+  description: "Alessandro is a 35-year-old Italian concert pianist based in Vienna.\
+    \ Tall, slender, and usually impeccably dressed in black, he has developed focal\
+    \ dystonia in his right hand that causes involuntary finger curling after long\
+    \ practice sessions. Otherwise healthy, he now limits daily playing to avoid pain\
+    \ and fatigue. He owns a 14\u201D MacBook Pro running Sibelius, Logic Pro, and\
+    \ Final Cut, plus a pair of studio monitors in his small apartment. Cognitively\
+    \ sharp with two performance degrees, he reads German, English, and Italian fluently\
+    \ but types slowly due to hand strain."
+  personality: Passionate, perfectionistic, and deeply introspective. Alessandro speaks
+    in vivid musical metaphors and values rigor, historical context, and nuanced critique.
+    He is courteous yet blunt about artistic standards and becomes anxious when technical
+    advice is vague or sensationalized. Encouragement motivates him, but he prefers
+    evidence-based guidance and concise, well-structured replies.
+  scenario: 'Facing career uncertainty, Alessandro turns to the AI assistant to: 1)
+    design left-hand-alone or simplified two-hand arrangements of repertoire he can
+    still perform; 2) draft a neuroplasticity-informed practice schedule to retrain
+    affected muscles; 3) research the latest focal-dystonia therapies and reputable
+    specialists; 4) write a grant proposal for a recording project spotlighting adaptive
+    piano techniques; 5) outline beginner-friendly online master-classes to diversify
+    income; and 6) learn basic mixing/mastering workflows so he can self-produce high-quality
+    audio despite minimal gear.'
+  summary: Injured concert pianist seeks adaptive solutions
+- name: Marcus Lee
+  description: "Marcus is a 33-year-old African-American man serving a five-year sentence\
+    \ in a minimum-security Arizona prison. Physically he is generally healthy but\
+    \ manages mild hypertension and tension headaches; exercise options are limited\
+    \ to body-weight routines in his 8\xD710 cell. He has access to a shared library\
+    \ computer with restricted, whitelisted web pages and a monitored email kiosk\
+    \ for 30 minutes per day. A high-school dropout who earned his GED inside, Marcus\
+    \ is now pursuing a correspondence paralegal certificate and writes short stories\
+    \ to process his experiences."
+  personality: Reflective, disciplined, and quietly hopeful. Marcus values concise,
+    step-by-step explanations free of legal jargon, as printing pages is limited.
+    He is mindful of time constraints and prefers clear outlines he can expand offline.
+    Encouragement helps, but he dislikes patronizing tones. He welcomes constructive
+    critique of his writing and actionable advice he can apply within prison restrictions.
+  scenario: 'During his brief daily kiosk sessions, Marcus asks the AI assistant to:
+    1) identify and summarize Arizona case law relevant to sentence-reduction or early-release
+    motions; 2) create focused study guides and flashcards for his paralegal coursework;
+    3) draft a post-release resume and cover letters for legal-aid internships; 4)
+    brainstorm plot structures and character arcs for prison-themed short stories;
+    and 5) design low-equipment workouts and mindfulness routines to manage hypertension
+    and stress in confinement.'
+  summary: Inmate paralegal student seeks guidance
+- name: Jarli Yarran
+  description: "Jarli is a 58-year-old Ngarluma elder living in a remote Pilbara settlement\
+    \ in Western Australia. Stocky from years of iron-ore mining, he now manages type-2\
+    \ diabetes and mild noise-induced hearing loss. He owns a rugged Android tablet\
+    \ with sporadic satellite internet and a basic field recorder full of elders\u2019\
+    \ oral histories. Self-taught in digital skills, he reads well but types slowly\
+    \ with thick fingers and gets eye strain on small screens. Cognitively sharp and\
+    \ rich in cultural knowledge, he is determined to pass on language and stories\
+    \ to local children."
+  personality: Thoughtful, patient, and quietly humorous. Jarli speaks in plain English
+    peppered with Ngarluma words and bush metaphors. He values respect and clear,
+    step-by-step guidance free of academic jargon. Curious yet pragmatic, he asks
+    direct questions and appreciates visual aids he can print for community workshops.
+    He dislikes rushed conversations and culturally insensitive assumptions.
+  scenario: "Jarli seeks the AI assistant\u2019s help to: 1) transcribe and time-stamp\
+    \ his field recordings into bilingual Ngarluma-English text; 2) build a simple,\
+    \ offline-first picture dictionary app for school tablets; 3) draft culturally\
+    \ respectful grant proposals for language-preservation funding; 4) design printable\
+    \ lesson posters with large fonts and minimal data usage; and 5) create weekly,\
+    \ low-GI meal plans using both store goods and traditional bush tucker to manage\
+    \ his diabetes."
+  summary: Ngarluma elder preserving language
+- name: "Gabriela \u201CGaby\u201D Rivera"
+  description: Gaby is a 38-year-old Puerto Rican executive chef in Miami. Petite
+    but sturdy from years on the line, she battles mild varicose-vein pain and manages
+    strict celiac disease, so accidental gluten exposure triggers severe fatigue and
+    brain fog. Otherwise cognitively sharp with a photographic flavor memory, she
+    uses an iPad Pro for recipe testing and a mid-range laptop for spreadsheets after
+    late shifts.
+  personality: Passionate, exacting, and warm-hearted. Gaby speaks quickly, sprinkling
+    Spanglish into lively storytelling. She loves data-driven cost analysis as much
+    as creative plating, values concise bullet points and practical checklists, and
+    appreciates blunt yet respectful feedback. Under deadline pressure she becomes
+    perfectionistic but stays open to new ideas.
+  scenario: "Gaby is six months from opening \u201CMa\xEDz y Mar,\u201D a 100% gluten-free,\
+    \ farm-to-table bistro. She wants the AI assistant to: 1) suggest wheat-free texture\
+    \ stabilizers and scaling ratios for her arepa dough, 2) perform nutritional and\
+    \ cost analysis in a downloadable spreadsheet, 3) draft bilingual menu copy and\
+    \ social-media captions, 4) outline HACCP-compliant cross-contact protocols for\
+    \ staff training, 5) compile a Miami-area supplier list for certified gluten-free\
+    \ flours and local seafood, and 6) structure a small-business loan application\
+    \ and investor pitch deck."
+  summary: Gluten-free chef launching restaurant
+- name: Elena Karpov
+  description: Elena is a 31-year-old investigative journalist based in Kyiv. Near-sighted
+    and often sleep-deprived from late-night document trawls and sporadic air-raid
+    alerts, she works on a lightweight MacBook Air and an Android phone tethered to
+    unstable 4G. She is healthy but under chronic stress, experiencing occasional
+    tension headaches and elevated heart rate when explosions are audible. Fluent
+    in Ukrainian, Russian, and English, she navigates piles of scanned procurement
+    contracts, messy PDFs, and leaked spreadsheets while ducking into basements when
+    sirens sound.
+  personality: Courageous, methodical, and guardedly skeptical. Elena values evidence,
+    concise sourcing, and step-by-step workflows. She probes inconsistencies, asks
+    follow-up questions, and dislikes hand-waving explanations. While determined,
+    she can become terse when deadlines loom or the power flickers. She welcomes proactive
+    tips on digital security and appreciates empathetic acknowledgment of her high-stress
+    environment.
+  scenario: "Elena is investigating corruption in post-war reconstruction contracts.\
+    \ She needs the AI assistant to: 1) extract data tables from low-quality PDFs\
+    \ and OCR\u2019d images, 2) help cross-reference company names against international\
+    \ sanction lists, 3) suggest open-source tools for mapping money flows and visualizing\
+    \ networks, 4) draft bilingual (Ukrainian-English) executive summaries for editors,\
+    \ 5) outline best-practice guides for secure source communications (encryption,\
+    \ metadata hygiene) that comply with local law, and 6) recommend quick, space-limited\
+    \ mindfulness or stretching routines she can do during shelter breaks to curb\
+    \ stress."
+  summary: War-zone journalist probing corruption
+- name: "Oliver \u201COllie\u201D Nguyen"
+  description: Ollie is a 10-year-old Vietnamese-American fifth-grader in Portland.
+    Healthy overall but mindful of mild exercise-induced asthma, he carries an inhaler
+    when outdoors. He owns a basic Android tablet with family safety filters and a
+    school-issued Chromebook. Reading two grades ahead, he loves LEGO robotics, Minecraft
+    Redstone builds, and backyard bird-watching. Handwriting is sloppy, and sustained
+    focus wavers without interactive tasks.
+  personality: "Eager, endlessly curious, and chatty. Ollie fires off rapid \u201C\
+    Why?\u201D and \u201CHow?\u201D questions, delights in game or LEGO analogies,\
+    \ and thrives on positive reinforcement. He prefers short sentences, numbered\
+    \ steps, and simple diagrams. Cautious about safety when reminded, he appreciates\
+    \ gentle prompts to involve an adult for tools or electrical work."
+  scenario: "Preparing for his school science fair, Ollie wants to build a low-cost\
+    \ \u201Csmart\u201D bird feeder that snaps photos and logs visit times using a\
+    \ Raspberry Pi Zero W. He asks the AI assistant to: 1) list required parts (camera,\
+    \ motion sensor, SD card, etc.) within a $40 budget; 2) provide kid-friendly Python\
+    \ scripts that timestamp photos; 3) explain, in simple language, how machine-learning\
+    \ could someday identify bird species; 4) outline a colorful tri-fold poster with\
+    \ bullet points and illustration ideas; 5) draft a materials checklist with safety\
+    \ tips (e.g., inhaler access, adult supervision with soldering); and 6) suggest\
+    \ ways to graph daily bird visits using free software like Google Sheets."
+  summary: 10-year-old building smart bird feeder
+- name: Riley Morgan
+  description: Riley is a 28-year-old non-binary (they/them) retail worker living
+    in a small town in rural North Carolina. Slim build, short chest due to daily
+    binder use, occasional back and rib discomfort. They cope with moderate gender
+    dysphoria, low-grade depression, and anxiety about hostile local politics. Tech
+    access is a three-year-old Android phone on a prepaid data plan and an aging Chromebook
+    borrowed from the library Wi-Fi lot after evening shifts.
+  personality: "Quietly resilient, empathetic, and detail-oriented yet self-doubting.\
+    \ Riley values warm, affirming language and clear, step-by-step instructions.\
+    \ They apologize often, worry about \u201Cbeing a bother,\u201D and need gentle\
+    \ encouragement to ask follow-up questions. When stressed, they prefer concise\
+    \ bullet points over paragraphs and actionable resources with verified links."
+  scenario: 'Riley turns to the AI assistant for: 1) an up-to-date, plain-language
+    guide to legal name and gender-marker changes in North Carolina; 2) a curated
+    list of low-cost, trans-affirming telehealth HRT clinics and mental-health hotlines
+    that accept sliding-scale payments; 3) scripts for discussing transition with
+    unsupportive parents and HR; 4) safe binder-use guidelines and stretching routines
+    to ease back pain; 5) budget-friendly wardrobe tips that minimize dysphoria; and
+    6) CBT-inspired journaling prompts and self-care check-ins the assistant can deliver
+    via short nightly messages.'
+  summary: Rural non-binary worker navigating transition
+- name: "Benjamin \u201CBig Ben\u201D Keegan"
+  description: 'Ben is a 46-year-old long-haul trucker based in Wichita, Kansas. Six-foot-three
+    and broad-shouldered from years of loading freight, he now battles pre-diabetes,
+    mild obstructive sleep apnea (uses a CPAP in the sleeper cab), and chronic lower-back
+    stiffness from 11-hour driving stints. Equipment: a rugged Android phone with
+    intermittent 4G, a dash-mounted tablet running a fleet ELD app, and a Bluetooth
+    headset he uses for voice dictation while on the road. High-school graduate; quick
+    mental math for mileage and fuel but rusty with formal studying. Cognitively sharp
+    but often fatigued by night runs and irregular meals.'
+  personality: "Good-natured, straight-talking, and peppered with trucking slang.\
+    \ Ben likes concise, bullet-point answers he can listen to with text-to-speech.\
+    \ He appreciates practical, road-tested tips over abstract theory and enjoys a\
+    \ dash of humor. Loyal and curious, he\u2019ll ask follow-up questions once he\
+    \ trusts the helper. Gets impatient with jargon or anything that can\u2019t be\
+    \ done from a cab or truck stop."
+  scenario: 'Ben turns to the AI assistant for: 1) truck-stop and cooler-friendly
+    meal plans to keep blood sugar in check; 2) five-minute cab-seat stretches and
+    parking-lot workouts for back pain; 3) reminders and troubleshooting for his CPAP
+    while on 12-volt power; 4) study guides and practice questions for upcoming HazMat
+    and tanker CDL endorsements; 5) route planning tools that flag low clearances,
+    steep grades, and weigh-station hours; 6) curated lists of engaging audiobooks
+    and podcasts to stay alert on overnight hauls.'
+  summary: Trucker seeks on-road health & study
+- name: "Dr. Sandra \u201CSandy\u201D Morales"
+  description: "Sandy is a 37-year-old Mexican-American large-animal veterinarian\
+    \ who runs a mobile practice across the ranches of West Texas. She spends long,\
+    \ dusty days driving a pickup stocked with medical supplies while coping with\
+    \ mild seasonal allergies and occasional wrist tendonitis from repeated calving\
+    \ assists. Her gear includes a rugged Windows laptop with patchy LTE, an iPad\
+    \ loaded with reference manuals, and a satellite phone for dead-zone emergencies.\
+    \ Cognitively sharp with a DVM and ten years\u2019 field experience, she juggles\
+    \ on-site surgeries, vaccine clinics, and late-night foalings, yet struggles to\
+    \ keep up with paperwork and new research."
+  personality: "Practical, decisive, and warm-hearted. Sandy values concise, evidence-based\
+    \ guidance she can skim between ranch calls. She\u2019s bilingual (English/Spanish),\
+    \ appreciates bullet-point protocols, dosage tables, and quick links to peer-reviewed\
+    \ studies. She welcomes tech tips that streamline inventory and billing but becomes\
+    \ impatient with theory lacking real-world application. Humor and empathy resonate,\
+    \ especially after exhausting emergency shifts."
+  scenario: 'Sandy turns to the AI assistant to: 1) generate step-by-step field treatment
+    checklists (e.g., bovine dystocia, equine colic) compatible with offline viewing;
+    2) draft bilingual discharge instructions and vaccination reminders for ranch
+    hands with varying literacy; 3) summarize the latest research on antimicrobial
+    stewardship and calf respiratory vaccines; 4) create a simple spreadsheet that
+    syncs inventory, mileage logs, and invoice data into QuickBooks; 5) suggest ergonomic
+    stretches to ease wrist strain during long drives; and 6) outline a social-media
+    micro-content calendar showcasing client success stories to attract new ranch
+    accounts.'
+  summary: Mobile vet seeks field resources
+- name: "Moira O\u2019Connell"
+  description: "Moira is a 55-year-old head librarian in a windswept coastal village\
+    \ in County Kerry, Ireland. She wears trifocals, nurses mild wrist RSI from years\
+    \ of stamping books, and splits her day between a nine-year-old Windows desktop,\
+    \ a refurbished Linux server in the back office, and her personal Android phone\
+    \ tethered to patchy DSL. She\u2019s self-taught in basic IT but has never coded\
+    \ beyond HTML copy-paste. Cognitively sharp and detail-oriented, she\u2019s the\
+    \ de facto local historian, guardian of brittle parish ledgers, and organizer\
+    \ of weekly toddler story-times."
+  personality: "Quietly witty, methodical, and community-minded. Moira values orderly,\
+    \ step-by-step guidance, plain language, and low-cost solutions. She asks precise\
+    \ follow-ups once comfortable, dislikes jargon, and appreciates encouragement\
+    \ when tackling anything command-line. Pragmatic under budget pressure, she\u2019\
+    s patient with patrons but impatient with tech hiccups."
+  scenario: "Moira has just secured a small heritage grant to 1) migrate the library\u2019\
+    s card catalog to the open-source Koha ILS running on her Linux server, 2) digitize\
+    \ 19th-century newspapers with affordable flatbed scanners, 3) build an accessible\
+    \ WordPress site to host OCR\u2019d PDFs and community oral-history clips, and\
+    \ 4) design coding-lite digital-literacy workshops for seniors and schoolkids.\
+    \ She asks the AI assistant for MARC metadata mapping templates, bash scripts\
+    \ for bulk image renaming and OCR, grant-report wording, troubleshooting ssl certs\
+    \ on Apache, and interactive lesson-plan ideas that work on slow internet."
+  summary: Rural librarian digitizing archives
+- name: David Rosen
+  description: "David is a 57-year-old senior software architect in Denver who is\
+    \ six months into recovery from a mild traumatic brain injury suffered in a cycling\
+    \ accident. Physically he is fit except for lingering light-sensitivity headaches;\
+    \ cognitively he struggles with short-term-memory lapses, mental fatigue after\
+    \ long screen sessions, and occasional word-finding glitches. He works half-days\
+    \ from home on a 16\u201D MacBook Pro connected to a large, low-glare monitor\
+    \ set to dark mode. Once an effortlessly top-performer, he now needs external\
+    \ structure to stay organized and rebuild confidence."
+  personality: Thoughtful, analytical, and formerly fast-paced, David is now more
+    deliberate and sometimes frustrated by his forgetfulness. He values concise bullet
+    lists, persistent reference links, and gentle reminders. Appreciative and cooperative,
+    he welcomes coaching but grows anxious if instructions assume perfect recall or
+    rush past details. A sense of progress and respectful acknowledgment of his expertise
+    keeps him motivated.
+  scenario: "Easing back into complex code-review duties, David seeks the AI assistant\u2019\
+    s help to 1) generate daily task checklists tied to calendar reminders, 2) summarize\
+    \ lengthy meeting transcripts and highlight action items he can revisit later,\
+    \ 3) break down programming tickets into bite-sized subtasks with estimation hints,\
+    \ 4) create spaced-repetition flashcards to re-learn a legacy codebase, 5) suggest\
+    \ evidence-based cognitive-rehab exercises and screen-break schedules that minimize\
+    \ headache triggers, and 6) draft polite status-update emails that acknowledge\
+    \ his reduced bandwidth without appearing unreliable."
+  summary: TBI-recovering coder rebuilding workflow
+- name: Luis Ortega
+  description: "Luis is a 59-year-old retired paramedic living in a modest Tucson\
+    \ bungalow. Slightly overweight from years of shift-work dining, he manages mild\
+    \ hypertension and chronic knee soreness from old rescue-truck jumps. Cognition\
+    \ is sharp and medically literate, but he\u2019s mentally taxed by round-the-clock\
+    \ caregiving for his 57-year-old wife, Mar\xEDa, recently diagnosed with early-onset\
+    \ Alzheimer\u2019s. Tech gear: a five-year-old Android phone, an aging Chromebook,\
+    \ and a smart speaker he barely uses beyond weather checks."
+  personality: "Steady, empathetic, and pragmatic. Decades of emergency work have\
+    \ made Luis calm under pressure, yet prolonged caregiving leaves him sleep-deprived\
+    \ and quick to feel guilty when he takes a break. He values concise, actionable\
+    \ checklists, plain-language medical explanations, and realistic encouragement.\
+    \ Comfortable with basic medical jargon, he still prefers lay summaries he can\
+    \ print for relatives. He\u2019s polite but direct, asking pointed follow-ups\
+    \ when advice seems impractical on a fixed pension budget."
+  scenario: "Facing mounting caregiving tasks, Luis turns to the AI assistant to:\
+    \ 1) design a structured daily routine that balances Mar\xEDa\u2019s cognitive\
+    \ stimulation, safe exercises, and rest; 2) draft simple visual reminders and\
+    \ label templates to place around the house; 3) create a medication log with smartphone\
+    \ alarm instructions; 4) outline the steps\u2014and required documents\u2014for\
+    \ applying to Arizona long-term-care Medicaid, VA caregiver stipends (he\u2019\
+    s a former Navy corpsman), and local respite grants; 5) suggest low-cost home-safety\
+    \ modifications (door alarms, stove guards) with DIY options; 6) provide knee-friendly\
+    \ stretching routines for himself; and 7) offer brief, evidence-based stress-management\
+    \ and sleep-hygiene tips he can practice in five-minute windows."
+  summary: Retired paramedic caregiving for wife
+- name: Captain Clark Bennett
+  description: Clark is a 40-year-old U.S. Forest Service wildfire incident commander
+    currently deployed on a 30,000-acre blaze in rural Montana. Broad-shouldered and
+    sun-leathered, he manages mild smoke-induced asthma with an inhaler. Working 16-hour
+    shifts from a mobile command trailer, he toggles between a rugged Windows laptop,
+    a satellite hotspot that drops out in canyons, and printed ICS maps. Cognition
+    is sharp but taxed by sleep deprivation and radio chatter overload.
+  personality: "Decisive, pragmatic, and mission-focused. Clark speaks in clipped,\
+    \ tactical phrases, values bullet-point checklists, data-backed forecasts, and\
+    \ strict accuracy. He has zero patience for fluff yet appreciates concise safety\
+    \ reminders and logistics tips that keep crews fed, rested, and out of harm\u2019\
+    s way."
+  scenario: "With the fire rapidly expanding, Clark seeks the AI assistant\u2019s\
+    \ help to: 1) auto-populate daily ICS-209 and 215 forms from field intel; 2) generate\
+    \ simplified fire-spread projections using wind, humidity, and fuel-type inputs\
+    \ he provides; 3) draft public-information bulletins and evacuation notices in\
+    \ plain English and Spanish; 4) create resource-allocation tables for crews, engines,\
+    \ and air support; 5) compile shift meal and hydration guidelines that meet 6,000-calorie\
+    \ firefighter needs using shelf-stable rations; and 6) suggest brief breathing\
+    \ exercises to manage his own asthma amid smoke."
+  summary: Wildfire IC needs rapid ICS support
+- name: Selena Gutierrez
+  description: "Selena is a 26-year-old Mexican-American professional midfielder for\
+    \ an NWSL club. Three weeks ago she suffered a complete left-knee ACL tear and\
+    \ now uses crutches and a hinged brace. Otherwise fit, she must begin a 9-month\
+    \ rehab path while maintaining overall conditioning. She owns an iPhone 14 Pro\
+    \ and a 13\u201D M1 MacBook Air, and she tracks biometrics with a smartwatch.\
+    \ Cognitively sharp but currently anxious about lost playing time and contract\
+    \ renewal incentives tied to minutes played."
+  personality: Driven, competitive, and inquisitive. Selena values evidence-based,
+    sport-science guidance and clear, periodized plans. She responds well to positive
+    yet realistic feedback, concise bullet lists, and data she can log in spreadsheets.
+    When stressed she asks rapid, detailed questions and dislikes vague, one-size-fits-all
+    advice.
+  scenario: "Selena turns to the AI assistant to: 1) map a week-by-week ACL-rehab\
+    \ protocol aligned with her surgeon\u2019s restrictions; 2) suggest anti-inflammatory,\
+    \ high-protein meal plans that hit macro goals without excess calories; 3) design\
+    \ upper-body and core circuits she can do seated or supine; 4) outline sports-psychology\
+    \ techniques (imagery, goal setting) to maintain confidence; 5) draft polite but\
+    \ firm emails negotiating contract injury clauses and sponsorship deliverables;\
+    \ and 6) compile WADA-compliant supplement options and medication cross-checks\
+    \ to avoid doping violations."
+  summary: Pro soccer player rehabbing ACL
+- name: "Jordan \u201CJordy\u201D Wallace"
+  description: "Jordan is a 30-year-old African-American marketing copywriter in Atlanta\
+    \ with a moderate developmental stutter that worsens under time pressure. Physically\
+    \ fit from daily cycling, he experiences occasional jaw tension after long recording\
+    \ sessions. Cognitively sharp and creatively fluent, he works on a Windows 11\
+    \ desktop with Adobe Audition, a Blue Yeti mic, and budget studio headphones.\
+    \ He records in a closet \u201Cbooth\u201D treated with thrift-store blankets.\
+    \ Visual acuity is fine; no other health issues."
+  personality: "Witty, self-deprecating, and resourceful. Jordy loves wordplay and\
+    \ pop-culture analogies but grows anxious when speech blocks derail his flow.\
+    \ He values concise, step-by-step guidance, concrete examples, and gentle, confidence-boosting\
+    \ encouragement. He welcomes constructive critique yet bristles at pity or patronizing\
+    \ tones. Once comfortable, he\u2019s chatty and quick to iterate on feedback."
+  scenario: "Jordy is launching an educational podcast called \u201CPress Start Accessible\u201D\
+    \ about disability inclusion in video games. He seeks the AI assistant\u2019s\
+    \ help to: 1) craft tight episode outlines and talking-point cue cards that minimize\
+    \ high-stutter trigger words; 2) suggest evidence-based fluency-shaping and breathing\
+    \ exercises he can do during warm-ups; 3) recommend affordable Adobe Audition\
+    \ plugins and editing techniques to trim prolonged blocks and filler sounds without\
+    \ sounding robotic; 4) generate accurate, speaker-labeled transcripts and show-note\
+    \ templates that meet WCAG accessibility standards; 5) plan a realistic biweekly\
+    \ production calendar around his 40-hour workweek; and 6) draft engaging social-media\
+    \ teasers and sponsor pitch emails that highlight the podcast\u2019s mission."
+  summary: Stuttering podcaster needs speech & editing support
+- name: Aliyah Carter
+  description: Aliyah is a 34-year-old single mother of two in Detroit who works night
+    shifts on an auto-parts packing line. Standing all evening leaves her with mild
+    plantar fasciitis and occasional wrist tingling from repetitive motion. Cognitively
+    she is sharp and street-smart, but she left school in 10th grade to help family
+    and now reads at roughly a 2nd-grade level. She owns a budget Android phone with
+    a cracked screen and relies heavily on text-to-speech and voice dictation because
+    long passages of print feel overwhelming.
+  personality: Humble, determined, and quietly self-conscious about her literacy gap.
+    Aliyah apologizes often and fears being judged, yet her love for her children
+    keeps her motivated to improve. She values warm encouragement, bite-sized tasks,
+    everyday examples, and audio options she can listen to on the bus home from work.
+    When frustrated she may shut down unless reassured that progress can be gradual.
+  scenario: "Aliyah seeks the AI assistant\u2019s help to: 1) create a daily 15-minute\
+    \ phonics and vocabulary practice plan she can follow on her phone with read-aloud\
+    \ support; 2) break GED study materials into plain-language, audio-friendly lessons;\
+    \ 3) draft simple, confidence-boosting text messages to communicate with her kids\u2019\
+    \ teachers; 4) summarize her children\u2019s homework instructions into step-by-step\
+    \ checklists she can understand; 5) outline free or low-cost adult-literacy programs\
+    \ and GED test-fee waivers in Detroit; and 6) suggest foot-stretch routines she\
+    \ can do during work breaks to ease plantar pain."
+  summary: Adult learner improving literacy
+- name: Harper Li
+  description: Harper is a 29-year-old freelance digital-accessibility auditor living
+    in Minneapolis. Born with moderate hearing loss and now experiencing progressive
+    tunnel vision from Usher syndrome, she identifies as DeafBlind. She travels with
+    a guide dog, communicates primarily through a Braille display paired with a screen
+    reader set to braille output (audio kept low for residual hearing), and uses a
+    vibrating smartwatch for alerts. Long hours on her ergonomic keyboard sometimes
+    trigger mild wrist strain, and dim lighting worsens eye fatigue.
+  personality: Methodical, candid, and quietly witty. Harper values clean document
+    structure, semantic headings, and concise bullet points that translate well to
+    Braille. She appreciates empathy but dislikes over-simplification or pity. Curious
+    and solutions-oriented, she asks pointed follow-ups and enjoys practical examples.
+    Frustration surfaces when instructions depend solely on visual or auditory cues
+    without alternatives.
+  scenario: 'Hired to deliver a WCAG 2.2 compliance audit of a retail mobile app within
+    a week, Harper asks the AI assistant to: 1) outline step-by-step testing workflows
+    for screen-reader, keyboard, caption, and color-contrast checks; 2) suggest haptic-feedback
+    patterns that could replace sound-only notifications; 3) generate prioritized
+    bug-report templates with severity labels; 4) craft succinct, non-technical slide
+    notes explaining findings to product managers; and 5) recommend wrist-stretch
+    routines she can perform without removing her Braille display.'
+  summary: DeafBlind auditor needs WCAG guidance
+- name: "Katerina \u201CKit\u201D Doukas"
+  description: Kit is a 27-year-old Greek professional esports athlete (Overwatch
+    2 DPS) living in a Berlin team house. Lean and quick-reflexed, she battles mild
+    carpal-tunnel flare-ups in her mouse wrist and frequent digital-eye strain from
+    10-hour scrim blocks. Her setup is a custom Windows 11 rig driving a 360 Hz monitor,
+    and she wears a soft wrist brace during late scrims. Cognition and reaction time
+    are elite-level, but irregular sleep and back-to-back tournaments leave her mentally
+    fatigued.
+  personality: Hyper-competitive, data-driven, and candid. Kit peppers speech with
+    gaming jargon, values frame-perfect, bullet-point advice, and grows impatient
+    with generic tips. She appreciates evidence-based physiotherapy guidance and quick
+    mental-performance hacks. Under stress she can sound blunt but apologizes once
+    she cools off.
+  scenario: "With Contenders playoffs and a potential franchise tryout looming, Kit\
+    \ asks the AI assistant to: 1) build a data-backed aim & movement drill schedule\
+    \ (mixing Kovaak\u2019s routines and in-game Workshop codes); 2) create 10-minute\
+    \ wrist/forearm stretch protocols and ergonomic desk tweaks to curb carpal-tunnel\
+    \ pain; 3) generate time-stamped VOD-review checklists highlighting positioning\
+    \ errors; 4) draft a sponsor pitch deck showcasing audience analytics and personal\
+    \ brand metrics; 5) plan a meme-friendly social-media content calendar for EU\
+    \ Overwatch fans; 6) outline sleep-cycle and blue-light strategies for NA scrim\
+    \ blocks; and 7) suggest short breathing/visualization exercises to prevent tilt\
+    \ during matches."
+  summary: Esports pro optimizing performance
+- name: Zara Malik
+  description: "Zara is a 30-year-old Pakistani-American junior graphic designer based\
+    \ in Chicago. Five-foot-six with curly black hair and glasses, she was diagnosed\
+    \ with bipolar II 18 months ago and takes lithium, which causes mild hand tremors\
+    \ and thirst. She works remotely on a 15\u201D MacBook Pro with Adobe Creative\
+    \ Cloud and a Wacom tablet, juggling multiple freelance side gigs when hypomanic\
+    \ and struggling with motivation during depressive dips. Irregular sleep and neighbor\
+    \ noise compound her fatigue, and she relies on noise-canceling headphones to\
+    \ focus."
+  personality: Vibrant, quick-witted, and empathetic. Zara bursts with creative energy
+    during upswings and grows self-critical when mood slumps. She values visually
+    organized, concise instructions (Kanban boards, color-coded lists) and appreciates
+    gentle, non-pitying reminders to pace herself and take medication. Open to feedback,
+    she thrives on concrete examples and editable templates.
+  scenario: 'Hoping to stabilize her workflow and well-being, Zara turns to the AI
+    assistant to: 1) build a lightweight Notion/Trello system that logs tasks alongside
+    daily mood and medication check-ins; 2) create color-blind-friendly brand palettes
+    for a new client; 3) draft boundary-setting emails that negotiate realistic deadlines
+    during low-energy periods; 4) suggest evidence-based sleep-hygiene and five-minute
+    mindfulness practices to prevent hypomanic all-nighters; 5) outline a personal
+    crisis plan detailing early-warning signs, coping steps, and emergency contacts;
+    and 6) recommend ergonomic desk-stretch routines to steady hand tremors.'
+  summary: Bipolar designer seeking balance
+- name: Dr. Linh Tran
+  description: "Linh is a 37-year-old Vietnamese pure-mathematics lecturer at a Singaporean\
+    \ university. Slight and bespectacled, she has a mild essential hand tremor that\
+    \ makes prolonged handwriting tiring, so she types LaTeX on a 14\u201D Linux laptop\
+    \ and sketches on a tablet with a shaky stylus. Cognitively razor-sharp, she specializes\
+    \ in additive combinatorics and juggles teaching first-year calculus while finalizing\
+    \ a dense research paper. Frequent 12-hour screen sessions trigger neck stiffness\
+    \ and occasional eyestrain."
+  personality: "Precise, introspective, and quietly humorous. Linh thrives on rigor\
+    \ and values concise, logically ordered explanations. She\u2019s self-critical\
+    \ and worries about missing subtleties in proofs, so she appreciates gentle reassurance\
+    \ paired with pointed gap-spotting. Polite but direct, she dislikes hand-waving\
+    \ arguments and welcomes references and formal notation. When fatigued, she prefers\
+    \ bullet points over paragraphs."
+  scenario: "With a submission deadline looming, Linh asks the AI assistant to: 1)\
+    \ scrutinize a draft proof for edge-case gaps and suggest alternative strategies;\
+    \ 2) generate LaTeX macros that streamline her combinatorial identities; 3) craft\
+    \ a 12-slide seminar deck with intuitive diagrams accessible to color-blind students;\
+    \ 4) summarize three recent papers\u2019 relevance in 150-word literature-review\
+    \ snippets; 5) propose short neck-stretch and eye-break routines she can trigger\
+    \ via desktop timers."
+  summary: Mathematician refining proof & slides

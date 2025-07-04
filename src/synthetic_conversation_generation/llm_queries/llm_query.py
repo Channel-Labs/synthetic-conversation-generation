@@ -71,7 +71,8 @@ class OpenAIModelProvider(ModelProvider):
     def __init__(self, client: openai.OpenAI):
         self.client = client
 
-    def query(self, user_msg: str, response_schema: Dict, model_id: str, timeout: int=60):       
+    def query(self, user_msg: str, response_schema: Dict, model_id: str, timeout: int=60):      
+
         response = self.client.chat.completions.create(
             model=model_id,
             messages=[
@@ -79,7 +80,8 @@ class OpenAIModelProvider(ModelProvider):
             ],
             seed=42,
             response_format=self.response_format(response_schema),
-            timeout=timeout
+            timeout=timeout,
+            temperature=1.0
         ).choices[0].message.content
 
         return json.loads(response)
