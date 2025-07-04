@@ -26,15 +26,14 @@ logging.getLogger('anthropic').setLevel(logging.WARNING)
 
 class PersonaGenerator:
     
-    def __init__(self, model_provider: ModelProvider, model_id: str, assistant: Assistant, previous_personas: List[CharacterCard], persona_guidance: Optional[str]=None):
+    def __init__(self, model_provider: ModelProvider, model_id: str, assistant: Assistant, previous_personas: List[CharacterCard]):
         self.model_provider = model_provider
         self.model_id = model_id
         self.assistant = assistant
         self.previous_personas = previous_personas
-        self.persona_guidance = persona_guidance
 
     def generate_persona(self) -> CharacterCard:
-        user_persona_generator = UserPersonaQuery(self.model_provider, self.model_id, self.assistant, self.previous_personas, self.persona_guidance)
+        user_persona_generator = UserPersonaQuery(self.model_provider, self.model_id, self.assistant, self.previous_personas)
         return user_persona_generator.query()
 
 
@@ -45,7 +44,7 @@ if __name__ == "__main__":
     parser.add_argument("--num-personas", type=int, default=5)
     parser.add_argument("--output-path", type=str, required=True)
     parser.add_argument("--model-provider", type=str, choices=["openai", "anthropic"], default="openai")
-    parser.add_argument("--model-id", type=str, default="o4-mini")
+    parser.add_argument("--model-id", type=str, default="o3")
     args = parser.parse_args()
 
     if args.model_provider == "openai":
@@ -58,7 +57,8 @@ if __name__ == "__main__":
     assistant = Assistant(name=args.assistant_name, description=args.assistant_description)
 
     persona_generator = PersonaGenerator(model_provider, args.model_id, assistant, list())
-    for _ in range(args.num_personas):
+    for i in range(args.num_personas):
+        print(f"Generating persona {i+1} of {args.num_personas}")
         persona = persona_generator.generate_persona()
         persona_generator.previous_personas.append(persona)
 

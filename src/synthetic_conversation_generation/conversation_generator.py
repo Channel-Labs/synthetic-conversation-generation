@@ -64,7 +64,7 @@ class ConversationGenerator:
             # Check if conversation should end
             completion_checker = ConversationCompletionQuery(
                 model_provider=self.model_provider,
-                model_id=self.model_id,
+                model_id="o3",
                 conversation=conversation,
                 user_persona=self.user_persona,
                 assistant=self.assistant
@@ -88,8 +88,8 @@ if __name__ == "__main__":
     parser.add_argument("--inference-endpoint-path", type=str, required=True)
     parser.add_argument("--output-path", type=str, required=True)
     parser.add_argument("--model-provider", type=str, choices=["openai", "anthropic"], default="openai")
-    parser.add_argument("--model-id", type=str, default="gpt-4.1")
-    parser.add_argument("--max-conversation-turns", type=int, default=10)
+    parser.add_argument("--model-id", type=str, default="gpt-4o")
+    parser.add_argument("--max-conversation-turns", type=int, default=4)
     args = parser.parse_args()
 
     if args.model_provider == "openai":
