@@ -73,7 +73,6 @@ class OpenAIModelProvider(ModelProvider):
 
     def query(self, user_msg: str, response_schema: Dict, model_id: str, timeout: int=60):      
 
-        print(f"MAKING QUERY WITH MODEL ID {model_id}") 
         response = self.client.chat.completions.create(
             model=model_id,
             messages=[

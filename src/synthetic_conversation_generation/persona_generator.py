@@ -24,6 +24,7 @@ logger.setLevel(logging.INFO)
 logging.getLogger('openai').setLevel(logging.WARNING)
 logging.getLogger('anthropic').setLevel(logging.WARNING)
 
+
 class PersonaGenerator:
     
     def __init__(self, model_provider: ModelProvider, model_id: str, assistant: Assistant, previous_personas: List[CharacterCard]):
