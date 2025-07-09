@@ -79,18 +79,12 @@ conversation_str = json.dumps(
 payload = {
   "grader": multi_grader,
   "item": {
-     "expected_judge_score": 97,
-     "assistant_name": "AI Assistant",
-      "assistant_description": "An AI assistant designed to be helpful, harmless, and honest in all interactions. It provides accurate information, thoughtful analysis, and creative assistance while maintaining strong safety guidelines and refusing requests that could cause harm. The assistant is transparent about its capabilities and limitations, aiming to be genuinely useful while operating within appropriate ethical boundaries.",
-    #  "persona": {
-    #    "name": "Evelyn Carson",
-    #    "description": "Evelyn is a 68-year-old retired high school English teacher living in suburban Ohio. She has mild arthritis in her hands, uses reading glasses, and maintains sharp cognitive abilities. Evelyn enjoys literature, gardening, and weekly book-club meetings, but feels intimidated by modern technology.",
-    #    "personality": "Warm, patient, and reflective; values clear explanations and learning at her own pace. She is curious yet cautious, polite, and appreciates encouragement. Slight anxiety arises when dealing with unfamiliar digital tools, but her determination to stay connected to family keeps her motivated.",
-    #    "scenario": "Evelyn recently bought a tablet to digitize her favorite poetry anthologies and video-chat with her grandchildren. She seeks the AI assistant's step-by-step help with scanning documents, organizing files in cloud storage, and setting up reliable video-calling apps."
-    #  }
+    "expected_judge_score": 97,
+    "assistant_name": "AI Assistant",
+    "assistant_description": "An AI assistant designed to be helpful, harmless, and honest in all interactions. It provides accurate information, thoughtful analysis, and creative assistance while maintaining strong safety guidelines and refusing requests that could cause harm. The assistant is transparent about its capabilities and limitations, aiming to be genuinely useful while operating within appropriate ethical boundaries.",
     "conversation_str": conversation_str
   },
-  "model_sample": """Grading rubric: You are grading a single turn or multi-turn conversation between a user and an AI assistant.  Give one integer score from 0 (worst) to 100 (best).  Use the criteria below holistically—do not average sub-scores mechanically.  Justify every large deduction mentally, then output ONLY the number.
+  "model_sample": """You are grading a single turn or multi-turn conversation between a user and an AI assistant.  Give one integer score from 0 (worst) to 100 (best).  Use the criteria below holistically—do not average sub-scores mechanically.  Justify every large deduction mentally, then output ONLY the number.
 
 ────────────────────────  CORE DIMENSIONS  ────────────────────────
 (1) Factual Accuracy & Correctness (≈35 %)

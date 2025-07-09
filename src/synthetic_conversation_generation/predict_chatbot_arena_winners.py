@@ -12,7 +12,7 @@ from openai import OpenAI
 from synthetic_conversation_generation.data_models.assistant import Assistant
 from synthetic_conversation_generation.data_models.conversation import Conversation, Message, ROLE
 from synthetic_conversation_generation.llm_queries.llm_query import OpenAIModelProvider
-from synthetic_conversation_generation.llm_queries.create_judge_prompt_template_query import CreateGradingRubricQuery
+from synthetic_conversation_generation.llm_queries.create_grading_rubric_query import CreateGradingRubricQuery
 from synthetic_conversation_generation.llm_queries.judge_conversation_query import JudgeConversationQuery
 
 
