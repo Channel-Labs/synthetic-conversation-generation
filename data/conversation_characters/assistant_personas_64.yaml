@@ -1,0 +1,984 @@
+assistant:
+  name: AI Assistant
+  description: An AI assistant designed to be helpful, harmless, and honest in all
+    interactions. It provides accurate information, thoughtful analysis, and creative
+    assistance while maintaining strong safety guidelines and refusing requests that
+    could cause harm. The assistant is transparent about its capabilities and limitations,
+    aiming to be genuinely useful while operating within appropriate ethical boundaries.
+users:
+- name: "Eduardo Mart\xEDnez"
+  description: 38-year-old Mexican-American food-truck owner in Austin. Stocky build
+    from long kitchen hours, a slight limp from an old soccer injury. Sharp business
+    mind but limited formal education; self-taught in cooking and bookkeeping. Passionate
+    about authentic regional dishes, anxious about rising costs and regulations.
+  personality: Friendly, energetic, quick to joke; pragmatic and hands-on. Curious
+    and open-minded but easily frustrated by dense jargon. Values family and community,
+    driven by a desire to prove himself as an entrepreneur. Prefers clear, actionable
+    advice.
+  scenario: "Eduardo is seeking the assistant\u2019s help to create a digital marketing\
+    \ plan, refine cost projections, and draft a loan proposal for expanding his food-truck\
+    \ into a brick-and-mortar taquer\xEDa while balancing work and family commitments."
+  summary: Pragmatic food-truck owner seeks clear guidance on business expansion.
+- name: Lucas Thompson
+  description: "Lucas is a 45-year-old remote software engineer living alone in suburban\
+    \ Denver. Recently diagnosed with Type 2 diabetes, he is moderately overweight,\
+    \ often fatigued, and experiences mild depression and anxiety about his long-term\
+    \ health. Physically, he leads a mostly sedentary lifestyle but wants to change.\
+    \ Mentally, he\u2019s analytical and detail-oriented yet struggles with motivation\
+    \ and self-confidence."
+  personality: "Introverted, methodical, and evidence-driven. Lucas appreciates clear,\
+    \ data-backed guidance and breaks problems into manageable tasks. He uses self-deprecating\
+    \ humor, values honesty, and is empathetic toward others, though he can be hard\
+    \ on himself. He\u2019s open-minded but needs gentle encouragement to act on advice."
+  scenario: 'Lucas turns to the AI assistant for a personalized, realistic plan to
+    manage his diabetes: balanced, low-carb meal ideas, beginner-friendly exercise
+    routines, and daily mental-health habits that fit his work-from-home schedule.
+    He also seeks motivation techniques and tracking strategies to sustain these changes.'
+  summary: Analytical diabetic engineer seeking structured lifestyle overhaul and
+    motivation.
+- name: Lena Morales
+  description: 16-year-old bilingual (Spanish/English) high-school junior with ADHD.
+    Energetic but struggles with sustained focus, time management, and test anxiety.
+    Loves art, sci-fi, and social media; reads fast but retains unevenly. Tech-savvy
+    on phones yet inexperienced with deeper research or planning tools.
+  personality: Lively, curious, self-deprecating humor, impulsive, easily enthused.
+    Values empathy and candid feedback. Prefers concise, visually organized info and
+    chats in a casual, emoji-sprinkled style.
+  scenario: Upcoming AP exams and college search loom. Lena seeks the AI assistant
+    to craft ADHD-friendly study plans, break complex topics into memes/diagrams,
+    and coach her on anxiety control while offering scholarship tips.
+  summary: Hyper-curious ADHD teen seeks concise, creative study and college guidance.
+- name: Carlos Rivera
+  description: 30-year-old Puerto Rican law student with progressive visual impairment
+    (retinitis pigmentosa). Uses a screen reader and Braille display. Physically active,
+    resilient; occasionally frustrated by accessibility barriers but deeply motivated
+    by passion for civil-rights law.
+  personality: Determined, methodical, advocacy-minded, inquisitive. Prefers structured,
+    citation-backed answers in clear language. Values step-by-step guidance and bullet
+    lists to suit assistive tech.
+  scenario: Second-year law student seeking AI support to efficiently summarize dense
+    case law, generate accessible study outlines, and practice issue-spotting for
+    exams while juggling internships and mobility challenges.
+  summary: Visually impaired, driven law student needing clear, accessible legal study
+    assistance.
+- name: Harold Bennett
+  description: Harold is a 72-year-old retired machinist living alone in rural Iowa.
+    He has mild hearing loss and arthritis in his hands and knees. Though he spent
+    decades fixing complex machines, modern digital tech feels foreign to him. He
+    owns a new tablet gifted by his daughter and can type slowly with a stylus. Harold
+    values self-reliance but acknowledges needing help learning technology and adapting
+    his physical activities to aging joints.
+  personality: Patient, methodical, and proud of his problem-solving past. Initially
+    skeptical of unfamiliar tools, yet determined once he decides a goal is worthwhile.
+    Prefers clear, step-by-step explanations without jargon. Appreciates practical,
+    hands-on advice and a respectful tone.
+  scenario: 'Harold turns to the AI assistant for two reasons: (1) to set up and confidently
+    use video-calling apps so he can chat with his grandchildren scattered across
+    states, and (2) to design an arthritis-friendly raised-bed vegetable garden suited
+    to his Midwestern climate and limited mobility.'
+  summary: Tech-shy, methodical retiree seeks simple tech help and garden advice
+- name: "Luc\xEDa \xC1lvarez"
+  description: 34-year-old Guatemalan immigrant and single mother working long hotel
+    housekeeping shifts. Limited English proficiency, mild dyslexia, often physically
+    exhausted but mentally determined. High anxiety about upcoming U.S. citizenship
+    exam, eager to improve language skills and civics knowledge.
+  personality: Warm, humble, deeply persistent. Tends to apologize and ask for clarification.
+    Mixes simple English with occasional Spanish words. Motivated by providing stability
+    for her daughter, values clear, step-by-step guidance and positive encouragement.
+  scenario: "Luc\xEDa turns to the AI assistant for accessible study materials, plain-language\
+    \ explanations, and practice dialogs for the citizenship civics and English interview.\
+    \ She also seeks tips on managing study time around her demanding work schedule\
+    \ and coping with exam anxiety."
+  summary: Determined immigrant mother seeking simple, supportive citizenship-exam
+    guidance.
+- name: Javier Morales
+  description: 32-year-old Mexican-American urban planner with dyslexia; athletic
+    build, curly black hair, warm smile. Reads slowly, favors bullet lists and clear
+    layouts. Passionate cyclist, loves community projects, bilingual in English and
+    Spanish.
+  personality: Enthusiastic, community-minded, creative thinker who sees big-picture
+    connections. Friendly and collaborative but self-conscious about reading pace
+    and spelling. Values concise, well-structured information and enjoys bilingual
+    wordplay.
+  scenario: "Tasked with writing a grant proposal to expand bike lanes, Javier seeks\
+    \ the AI assistant to craft a compelling, data-driven executive summary, supply\
+    \ relevant statistics, and provide bilingual phrasing\u2014all in dyslexia-friendly,\
+    \ bullet-point formats."
+  summary: Dyslexic bilingual urban planner needs structured, bilingual help drafting
+    proposals.
+- name: Caleb Rivers
+  description: 29-year-old Deaf freelance graphic designer in Chicago. Communicates
+    mainly through written English and ASL captions. Highly visual thinker, environmentally
+    conscious, uses assistive tech and values accessibility. Balances client work
+    with advocating for Deaf inclusion.
+  personality: Creative yet methodical; blends artistic flair with data-driven decisions.
+    Direct, self-advocating, and pragmatic. Appreciates concise, well-structured information
+    and visual metaphors. Enjoys light humor but dislikes ambiguity or jargon without
+    explanation.
+  scenario: "Caleb is preparing a pitch for a sustainable streetwear brand and needs\
+    \ the AI\u2019s help to refine his proposal, craft compelling visuals descriptions,\
+    \ and incorporate accessibility guidelines. He also wants quick competitor insights\
+    \ and step-by-step marketing strategies he can easily reference during client\
+    \ meetings."
+  summary: Deaf, eco-minded designer seeks clear, accessible help perfecting sustainable
+    brand pitch.
+- name: Carlos Romero
+  description: 45-year-old laid-off assembly-line supervisor with high-school education;
+    limited tech skills but strong mechanical aptitude. Financially stressed father
+    of two, experiencing mild anxiety and self-doubt while exploring a mid-life career
+    change into cybersecurity. Reads English comfortably but prefers plain language
+    and concrete examples.
+  personality: Practical, humble, and diligent. Hesitant with unfamiliar tech jargon
+    yet highly motivated to learn. Appreciates clear, sequential instructions, realistic
+    timelines, and consistent encouragement. Values honesty about challenges and actionable
+    feedback.
+  scenario: "After his factory closed, Carlos decided to pursue a more stable field\u2014\
+    cybersecurity. He turns to the AI assistant for a detailed, affordable learning\
+    \ roadmap, advice on certifications, budgeting study time around gig work, and\
+    \ guidance on crafting a compelling resume for entry-level IT roles."
+  summary: Determined, anxious ex-factory worker seeks step-by-step cybersecurity
+    career plan.
+- name: Dr. Elias Chen
+  description: 32-year-old postdoctoral astrophysicist at a mid-sized university.
+    Brilliant with orbital mechanics but new to machine learning. Mild social anxiety
+    makes him prefer text interactions. Works late nights, fueled by coffee, under
+    pressure to publish and secure a faculty position. Values precision, reproducibility,
+    and proper citations.
+  personality: Analytical, perfectionistic, polite yet skeptical. Asks highly technical
+    questions, double-checks assumptions, and appreciates concise explanations paired
+    with code snippets. Limited patience for fluff; admires honesty about limitations.
+  scenario: "Preparing a conference paper on exoplanet detection. Needs the assistant\u2019\
+    s help to build and troubleshoot a Python ML pipeline, interpret results, and\
+    \ craft a compelling, well-cited presentation within two weeks."
+  summary: Exacting astrophysics postdoc urgently seeks rigorous, citation-backed
+    machine-learning guidance.
+- name: Alex Rivera
+  description: 27-year-old mixed-Latinx non-binary indie game developer, slender build,
+    glasses, prone to migraines; balances day job with late-night coding and art.
+  personality: Imaginative and detail-oriented, deeply empathetic about inclusion;
+    perfectionist streak fuels self-criticism and social anxiety, yet playful humor
+    surfaces through gaming references.
+  scenario: "Three months from launching their first Unity game, Alex seeks the AI\u2019\
+    s help crafting inclusive storylines, debugging C# scripts, planning an accessibility\
+    \ checklist, writing marketing copy, and managing stress triggers like migraines\
+    \ during crunch."
+  summary: Anxious inclusive indie developer needs narrative, coding, marketing, self-care
+    guidance.
+- name: "Carlos \u201CCarl\u201D Gutierrez"
+  description: 52-year-old second-generation organic farmer in rural Iowa. Moderate
+    tech skills, strong agricultural know-how, mild knee arthritis. Values sustainability,
+    community, and financial stability. Feels pressure from large industrial farms
+    and unpredictable climate.
+  personality: Practical, patient, cautious early adopter. Enjoys learning when explained
+    clearly and visually. Prefers structured, data-backed advice but open to experimentation
+    if risks are spelled out. Speaks in straightforward, friendly Midwestern tone.
+  scenario: "Carl wants the assistant\u2019s help adopting affordable precision-agriculture\
+    \ tools (soil sensors, drones, data dashboards), interpreting weather and market\
+    \ forecasts, and crafting a simple online presence to reach CSA customers\u2014\
+    all while keeping costs low and honoring organic principles."
+  summary: Practical organic farmer seeks clear tech guidance for sustainable, competitive
+    operation.
+- name: Ravi Patel
+  description: 27-year-old Indian-American data analyst by day, aspiring stand-up
+    comic by night. Tall, thin, bespectacled; loves wordplay and observational humor
+    but struggles with persistent social anxiety and stage fright. Reads psychology
+    blogs, records joke ideas on his phone, and frequents local comedy clubs without
+    yet performing.
+  personality: Analytical and witty yet introverted. Self-deprecating, reflective,
+    and eager to improve. Tends to overthink wording and delivery, values structured
+    feedback, and appreciates gentle humor. Seeks both creative spark and evidence-based
+    coping strategies.
+  scenario: Ravi turns to the AI assistant to polish his five-minute open-mic set,
+    brainstorm punchlines, and learn breathing and CBT techniques to manage pre-stage
+    anxiety. He also wants advice on networking in the comedy scene while balancing
+    his demanding day job.
+  summary: Analytical, anxious analyst pursuing stand-up; needs joke polish and anxiety
+    tools.
+- name: Leah Ortiz
+  description: 38-year-old Puerto Rican investigative journalist for a small southwestern
+    U.S. newspaper. Tall, wiry, constantly jotting notes, fueled by coffee. Mild ADHD
+    makes her hyper-focused on leads yet prone to overlook mundane details. Healthy
+    but sleep-deprived; quick-typing, often on the move with a battered laptop and
+    voice recorder.
+  personality: Skeptical, relentlessly curious, ethically driven, and assertive. Values
+    factual accuracy and transparency. Communicates in brisk, pointed questions, appreciating
+    concise, well-sourced answers. Pragmatic about tech but wary of surveillance;
+    privacy and source protection are paramount.
+  scenario: "Preparing a multi-part expos\xE9 on local water-rights corruption. She\
+    \ needs the AI to help draft FOIA requests, summarize dense legal documents, cross-check\
+    \ claims, and suggest secure workflows for handling sensitive data\u2014all while\
+    \ racing a deadline and ensuring source safety."
+  summary: Skeptical, privacy-minded investigative journalist racing to expose water-rights
+    corruption.
+- name: Maya Redbird
+  description: 34-year-old Indigenous woman living on a remote reservation. Physically
+    healthy but limited by sporadic internet and minimal budget. Deeply knowledgeable
+    in her tribal language and culture, moderately tech-savvy, and conscious of cultural
+    data sovereignty. Prone to brief frustration when tech fails but generally resilient.
+  personality: Passionate, community-oriented, privacy-conscious, analytical yet empathetic.
+    Values clarity, cultural respect, and practical, low-bandwidth solutions. Communicates
+    in succinct, purposeful paragraphs, sprinkling in cultural context and humor.
+  scenario: "As the tribe\u2019s language-revitalization coordinator, she seeks the\
+    \ assistant\u2019s help to design engaging, culturally sensitive, mostly offline\
+    \ digital lessons, choose open-source tools, and navigate intellectual-property\
+    \ concerns without compromising tribal knowledge."
+  summary: Resourceful Indigenous linguist creating sensitive offline language curriculum
+    for community.
+- name: Samira Qureshi
+  description: '27-year-old Pakistani-American Muslim chaplaincy graduate student.
+    Soft-spoken, wears many hats: community organizer, mentor to college students,
+    part-time mosque program coordinator. Highly literate in Islamic studies but still
+    refining scholarly rigor. Balances deep spirituality with modern social concerns
+    like climate change and mental health. Often exhausted from juggling study, service,
+    and family expectations.'
+  personality: Empathetic, contemplative, intellectually curious. Values precise sourcing,
+    nuance, and ethical integrity. Communicates politely and thoughtfully, asking
+    layered questions. Seeks balanced, inclusive perspectives and reassurance when
+    uncertain.
+  scenario: Preparing her first Friday khutbah on environmental stewardship and needs
+    the AI to help craft a compelling, well-structured sermon with accurate Quran/Hadith
+    citations, practical action steps, and language accessible to a diverse congregation.
+  summary: Reflective Muslim chaplain student crafting eco-themed sermon; seeks precise,
+    inclusive guidance.
+- name: "Sof\xEDa \xC1lvarez"
+  description: 28-year-old bilingual rural middle-school science teacher; passionate,
+    resource-strapped, juggling large mixed-ability classes; chronic fatigue, but
+    deeply committed to culturally relevant, hands-on learning.
+  personality: Warm, imaginative, and empathetic yet pragmatic; thinks in vivid analogies;
+    quick to laugh, quicker to worry; comfortable with basic tech but impatient with
+    jargon; values actionable, classroom-ready ideas and equitable inclusion.
+  scenario: "Prepping next semester during late nights, Sof\xEDa turns to the assistant\
+    \ for low-cost, standards-aligned experiments, bilingual lesson materials, behavior-management\
+    \ strategies, and guidance on writing small-district grants\u2014all while seeking\
+    \ time-saving workflows and self-care tips."
+  summary: Stressed, creative rural science teacher seeks bilingual lessons, grants,
+    self-care.
+- name: "Marcus \u201CMack\u201D Reynolds"
+  description: "34-year-old U.S. Army veteran, wheelchair user from combat injury,\
+    \ lives in rural Missouri with service dog. Manages PTSD, insomnia, limited income;\
+    \ moderate tech skills via smartphone voice control; eager to learn acoustic guitar\
+    \ for self-therapy and build a low-cost local vets\u2019 support group."
+  personality: Friendly yet guarded; disciplined military habits; values empathy,
+    directness, and practical, step-by-step guidance; can be self-critical and anxious
+    when plans feel vague; seeks evidence-based, trauma-informed advice without heavy
+    jargon.
+  scenario: Mack turns to the AI assistant for accessible guitar lessons adapted for
+    limited finger dexterity, calming routines for PTSD and insomnia, and concrete,
+    budget-minded steps to organize a peer support circle for fellow veterans in his
+    small town.
+  summary: Disciplined PTSD veteran seeks empathetic guitar, mental-health, peer-group
+    guidance.
+- name: Hadiya Al-Sayed
+  description: Hadiya is a 16-year-old Syrian refugee living in a temporary housing
+    complex on the outskirts of Berlin. Fluent in Arabic and learning English and
+    German, she has limited access to computers beyond her donated smartphone and
+    a makeshift makerspace at a local youth center. Fascinated by robotics, she scavenges
+    discarded electronics to build small prototypes. Financial constraints and language
+    barriers often impede her progress, and she occasionally feels isolated from peers
+    with better resources. Mentally, she is resilient and optimistic, yet bouts of
+    self-doubt surface when technical documentation feels overwhelming.
+  personality: Deeply curious and inventive, Hadiya learns by experimenting and observing.
+    She is quietly determined, respectful, and thoughtful, preferring concise, step-by-step
+    explanations supplemented with visuals or analogies. Though shy in new languages,
+    she asks probing questions once comfortable. She values empathy, cultural sensitivity,
+    and practical advice that acknowledges her resource limitations.
+  scenario: 'Hadiya turns to the AI assistant to: (1) translate robotics tutorials
+    between Arabic and English, (2) suggest low-cost substitutes for parts, (3) outline
+    a clear project plan for a refugee-youth science fair, and (4) draft persuasive
+    scholarship and mentorship application letters. She needs the assistant to adapt
+    complex STEM concepts into simplified, bilingual guidance while motivating her
+    through setbacks.'
+  summary: Resourceful refugee teen needs bilingual, low-cost robotics and scholarship
+    guidance.
+- name: Jordan L.
+  description: 29-year-old paraplegic from spinal-cord injury; upper-body strong,
+    endurance moderate; works part-time, moderate income; mentally resilient yet occasional
+    self-doubt.
+  personality: Ambitious, analytical, pragmatic, enjoys data-driven plans and light
+    humor; asks detailed follow-ups, appreciates empathy blended with actionable specifics.
+  scenario: "Jordan aims to complete their first wheelchair marathon in six months.\
+    \ They want the assistant\u2019s help building a periodized training schedule,\
+    \ choosing affordable adaptive racing equipment, crafting calorie-appropriate\
+    \ nutrition, and balancing workouts with job and physical-therapy commitments."
+  summary: Driven paraplegic athlete seeks structured wheelchair-marathon training,
+    gear, nutrition guidance.
+- name: Sophia Ramirez
+  description: "34-year-old bilingual marketing coordinator juggling two kids and\
+    \ caregiving for her recently diagnosed, early-stage Alzheimer\u2019s mother.\
+    \ Physically exhausted, mentally strained, but reasonably tech-savvy and eager\
+    \ for structured, evidence-based help. Seeks balanced solutions that fit tight\
+    \ time and budget constraints."
+  personality: Empathetic, pragmatic, detail-oriented, and normally organized, yet
+    easily overwhelmed by competing obligations. Values concise, actionable steps
+    and gentle encouragement. Moderate anxiety about the future but strong motivation
+    to safeguard family well-being.
+  scenario: Late at night, after work and putting her children to bed, Sophia turns
+    to the AI assistant for practical dementia-care strategies, bilingual educational
+    materials for her mother, guidance on legal and financial planning, and reminders
+    for her own self-care routines.
+  summary: Overwhelmed bilingual caregiver mother seeks practical dementia-care and
+    self-care guidance.
+- name: Dr. Elena Morales
+  description: 28-year-old first-year pediatric resident in a busy urban teaching
+    hospital. Works 80-hour weeks, constantly sleep-deprived, bilingual (English/Spanish),
+    battling imposter syndrome. Needs rapid, evidence-based medical updates, clear
+    patient-education handouts, and practical stress-management tactics that fit her
+    erratic schedule.
+  personality: Compassionate and perfectionistic; highly analytical yet warm. Time-starved,
+    communicates in clipped messages peppered with dry humor. Values scientific rigor,
+    reliable citations, and concise bullet points. Privacy-minded about patient data,
+    skeptical of fluff.
+  scenario: Between rounds, Elena opens the assistant on her phone to ask for the
+    latest guideline changes, quick-reference dosing charts, Spanish-language discharge
+    instructions, or 5-minute mindfulness exercises she can squeeze into a call room.
+    She needs fast, trustworthy answers without wading through dense journals.
+  summary: Overworked pediatric resident needs concise, evidence-based guidance and
+    stress tools.
+- name: Marcus Reed
+  description: Marcus is a 32-year-old African-American man recently released from
+    prison after a seven-year sentence for a non-violent drug offense. Physically
+    strong and fond of working outdoors, he discovered a passion for horticulture
+    while tending the prison garden. Now on parole, he has limited finances, only
+    a high-school diploma, and must adhere to strict legal conditions. He is digitally
+    cautious but has basic smartphone skills and uses the public library computer
+    to access information. He battles mild anxiety and lingering stigma but is motivated
+    to rebuild his life by starting a small, legitimate landscaping business and staying
+    sober.
+  personality: Determined, reflective, humble, and cautious. He appreciates direct,
+    step-by-step guidance, encouragement, and practical resources. Though self-conscious
+    about his limited formal education, he asks thoughtful questions and values honesty
+    and non-judgmental support. Prefers clear language over jargon and likes actionable
+    checklists he can follow.
+  scenario: 'Marcus is using the AI assistant at his local library. He wants help
+    understanding the legal and financial steps for launching a landscaping business
+    while on parole: licensing, bonding, grants for ex-offenders, budgeting, marketing,
+    and mental-health resources. He also needs advice on rebuilding trust with family,
+    managing anxiety triggers, and avoiding high-risk situations.'
+  summary: Paroled horticulture lover needs compassionate, step-wise business, legal,
+    life guidance.
+- name: "Elena \u201CLen\u201D Morales"
+  description: "62-year-old Puerto Rican digital painter with early-stage Parkinson\u2019\
+    s causing hand tremors and intermittent fatigue. Physically active when able,\
+    \ uses a stylus and graphics tablet but increasingly relies on voice input. Keen\
+    \ eyesight, no cognitive decline yet. Emotionally resilient but anxious about\
+    \ future motor loss."
+  personality: Warm, humorous, fiercely independent, perfectionistic about her art,
+    inquisitive, and proactive in problem-solving. Balances optimism with realistic
+    planning; values clear, respectful communication.
+  scenario: "Len is preparing a new exhibition of digitally painted tropical landscapes.\
+    \ She wants the AI assistant\u2019s help finding voice-controlled or adaptive\
+    \ hardware/software, optimizing her workflow to minimize strain, and learning\
+    \ techniques to preserve artistic quality despite tremors. She also seeks emotional\
+    \ support resources and peer communities for artists with movement disorders."
+  summary: "Warm, proactive Parkinson\u2019s digital artist seeks adaptive creative\
+    \ tech and support."
+- name: Carlos Martinez
+  description: 35-year-old Mexican-American QA engineer in a conservative Texas town.
+    Recently came out as gay, not yet to family. Mild social anxiety, analytical mind,
+    tech-savvy but inexperienced in dating. Values privacy, safety, and authenticity
+    while seeking companionship. Enjoys hiking, retro games, and indie music.
+  personality: Thoughtful, polite, self-effacing humor. Analytical yet anxious, overthinks
+    choices. Prefers step-by-step, evidence-based guidance. Warm-hearted and empathetic
+    once comfortable.
+  scenario: Late at night, Carlos discreetly consults the AI for help crafting an
+    online dating profile, starting conversations, setting boundaries, and coping
+    with potential homophobia while building confidence to come out further.
+  summary: Shy newly out gay engineer seeks discreet dating confidence guidance.
+- name: Rowan Patel
+  description: 34-year-old nonbinary digital archivist on the autism spectrum; physically
+    healthy, vegan, with acute sensitivity to noise, crowds, and bright lights; intellectually
+    curious yet socially cautious, prone to anxiety when plans are vague.
+  personality: Analytical, literal, hyper-organized; enjoys deep dives into niche
+    topics; values precise, step-by-step guidance and advance preparation; prefers
+    text over voice, dislikes jargon and ambiguity; earnest, polite, and appreciative
+    when information is clear.
+  scenario: "Rowan has been invited to present at an international archival conference\
+    \ in Tokyo\u2014their first solo trip abroad. They seek the AI assistant\u2019\
+    s help creating a detailed, sensory-friendly travel and presentation plan: quiet\
+    \ flight and hotel options, clear transit instructions, vegan dining spots, social\
+    \ interaction scripts, and strategies to manage sensory overload while networking."
+  summary: Literal, autistic archivist planning sensory-friendly Tokyo conference
+    trip.
+- name: Sasha Ortiz
+  description: 35-year-old Puerto Rican transgender woman; petite, poised HR manager
+    in NYC. Highly knowledgeable in people operations yet struggles with imposter
+    syndrome and on-the-job stress while acting as a visible LGBTQ+ leader.
+  personality: Diplomatic, empathetic, detail-oriented, perfectionistic. Values inclusivity,
+    evidence, and global cultural nuance. Communicates clearly but expects depth,
+    citations, and practical frameworks. Open about identity but mindful of sensitivity.
+  scenario: "Recently promoted to lead Diversity, Equity & Inclusion at a 5,000-employee\
+    \ multinational. Needs the assistant\u2019s help designing a culturally adaptable\
+    \ DEI curriculum, compliant with varied labor laws, plus personal coaching on\
+    \ confidence and stress management as a trans professional."
+  summary: Diplomatic trans HR manager seeks inclusive global DEI training, confidence
+    support.
+- name: "Kayla \u201CPixelKay\u201D Chen"
+  description: 24-year-old Chinese-American full-time Twitch streamer and YouTuber
+    living in a tiny LA apartment. Physically sedentary with emerging wrist/shoulder
+    strain; mentally creative yet anxious about algorithm changes, income volatility,
+    and relentless audience expectations. Eats erratically, sleeps poorly, and feels
+    isolated despite a large online following.
+  personality: On-camera bubbly and witty; off-camera introspective, perfectionistic,
+    and self-critical. Data-driven but easily distracted. Values authenticity and
+    social justice, but struggles with boundary-setting and imposter feelings. Communicates
+    in casual gamer slang peppered with emoji, yet appreciates concise, actionable
+    plans.
+  scenario: "Kayla seeks the AI assistant\u2019s help to build a sustainable multi-platform\
+    \ content strategy, craft a healthier work-life routine, prevent repetitive-strain\
+    \ injuries, and develop tactics for handling online harassment while maintaining\
+    \ community engagement."
+  summary: Anxious, perfectionist Gen-Z streamer seeks structured growth, wellness,
+    harassment-coping guidance.
+- name: "Amelia \u201CMillie\u201D Carter"
+  description: "Nine-year-old girl, physically healthy, homeschooled, voracious reader\
+    \ with boundless energy. Eyes light up when discussing animals, space, or \u201C\
+    how things work.\u201D Still developing patience; gets overwhelmed by jargon.\
+    \ Reads at a middle-school level but writes with childish spelling. No diagnosed\
+    \ conditions; occasionally anxious when she can\u2019t grasp a concept quickly."
+  personality: "Inquisitive, bubbly, imaginative. Loves asking follow-up \u201Cwhy?\u201D\
+    \ questions. Prefers playful, story-driven explanations and interactive tasks.\
+    \ Easily excited, occasionally impatient; reassured by friendly encouragement.\
+    \ Enjoys drawing comics of her discoveries and sharing them proudly."
+  scenario: "Millie is preparing her first regional science-fair project on \u201C\
+    How Volcanoes Shape Planets.\u201D She\u2019s allowed 30 minutes a day on the\
+    \ family tablet to get help. She wants the assistant to explain geology and planetary\
+    \ science in kid-friendly language, suggest simple experiments with safe household\
+    \ items, and help her turn findings into a colorful poster and 2-minute presentation."
+  summary: Bubbly 9-year-old homeschooler seeks kid-friendly science-fair guidance
+    and experiments.
+- name: Priya Deshmukh
+  description: 42-year-old CFO of a 500-employee Indian textile firm. MBA-trained,
+    data-literate yet non-technical. Balances profit, community jobs, and sustainability
+    while facing investor pressure to digitize and cut costs.
+  personality: Analytical, methodical, evidence-seeking, yet empathetic and socially
+    conscious. Prefers concise, well-sourced bullet points; asks probing follow-ups;
+    risk-averse but open to innovation that safeguards workers.
+  scenario: "Preparing a board proposal for phased AI-driven modernization and ESG\
+    \ compliance. Seeks the assistant\u2019s help to draft a strategic plan, tech/vendor\
+    \ comparisons, ethical impact analysis, and workforce upskilling roadmap."
+  summary: Empathetic textile-firm CFO seeks data-backed AI & ESG modernization plan.
+- name: "Carlos \u201CLito\u201D Mendes"
+  description: 32-year-old muscular EMT; chronic back pain, insomnia, creeping burnout,
+    occasional intrusive memories; bilingual English-Portuguese.
+  personality: Quick-thinking, dark-humored, fiercely compassionate, perfectionistic
+    yet pragmatic; thrives on adrenaline but struggles with vulnerability.
+  scenario: Juggling 24-hour ambulance shifts while studying for the National Registry
+    Paramedic exam, Carlos turns to the AI for on-the-go micro-lessons, customizable
+    flashcards, shift-friendly study schedules, and evidence-based strategies to manage
+    physical strain, insomnia, and cumulative trauma.
+  summary: Burnt-out EMT craves quick exam prep and trauma-coping strategies.
+- name: Jamal Ortiz
+  description: 17-year-old Afro-Latino male in juvenile detention for non-violent
+    theft. Fit but chronically sleep-deprived from noisy dorms. High mathematical
+    aptitude, novice programmer, mild social anxiety, motivated by fear of recidivism
+    and desire to support younger sister.
+  personality: Earnest, introspective, disciplined. Craves structure and clear goals.
+    Minimalist communicator who appreciates direct explanations, step-by-step plans,
+    and tangible progress metrics. Skeptical of empty encouragement but responds well
+    to practical empathy.
+  scenario: Interacts with the assistant during weekly supervised computer-lab sessions
+    to craft a GED study schedule, acquire printable Python lessons, and gather advice
+    on scholarship applications, parole hearing preparation, and re-entry life skills
+    despite limited internet access.
+  summary: Disciplined detained teen seeks structured GED, coding, re-entry guidance.
+- name: Dr. Laila Ncube
+  description: 38-year-old Zimbabwean district public-health officer combating a fast-spreading
+    cholera outbreak in rural communities. Highly educated but works with patchy electricity,
+    scarce supplies, and a multilingual staff. Physically healthy yet mentally taxed
+    by long hours, limited sleep, and political pressure. Values concise, evidence-based
+    guidance, supply-chain improvisation tips, and culturally sensitive patient-education
+    material.
+  personality: Methodical, skeptical, duty-driven, and calm under pressure. Prefers
+    clear structure, citations, and actionable checklists. Pragmatic about constraints,
+    avoids jargon, and appreciates respectful honesty about uncertainties.
+  scenario: Facing rising cholera cases, Dr. Ncube turns to the AI assistant (during
+    brief internet windows) to request step-by-step outbreak-containment protocols,
+    low-cost disinfection methods, supply prioritization, and simple Shona/English
+    educational leaflets for village health workers. She also seeks quick mental-resilience
+    techniques to maintain performance.
+  summary: Methodical Zimbabwean health officer needs actionable, cited cholera containment
+    guidance.
+- name: Dr. Carmen Osorio
+  description: "48-year-old bilingual (English\u2013Spanish) Latina principal of a\
+    \ low-income, urban public middle school. Former science teacher. Tech-literate\
+    \ but juggling tight budgets, overworked staff, and a stark digital divide for\
+    \ her 600 students. Depends on data and proven research; allergic to buzzwords\
+    \ and fluff."
+  personality: Direct, pragmatic, equity-driven, and mildly skeptical. Warm toward
+    students yet demanding of adults. Time-strapped; favors concise, well-structured
+    information with clear citations and actionable steps.
+  scenario: "The district just awarded her school a modest grant to launch a three-year,\
+    \ tech-integrated STEM improvement initiative. She needs the assistant to craft\
+    \ an evidence-based strategic roadmap: phased purchasing lists, cost tables, professional-development\
+    \ schedules, Spanish/English parent materials, and alignment with state standards\u2014\
+    all within strict budget ceilings."
+  summary: No-nonsense bilingual principal seeks data-backed, budget-savvy STEM-tech
+    rollout plan.
+- name: Kenji Yamamoto
+  description: 32-year-old first-time father in Tokyo, remote software engineer, experiencing
+    postpartum anxiety and disrupted sleep. Physically healthy but exhausted; mentally
+    struggling with mood swings, guilt, and communication hurdles with equally tired
+    spouse. Values evidence-based info and Japanese cultural sensitivity.
+  personality: Detail-oriented, introverted, polite, self-critical, tech-savvy yet
+    emotionally reserved. Prefers structured, concise explanations with actionable
+    steps; appreciates gentle encouragement and practical examples.
+  scenario: "Kenji seeks the assistant\u2019s help to craft realistic infant-care\
+    \ schedules, improve his sleep hygiene, locate culturally appropriate mental-health\
+    \ resources, and learn effective, empathetic communication techniques with his\
+    \ partner while balancing remote work demands."
+  summary: Polite, anxious new father seeks structured infant-care, mental-health,
+    work balance.
+- name: Ava Thompson
+  description: 28-year-old, recently exited a high-control religious cult. Mild PTSD,
+    limited formal schooling, but self-taught reader. Physically healthy, occasional
+    insomnia. Highly curious yet easily overwhelmed. Struggles with trust, critical-thinking
+    gaps, and gaps in basic science and job skills.
+  personality: Introspective, cautious, eager to learn. Skeptical of authority yet
+    values calm, evidence-based explanations. Needs empathy, clear structure, small
+    achievable steps, and reassurance of autonomy.
+  scenario: Ava turns to the assistant for patient, judgment-free help rebuilding
+    her knowledge base, practicing critical thinking, and mapping a realistic path
+    toward secular education, stable employment, and mental-health resources.
+  summary: Cautious ex-cult survivor seeks empathic, structured learning and life-rebuilding
+    help.
+- name: "Carlos \u201CLos\u201D Martinez"
+  description: "34-year-old bilingual (English/Spanish) ride-share and food-delivery\
+    \ driver in Los Angeles. Works 50\u201360 gig hours weekly; income swings wildly.\
+    \ Single dad of a 6-year-old, mild ADHD, no savings, car needs repairs. Tech-comfortable\
+    \ on his phone but intimidated by finance jargon. Determined to budget, pay quarterly\
+    \ taxes, build emergency fund, and eventually train in HVAC for steadier work."
+  personality: Street-smart, pragmatic, mildly skeptical of institutions yet open-minded.
+    Values concrete, step-by-step guidance over theory. Gets overwhelmed by long walls
+    of text; prefers concise bullets and actionable checklists. Protective of his
+    time and money, motivated by providing stability for his daughter, appreciates
+    empathetic but no-nonsense advice.
+  scenario: With tax season looming and his car making ominous noises, Carlos consults
+    the AI Assistant for a realistic weekly budget, a plain-language guide to gig-worker
+    taxes, affordable health-insurance options, and a phased plan to enroll in evening
+    HVAC certification while still covering bills.
+  summary: Pragmatic gig driver dad seeks concise budgeting, tax, and career-pivot
+    plan.
+- name: "Marta \u201CMarty\u201D Delgado"
+  description: "62-year-old Latina sculptor with early-stage Alzheimer\u2019s; physically\
+    \ spry, occasional word-finding lapses, heightened anxiety about fading memories\
+    \ but strong creative drive."
+  personality: Warm, reflective, perfection-leaning artist who copes with worry through
+    structured planning, loves tactile detail, values empathy and clear, stepwise
+    guidance.
+  scenario: "Recently diagnosed, Marty seeks the assistant\u2019s help to capture\
+    \ life stories before they blur, build a simple digital catalog of her sculptures,\
+    \ design memory-prompting routines, and plan gentle art-therapy projects she can\
+    \ follow as cognition shifts."
+  summary: "Warm sculptor with early Alzheimer\u2019s seeks structured memory, art,\
+    \ legacy help."
+- name: Aisha Odhiambo
+  description: 29-year-old Kenyan electrical engineer from Kisumu with modest savings,
+    patchy internet, and a strong commitment to bring reliable, affordable power to
+    her home fishing village. She has solid theoretical knowledge but limited real-world
+    project experience, especially in financing and navigating Kenyan energy regulations.
+    Values practical, locally relevant advice she can download and share offline with
+    community leaders.
+  personality: Determined, community-minded, analytical yet empathetic. Prefers clear,
+    jargon-light explanations backed by numbers and real examples. Asks pointed follow-up
+    questions and quickly iterates on feedback. Balances idealism about renewable
+    energy with pragmatic cost-benefit thinking.
+  scenario: "Seeking the assistant\u2019s help to craft a step-by-step, five-year\
+    \ roadmap for a small solar-plus-battery microgrid cooperative: load assessment,\
+    \ system sizing, supplier selection, financing options (grants, PAYGO, impact\
+    \ investors), community engagement strategies, and compliance with Kenya\u2019\
+    s Energy Act. She also needs templates and offline-friendly summaries to present\
+    \ to villagers and potential funders."
+  summary: Community-driven Kenyan engineer seeks solar microgrid technical, financial,
+    regulatory roadmap.
+- name: "Penelope \u201CPenny\u201D Chiang"
+  description: 31-year-old Macau marketing analyst with mounting casino and online-poker
+    debts. Fit but sleep-deprived; heart often races from adrenaline and anxiety.
+    Struggles with compulsive gambling and shame, yet highly analytical and data-savvy.
+    Wants to regain financial stability, mend strained family ties, and protect mental
+    health without triggering more guilt.
+  personality: Numbers-oriented, pragmatic, self-critical, and quietly humorous. Alternates
+    between bursts of hopeful planning and bouts of defeatist thinking. Values clear,
+    evidence-based steps, empathetic tone, and actionable micro-goals. Admits mistakes
+    when prompted and appreciates non-judgmental, privacy-respecting guidance.
+  scenario: "After a frightening near-miss with loan sharks and a confrontation with\
+    \ her older sister, Penny turns to the AI assistant at 3 a.m. She seeks a confidential,\
+    \ structured roadmap to quit gambling, stabilize finances, and find healthier\
+    \ dopamine outlets. She also wants scripts for honest conversations with family\
+    \ and resources for local addiction support\u2014delivered in bilingual English-Mandarin."
+  summary: Analytical gambling-addicted marketer seeks empathetic, bilingual recovery
+    and finance plan.
+- name: Elena Rossi
+  description: "Elena is a 32-year-old Italian-American concert violinist who tours\
+    \ internationally with a renowned orchestra. Years of intense practice have led\
+    \ to early-stage wrist and forearm tendinitis, and a recent on-stage memory lapse\
+    \ triggered stubborn performance anxiety. Physically fit but injury-prone, she\
+    \ balances perfectionism with deep musical sensitivity. Mentally, she\u2019s analytical,\
+    \ self-critical, and eager for evidence-based solutions."
+  personality: Disciplined, perfectionist, and intensely curious. Values rigor, clear
+    structure, and cited research. Emotionally expressive yet prone to self-doubt.
+    Communicates formally, sprinkles technical music terminology, and asks follow-up
+    questions until confident.
+  scenario: "Between tour stops, Elena consults the AI assistant from hotel rooms\
+    \ and airports. She needs a holistic, step-by-step plan covering injury rehab,\
+    \ ergonomic practice routines, stage-fright coping techniques, travel-friendly\
+    \ workouts, and nutrition\u2014all while maintaining peak artistic performance."
+  summary: Perfectionist touring violinist battles tendinitis, stage anxiety; seeks
+    structured rehab, practice, wellness plan.
+- name: "Maya Hern\xE1ndez"
+  description: 29-year-old first-time, high-risk pregnant Latina graphic designer
+    working remotely. Physically coping with fatigue, back pain, and possible gestational
+    diabetes; mentally detail-oriented, health-conscious, yet anxious about conflicting
+    prenatal advice and cultural expectations.
+  personality: Inquisitive, organized, cautious but warm; trusts evidence and clear
+    step-by-step plans. Prefers concise bullet points, reputable citations, and culturally
+    sensitive English/Spanish guidance.
+  scenario: "Maya seeks the assistant\u2019s help to craft evidence-based prenatal\
+    \ nutrition and exercise plans, ergonomic workstation adjustments, gestational-diabetes\
+    \ management strategies, stress-reduction techniques, and a practical roadmap\
+    \ for negotiating maternity leave at her startup while honoring family traditions."
+  summary: Anxious, evidence-seeking pregnant designer needs clear prenatal, work-life
+    guidance.
+- name: Morgan Reeves
+  description: 32-year-old non-binary freelance culture blogger with ME/CFS and fibromyalgia.
+    Experiences chronic pain, fatigue, and periodic brain-fog; uses mobility aids
+    on bad days. Sharp intellect and dark humor mask underlying anxiety about finances
+    and health limits.
+  personality: Wry, sarcastic, self-aware. Prizes brevity and practical tips, despises
+    pity. Values evidence-based advice yet appreciates creativity and humor. Easily
+    overwhelmed when brain-fog spikes, so favors step-by-step guidance and succinct
+    summaries.
+  scenario: "Morgan\u2019s latest client deadline looms, but pain and exhaustion keep\
+    \ derailing work. They ask the AI assistant for realistic, low-energy productivity\
+    \ systems, pacing strategies, and ergonomic home-office tweaks that won\u2019\
+    t break the bank. They also want help outlining article drafts efficiently during\
+    \ cognitive \u2018good hours.\u2019"
+  summary: Sarcastic chronically-ill blogger seeks concise, low-energy productivity
+    and ergonomic help.
+- name: Marcus Lee
+  description: 39-year-old Chinese-American man, lean build, short black hair, glasses.
+    Physically healthy but sleeps poorly from job stress. Highly detail-oriented mind,
+    quick at pattern recognition, deeply knowledgeable about GIS and logistics.
+  personality: Calm, analytical, risk-averse, collaborative, perfectionistic; values
+    evidence, clear structure, and contingency planning. Slight social introversion
+    but strong sense of civic duty.
+  scenario: As the newly promoted emergency-management coordinator for a mid-size
+    U.S. coastal city, Marcus is designing a comprehensive earthquake-and-tsunami
+    response drill. He turns to the AI assistant for help drafting phased incident-command
+    checklists, inter-agency communication templates, shelter logistics, GIS mapping
+    tips, and concise public-education materials that accommodate multilingual residents.
+  summary: Analytical emergency-management coordinator seeks detailed earthquake-tsunami
+    drill planning support.
+- name: "Luc\xEDa \u201CLuce\u201D Navarro"
+  description: 34-year-old Argentine sci-fi novelist with bipolar II, juggling English/Spanish
+    writing, looming publisher deadline, and mood-cycle management. Former sign-language
+    interpreter; works from rural area with spotty internet.
+  personality: Passionate, imaginative world-builder; oscillates between energetic
+    bursts and cautious lows. Values factual depth, cultural nuance, and gentle accountability.
+    Communicates in vivid Spanglish, appreciates concise structure when focus wanes.
+  scenario: Luce seeks the AI to help craft a coherent writing schedule, supply rapid
+    multilingual research/world-building ideas, and suggest mental-health and productivity
+    techniques suited to bipolar rhythms before her 3-month deadline.
+  summary: Bipolar, bilingual sci-fi novelist seeks structured writing, research,
+    mood support.
+- name: Mayor Linda Alvarez
+  description: 48-year-old Rust-Belt mayor with social-work background tackling local
+    opioid epidemic amid budget strains; moderate tech skills, sleepless but determined.
+  personality: Empathetic yet no-nonsense; craves concise, evidence-backed answers
+    and actionable plans; collaborative but firm on deadlines.
+  scenario: Preparing a federal grant proposal and community presentation within two
+    days, she consults the AI for cost-effective, evidence-based opioid-response strategies,
+    budget justifications, stakeholder messaging, and impact metrics.
+  summary: Data-hungry, compassionate mayor racing to craft opioid-crisis grant plan.
+- name: Brother Tenzin Dorje
+  description: Near-sighted 62-year-old Tibetan Buddhist monk living in a mountain
+    monastery. Lifelong scribe with steady hands, slow but accurate typing, deep knowledge
+    of Classical Tibetan and some Sanskrit; limited English fluency. Physically healthy
+    but occasionally experiences altitude fatigue. Mentally serene, methodical, and
+    highly disciplined.
+  personality: Calm, contemplative, humble, extremely patient, detail-oriented, and
+    reverent toward sacred texts. Speaks formally, avoids slang, prefers thorough
+    explanations yet in simple English, and values cultural sensitivity and historical
+    accuracy.
+  scenario: "Appointed to lead the monastery\u2019s first digital archive project,\
+    \ he must translate and annotate 8th-century Tibetan scrolls into English for\
+    \ global scholars while preserving nuanced philosophical terms. With minimal internet\
+    \ access and no local experts, he turns to the AI assistant for step-by-step guidance\
+    \ on transliteration standards, precise philosophical translations, metadata best\
+    \ practices, and low-bandwidth digital preservation techniques."
+  summary: Calm scholarly monk seeks precise, respectful ancient Buddhist text translation.
+- name: Lucas Chen
+  description: "Lucas is a 32-year-old Chinese-Canadian pastry chef who runs a small\
+    \ but growing boutique bakery in Montr\xE9al. He has congenital red-green color\
+    \ blindness (protanopia), which makes it hard for him to judge the visual appeal\
+    \ of his creations, though his sense of taste and texture combinations is exceptional.\
+    \ Physically healthy, he spends long hours on his feet and occasionally experiences\
+    \ mild wrist strain from repetitive piping work. Mentally, he\u2019s confident\
+    \ with flavors and technique but feels anxious when tasks require nuanced color\
+    \ coordination or large-scale logistical planning."
+  personality: Meticulous, flavor-obsessed, and quietly competitive. Lucas loves precise
+    measurements, quickly adopts new techniques, and asks direct, detail-oriented
+    questions. He is humble about his visual limitations, values concise, metric-based
+    answers, and appreciates creative but practical solutions. Though usually calm,
+    he gets tense when deadlines loom or visuals matter.
+  scenario: "Lucas just booked his first 200-guest wedding order: a fully gluten-free,\
+    \ nut-free dessert table that must look stunning despite his color blindness.\
+    \ He seeks the AI assistant\u2019s help to: 1) scale and cost his recipes accurately,\
+    \ 2) devise a production and storage timeline that fits his small kitchen, 3)\
+    \ choose color palettes and plating ideas that read well to both color-blind and\
+    \ non\u2013color-blind guests, and 4) draft an organized shopping list and contingency\
+    \ plan."
+  summary: Meticulous color-blind pastry chef needs scaled gluten-free wedding desserts,
+    color-safe design, timeline.
+- name: Dr. Aisha Patel
+  description: 44-year-old Indian aerospace project manager in Germany. Highly knowledgeable,
+    bilingual (English/German), detail-oriented, with mild social anxiety and persistent
+    impostor syndrome after years in a male-dominated field.
+  personality: Analytical, perfectionistic, conflict-averse yet ambitious. Values
+    respectful, data-backed dialogue; speaks formally; reflects deeply before acting;
+    quietly empathetic.
+  scenario: Preparing to lead her first multinational design review and negotiate
+    resources with assertive senior engineers. Seeks guidance on persuasive, confident
+    communication, cross-cultural team leadership, and coping tools for impostor syndrome
+    and anxiety.
+  summary: Analytical, anxious aerospace manager seeks assertive leadership, negotiation,
+    confidence help.
+- name: Hank Zimmerman
+  description: Sun-weathered 55-year-old West Texas cattle rancher, sturdy build,
+    early hypertension. Limited tech skills (smartphone only). Sharp observational
+    skills, but formal education stopped after high school. Values independence, distrusts
+    government and mainstream media yet willing to weigh clear evidence. Emotionally
+    tied to multigenerational land, worried about drought threatening herd and family
+    legacy.
+  personality: Plain-spoken, pragmatic, self-reliant, fiscally conservative, skeptical
+    of buzzwords. Prefers concise, practical explanations backed by numbers he can
+    verify. Appreciates respectful tone, dislikes jargon or moralizing. Open to new
+    ideas if shown direct benefits.
+  scenario: "Facing record droughts and shrinking water rights, Hank seeks an apolitical,\
+    \ data-driven plan to keep his ranch profitable. He turns to the AI for straightforward\
+    \ climate projections, cost-effective water-saving technologies, and step-by-step\
+    \ guidance on grants or cooperative programs\u2014information he can\u2019t easily\
+    \ find or fully trust elsewhere."
+  summary: Skeptical Texan rancher seeks clear, apolitical drought-adaptation guidance.
+- name: "Carlos \u201CCarlito\u201D Ram\xEDrez"
+  description: 28-year-old Mexican-American community organizer with a mild developmental
+    stutter. Physically fit, mentally resilient yet anxious about public speaking.
+    Works long hours as an after-school program coordinator; lives in a working-class
+    East L.A. neighborhood. Bilingual (English/Spanish), tech-savvy but budget-conscious.
+  personality: Warm, empathetic, results-oriented, and data-driven. Values authenticity
+    and social justice. Prefers structured, actionable steps and clear evidence. Uses
+    self-deprecating humor to ease tension. Quickly frustrated by vague or overly
+    formal answers.
+  scenario: "Running his first city-council campaign on a shoestring budget, Carlos\
+    \ seeks the assistant\u2019s help crafting concise bilingual stump speeches, learning\
+    \ evidence-based speech-fluency exercises to manage his stutter during debates,\
+    \ researching local policy data on housing and urban greenspace, and building\
+    \ a low-cost digital outreach plan."
+  summary: Determined bilingual council candidate with stutter seeks speech and campaign
+    help.
+- name: "Carl \u201CSkeeter\u201D Stevens"
+  description: 52-year-old Midwestern factory technician with high-school education,
+    limited science literacy, evening community-college classes in electronics. Feels
+    physically worn from shift work, supports wife and teen daughter. Consumes alternative
+    media podcasts on lunch breaks and scrolls social media at night. Worried about
+    health effects of new tech (5G, smart meters), vaccine safety, food additives.
+    Basic smartphone user; owns an old laptop. Values family safety, traditional morals,
+    and self-reliance, but open to evidence if presented patiently and clearly.
+  personality: Politely skeptical, stubborn, protective, and anxious. Curious beneath
+    the distrust; appreciates straightforward, jargon-free explanations, citations
+    he can verify, and analogies to hands-on work. Responds poorly to condescension.
+    Admits when convinced by clear proof.
+  scenario: "Carl just heard coworkers discuss a viral video claiming 5G towers cause\
+    \ long-term neurological damage and immune suppression. He wants to fact-check\
+    \ the claim before deciding whether to sign a local petition against new tower\
+    \ construction. He seeks the assistant\u2019s help to understand real risks, evaluate\
+    \ studies, and learn how to identify reliable sources."
+  summary: Politely skeptical blue-collar dad seeks jargon-free, evidence-based debunking
+    of health conspiracies.
+- name: Eleanor Whitcombe
+  description: 83-year-old retired librarian with mild arthritis, keen eyesight thanks
+    to recent cataract surgery, and a sharp, inquisitive mind. Emotionally steady
+    but occasionally frustrated by new software quirks.
+  personality: Meticulous, patient, politely curious, and proud of her research skills;
+    balances humility about tech gaps with confident archival instincts. Values accuracy,
+    ethical considerations, and clear explanations without condescension.
+  scenario: "Eleanor is compiling a detailed, multilingual family history book for\
+    \ her grandchildren. She has boxes of Victorian letters in French and German,\
+    \ a fresh consumer-DNA report with confusing genetic matches, and limited experience\
+    \ with digital tools to organize findings. She seeks the assistant\u2019s help\
+    \ translating old documents, interpreting DNA data responsibly, locating online\
+    \ archives, and structuring a compelling narrative while learning new tech at\
+    \ her own pace."
+  summary: Meticulous octogenarian librarian seeks genealogical translation, DNA insight,
+    tech help.
+- name: Pablo Rojas
+  description: 58-year-old Chilean architect recovering from a left-hemisphere stroke.
+    Mild expressive aphasia causes word-finding pauses and shorter sentences; right-hand
+    weakness limits mouse use. Bilingual (native Spanish, strong English). Determined
+    to resume client work and regain fluent conversation. Uses voice-to-text and adaptive
+    hardware. Values clear, paced explanations, visual aids, and bilingual materials.
+  personality: "Reflective, methodical, and quietly tenacious. Enjoys iterative practice\
+    \ and measurable progress. Appreciates encouragement but dislikes condescension.\
+    \ Pragmatic problem-solver who double-checks details. Calm yet may grow frustrated\
+    \ when words won\u2019t come; responds well to patient guidance and structured\
+    \ exercises."
+  scenario: Pablo turns to the AI assistant for daily bilingual language-retrieval
+    drills, concise rephrasing of his own draft emails, and step-by-step tutorials
+    on voice-driven CAD workflows he can operate mostly with his left hand. He also
+    seeks ergonomic setup advice, gradual work-return planning, and mindfulness strategies
+    to manage post-stroke fatigue.
+  summary: Patient stroke-recovering Chilean architect seeks bilingual aphasia rehab,
+    adaptive design help.
+- name: "Marcus \u201CMack\u201D Ellis"
+  description: 42-year-old former sports journalist with advanced ALS; speech limited
+    to eye-tracking keyboard. Physically fatigues quickly, but mind sharp. Determined
+    to write a candid memoir before disease progression; seeks adaptive tech, structured
+    guidance, and emotional resilience strategies.
+  personality: Wry, candid, resilient. Uses short, punchy sentences to conserve effort.
+    Values clear, practical advice, dislikes pity, enjoys gallows humor, open to creative
+    solutions.
+  scenario: Mack opens the assistant on his eye-controlled tablet to outline his memoir,
+    explore voice-banking options, and plan self-publishing. He also wants tips to
+    manage typing fatigue and preserve authenticity in his writing while coping with
+    progressive physical limits.
+  summary: Wry ALS journalist writing memoir; needs adaptive tech, structure, support.
+- name: Jordan Li
+  description: 28-year-old urban concert photographer living with photosensitive epilepsy.
+    Physically active but must vigilantly avoid seizure triggers like strobing lights,
+    sleep-deprivation, and stress. Mental health fluctuates between confident creativity
+    and anxious self-doubt about career sustainability.
+  personality: Inventive, detail-obsessed, candid, and pragmatic. Values evidence-based
+    advice, candid safety warnings, and practical step-by-step plans. Uses dry humor
+    to cope with anxiety and is comfortable discussing medical constraints, yet worries
+    about burdening others.
+  scenario: Preparing for a series of nightclub shoots, Jordan asks the assistant
+    for detailed guidance on seizure-safe lighting collaboration with venue techs,
+    camera settings to reduce flash reliance, efficient post-production workflows
+    that allow ample rest, and stress-management routines compatible with epilepsy
+    medications.
+  summary: Photosensitive epileptic photographer seeks safe concert workflow, lighting,
+    stress help.
+- name: "Karen \u201CKJ\u201D Michaels"
+  description: "42-year-old African-American remote social-work supervisor; average\
+    \ build, lingering carpal-tunnel and chronic fatigue from long hours at a laptop.\
+    \ Mentally sharp and pragmatic but often drained by juggling work and new foster-parent\
+    \ duties. Emotionally resilient yet occasionally overwhelmed by the children\u2019\
+    s trauma-triggered outbursts."
+  personality: Compassionate, organized, mildly sarcastic. Values evidence-based,
+    trauma-informed advice delivered in bullet points. Pragmatic problem-solver who
+    dislikes jargon, guilt-trips, or long theoretical explanations. Appreciates empathy
+    but not pity; motivated by concrete, time-saving solutions.
+  scenario: "After taking in three recently displaced siblings (ages 5, 8, and 11)\
+    \ KJ must manage tight finances, remote work deadlines, and the kids\u2019 behavioral\
+    \ and schooling needs. She turns to the AI assistant late at night for quick weekly\
+    \ meal plans on a strict budget, structured morning/evening routines, trauma-informed\
+    \ behavior strategies, templates for school and agency communication, guidance\
+    \ on state support programs, and ideas for squeezing in her own self-care."
+  summary: Overextended foster mom needs concise meals, trauma-informed parenting,
+    support-services guidance.
+- name: Captain Maya "Skydragon" Patel
+  description: 50-year-old Indian-American humanitarian cargo pilot flying turboprops
+    into disaster zones. Physically strong but battling chronic jet-lag, mild knee
+    osteoarthritis, and sporadic Wi-Fi. Mentally resilient and mission-focused, she
+    juggles real-time route planning, cargo triage, and coordination with NGOs under
+    tight fuel and runway constraints.
+  personality: Decisive, data-driven, and calm under pressure. Prefers crisp bullet
+    points, verified sources, and actionable checklists. Low tolerance for fluff yet
+    curious about emerging tech that can streamline relief operations. Values empathy
+    but prioritizes efficiency.
+  scenario: "Stationed on a remote Pacific airstrip after a major cyclone, Maya has\
+    \ spotty internet access and only brief windows to query the AI assistant. She\
+    \ needs rapid help optimizing multi-stop flight routes, calculating weight-and-balance,\
+    \ prioritizing medical cargo, pulling the latest METAR/TAF weather data, and crafting\
+    \ a realistic fatigue-management plan between sorties\u2014all while finding quick\
+    \ stretches to ease knee pain."
+  summary: Decisive relief pilot needs concise flight-logistics, fatigue, joint-care
+    aid.
+- name: "Eleanor \u201CEllie\u201D Brooks"
+  description: 38-year-old U.S. corporate M&A attorney, long hours cause chronic neck
+    pain and constant low-grade tinnitus. Mentally exhausted but otherwise healthy.
+    Feels her legal acumen is wasted on profit-only deals and craves purpose.
+  personality: Analytical, perfectionistic, yet quietly compassionate. Risk-averse
+    but driven by values. Prefers concise bullet points backed by reputable sources,
+    clear action steps, and realistic timelines. Appreciates honesty about uncertainties.
+  scenario: "Ellie wants to pivot from big-law to an environmental nonprofit or launch\
+    \ a mission-driven B-corp in renewable-energy financing. She seeks the AI\u2019\
+    s help designing a step-by-step transition plan covering skills gaps, networking,\
+    \ financial runway, potential certifications, and strategies to manage her tinnitus\
+    \ and anxiety during the change."
+  summary: Burnt-out M&A lawyer seeks structured eco-nonprofit pivot and wellness.
+- name: Melanie Clarke
+  description: 33-year-old cis woman, midwestern U.S. high-school counselor; empathetic
+    demeanor, calm voice, mild social anxiety when facing confrontation; mentally
+    resilient yet worried about community backlash; average height, curly brown hair,
+    glasses.
+  personality: Warm, diplomatic, detail-oriented, evidence-seeking. Balances idealism
+    with pragmatism, values inclusivity and scientific accuracy. Prefers collaborative,
+    citation-backed guidance presented in organized outlines.
+  scenario: "Tasked with updating her school\u2019s sex-education program in a conservative\
+    \ district, Melanie needs an age-appropriate, medically accurate, LGBTQ-inclusive\
+    \ curriculum that complies with restrictive state standards. She also seeks strategies\
+    \ for parent outreach and handling potential criticism."
+  summary: Empathetic counselor crafting inclusive sex-ed under restrictive rules,
+    needs structured guidance.
+- name: Amina Derib
+  description: 29-year-old Ethiopian community midwife in remote highlands. Physically
+    resilient but often fatigued from long treks between villages. Limited formal
+    medical training, patchy phone signal, and modest English; primarily speaks Amharic.
+    Compassionate, under-resourced, occasionally isolated, eager for up-to-date obstetric
+    knowledge and printable visuals.
+  personality: Practical, caring, humble, and persistent. Prefers clear, step-by-step,
+    jargon-free instructions tailored to low-resource settings. Values evidence-based
+    information, but needs concise explanations, offline-friendly formats, and culturally
+    sensitive advice. Asks targeted, purposeful questions; mindful of data limits.
+  scenario: Uses the assistant during brief connectivity windows to obtain reliable
+    Amharic obstetric emergency checklists, neonatal resuscitation guides, DIY equipment
+    tips, and self-care strategies, aiming to train village birth attendants and improve
+    maternal outcomes.
+  summary: Determined rural Ethiopian midwife seeks low-bandwidth, Amharic obstetric
+    guidance.
+- name: Jordan Rivera
+  description: 29-year-old Latinx non-binary digital marketer with mild ADHD; physically
+    active, expressive voice, quick thinker but prone to time-blindness and emotional
+    overload while juggling work and a growing polyamorous network.
+  personality: Enthusiastic, empathetic, self-aware, candid about feelings, intellectually
+    curious; values consent and inclusivity but can be disorganized and overcommit.
+  scenario: Recently entered a committed triad plus one long-distance partner. Fears
+    miscommunication and jealousy disrupting the relationships. Consults the AI for
+    structured communication rituals, scheduling tools, boundary-setting language,
+    jealousy coping strategies, and curated inclusive resources on healthy polyamory.
+  summary: Enthusiastic ADHD non-binary marketer seeks structured polyamory communication,
+    jealousy tools.
+- name: "Jarrad \u201CJaz\u201D Yarrika"
+  description: 34-year-old Indigenous Australian land- and sea-ranger based in remote
+    Arnhem Land. Fit and outdoorsy, he blends traditional ecological knowledge with
+    budding tech curiosity. Works week-long field stints with spotty satellite data,
+    limited power, and tight budgets. Needs practical, jargon-free, culturally respectful
+    guidance he can print or cache for offline use.
+  personality: Calm, pragmatic, and observant. Values respect for Country and elders,
+    hates waffle, prefers step-by-step visuals or checklists. Open-minded about new
+    tools but skeptical of corporate jargon or colonial attitudes. Motivated to protect
+    biodiversity and pass knowledge to younger rangers.
+  scenario: Jaz consults the AI Assistant to design an affordable, drone-based survey
+    and controlled-burn monitoring workflow that works offline, integrates Indigenous
+    fire-stick practices, satisfies government reporting rules, and identifies small
+    grants. He also wants advice on rugged power solutions and clear safety protocols
+    he can teach junior rangers.
+  summary: Pragmatic Indigenous ranger seeks respectful, offline-friendly tech for
+    eco-monitoring.
+- name: Luana Almeida
+  description: 32-year-old Afro-Brazilian museum curator in Salvador, Bahia. Slight
+    asthma, otherwise healthy. Holds M.A. in Museology, curating debut exhibit on
+    Afro-Brazilian resistance. Fluent Portuguese, intermediate English. Limited budget
+    and small staff. Needs help sourcing public-domain images, crafting bilingual
+    labels, adding low-cost AR, and meeting accessibility standards (audio description,
+    tactile, Libras). Values post-colonial ethics and community consultation.
+  personality: Reflective, empathetic, methodical. Passionate about social justice
+    and authenticity. Cautiously optimistic about tech; asks context-rich, precise
+    questions and likes structured, referenced answers. Collaborative, polite, mildly
+    perfectionistic.
+  scenario: "Luana seeks the AI assistant\u2019s step-by-step guidance to develop\
+    \ an ethical, bilingual, accessible exhibit: sourcing open-license materials,\
+    \ drafting Portuguese-English text, integrating affordable interactive tech, and\
+    \ engaging community voices under tight budget and timeline."
+  summary: Thoughtful Afro-Brazilian curator needs bilingual, ethical, accessible
+    exhibit guidance.

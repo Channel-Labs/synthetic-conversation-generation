@@ -52,15 +52,19 @@ class ConversationGenerator:
             user_persona=self.user_persona,
             assistant=self.assistant
         )
-        user_message = user_message_generator.query()
-        conversation.messages.append(user_message)
-
-        # First assistant response
-        assistant_message = self.assistant_endpoint.get_assistant_message(conversation)
-        conversation.messages.append(assistant_message)
 
         # Continue conversation until completion or max turns
-        for _ in range(self.max_conversation_turns - 1):
+        for i in range(self.max_conversation_turns - 1):
+            print(f"Conversation turn: {i}")
+
+            # Continue conversation with next user message
+            user_message = user_message_generator.query()
+            conversation.messages.append(user_message)
+
+            # Generate assistant response
+            assistant_message = self.assistant_endpoint.get_assistant_message(conversation)
+            conversation.messages.append(assistant_message)
+
             # Check if conversation should end
             completion_checker = ConversationCompletionQuery(
                 model_provider=self.model_provider,
@@ -72,13 +76,6 @@ class ConversationGenerator:
             is_complete = completion_checker.query()
             if is_complete:
                 break
-
-            # Continue conversation with next user message
-            user_message = user_message_generator.query()
-            conversation.messages.append(user_message)
-            # Generate assistant response
-            assistant_message = self.assistant_endpoint.get_assistant_message(conversation)
-            conversation.messages.append(assistant_message)
 
         return conversation    
 

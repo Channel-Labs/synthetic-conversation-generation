@@ -37,29 +37,25 @@ def calculate_score(prompt_messages, response_messages):
     conversation=conversation
   ).query()
 
-def determine_winner(prompt_messages, response_a_messages, response_b_messages, num_shuffles=2):
+def determine_winner(prompt_messages, response_a_messages, response_b_messages, num_responses=1):
 
-  num_a_wins = 0
-  num_b_wins = 0
-  num_ties = 0
+  scores_a = []
+  scores_b = []
 
-  for _ in range(num_shuffles):
+  for _ in range(num_responses):
     score_a = calculate_score(prompt_messages, response_a_messages)
     score_b = calculate_score(prompt_messages, response_b_messages)
+    
+    scores_a.append(score_a)
+    scores_b.append(score_b)
 
-    if score_a > score_b:
-      num_a_wins += 1
-    elif score_b > score_a:
-      num_b_wins += 1
-    else:
-      num_ties += 1
+  avg_score_a = sum(scores_a) / len(scores_a)
+  avg_score_b = sum(scores_b) / len(scores_b)
 
-  if num_a_wins == num_shuffles:
+  if avg_score_a > avg_score_b:
     return "a"
-  elif num_b_wins == num_shuffles:
-    return "b"
   else:
-    return "tie"
+    return "b"
 
   
 def process_row(row):
@@ -119,10 +115,8 @@ if __name__ == "__main__":
   for i, row in df.iterrows():
     if row['winner_model_a'] == 1:
       actual_winners.append("a")
-    elif row['winner_model_b'] == 1:
-      actual_winners.append("b")
     else:
-      actual_winners.append("tie")
+      actual_winners.append("b")
 
   print(f"Predicted winners length: {len(predicted_winners)}, Actual winners length: {len(actual_winners)}")
   print("Num correct: ", sum([predicted_winners[i] == actual_winners[i] for i in range(len(predicted_winners))]))

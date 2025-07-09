@@ -34,7 +34,7 @@ These personas will be utilized to generate simulated conversations and evaluate
 {json.dumps(asdict(self.assistant), indent=4)}
 
 ### Previous User Personas
-{json.dumps([asdict(persona) for persona in self.previous_personas], indent=4)}
+{json.dumps([persona.summary for persona in self.previous_personas], indent=4)}
 """
     
     def response_schema(self):
@@ -57,7 +57,7 @@ These personas will be utilized to generate simulated conversations and evaluate
             },
             "summary": {
                 "type": "string",
-                "description": "A concise (~5 word) summary of the user, with the main focus on the user's scenario."
+                "description": "A concise (~10 words) summary of the user, with the main focus on the user's personality, scenario, and description."
             }
         }
 
