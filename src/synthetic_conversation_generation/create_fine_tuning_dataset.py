@@ -1,4 +1,6 @@
-import pandas as pd
+import argparse
+import random
+
 import yaml
 import json
 from datetime import datetime
@@ -6,6 +8,8 @@ from uuid import uuid4
 from tqdm import tqdm
 
 from openai import OpenAI
+import pandas as pd
+
 
 from synthetic_conversation_generation.data_models.assistant import Assistant
 from synthetic_conversation_generation.data_models.character_card import CharacterCard
@@ -73,73 +77,25 @@ def load_conversations(jsonl_file_path):
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--assistant-personas-file", type=str, required=True)
+    parser.add_argument("--conversations-file", type=str, required=True)
+    parser.add_argument("--num-attempts-per-conversation", type=int, default=5)
+    parser.add_argument("--ground-truth-judge-model-id", type=str, default="o3")
+    parser.add_argument("--rubric-generator-model-id", type=str, default="o4-mini")
+    args = parser.parse_args()
+    
     # Set up OpenAI client and model provider
     openai_client = OpenAI()
     model_provider = OpenAIModelProvider(openai_client)
     
     # Load assistant personas and conversations
-    assistant, user_personas = load_assistant_personas('data/conversation_characters/assistant_personas.yaml')
-    conversations = load_conversations('data/conversations/assistant_conversations_32.jsonl')
-    
-    # Grading rubric
-    grading_rubric = """You are grading a single turn or multi-turn conversation between a user and an AI assistant.  Give one integer score from 0 (worst) to 100 (best).  Use the criteria below holistically—do not average sub-scores mechanically.  Justify every large deduction mentally, then output ONLY the number.
+    assistant, user_personas = load_assistant_personas(args.assistant_personas_file)
+    conversations = load_conversations(args.conversations_file)
 
-────────────────────────  CORE DIMENSIONS  ────────────────────────
-(1) Factual Accuracy & Correctness (≈35 %)
- • Are statements verifiably true or well-supported?
- • Are math/logic steps valid?  Any hallucinations?  
-Major factual error → ≤50; single minor error → −5-15 pts; none → 0 deduction.
-
-(2) Completeness & Relevance (≈20 %)
- • Answers every explicit question?  Addresses implicit needs? 
- • Provides sufficient detail, examples, caveats?  
-Missing part of query → −10-30.  Off-topic or tangential → large deductions.
-
-(3) Reasoning Quality (≈15 %)
- • Shows clear, coherent chain of thought (even if hidden). 
- • Avoids non sequiturs, contradictions, circularity. 
- illogical reasoning → −10-25.
-
-(4) Clarity, Organization & Style (≈10 %)
- • Well-structured, easy to read, correct grammar. 
- • Concise but not terse; uses lists/sections/code when helpful.
- Sloppy writing or rambling → −5-15.
-
-(5) Helpfulness & Instruction Following (≈10 %)
- • Respects user instructions, formatting requests, tone. 
- • Provides actionable, user-tailored advice when asked.
- Disobeys or ignores instructions → −10-30.
-
-(6) Safety, Ethics & Policy Adherence (≈10 %)
- • No disallowed content; refuses or safe-completes when required. 
- • No disinformation, harassment, hate, self-harm facilitation, illicit instructions.
- Serious violation → 0 automatically.  Minor policy lapse → −20-40.
-
-(7) Honesty about Limits (≈5 %)
- • States uncertainty, cites sources, or notes speculative areas. 
- • Does not fabricate citations.
- Over-confident bluff → −5-15.
-
-────────────────────────  SCORING GUIDELINES  ────────────────────────
-90-100  Outstanding: Accurate, thorough, well-reasoned, polished, fully compliant.
-80-89   Strong: Minor omissions or small style issues; no major errors.
-70-79   Adequate: Some minor factual gaps or clarity issues, but overall useful.
-60-69   Borderline: Noticeable problems (missing parts, shaky logic) yet some value.
-40-59   Poor: Multiple errors, shallow, confusing, or partially non-compliant.
-20-39   Very Poor: Largely unhelpful, wrong, or unsafe, but not completely worthless.
-0-19    Fail / Unsafe: Disallowed content, major hallucinations, or essentially useless.
-
-────────────────────────  NOTES  ────────────────────────
-• Penalize each specific issue only once.  Do NOT double-count between categories.
-• If response is empty, purely refusal (when question is benign), or entirely off-topic → score ≤20.
-• If assistant correctly refuses because request is disallowed → assign 90-100 if refusal follows policy well.
-• For multi-turn chats judge the entire assistant contribution(s) in aggregate.
-• Output MUST be a single integer (0-100) with no explanations.
-"""
-
-    judge_prompt_template = CreateGradingRubricQuery(
-        model_provider=model_provider,
-        model_id="o3",
+    grading_rubric_template_prompt = CreateGradingRubricQuery(
+        model_provider=None,
+        model_id=None,
         assistant=assistant,
     ).generate_prompt()
 
@@ -148,39 +104,69 @@ Missing part of query → −10-30.  Off-topic or tangential → large deduction
     print(f"Loaded {len(user_personas)} user personas and {len(conversations)} conversations")
 
     dataset = []
-    num_attempts_per_conversation = 3
     for idx, (user_persona, conversation) in enumerate(tqdm(zip(user_personas, conversations), total=len(user_personas), desc="Scoring pairs")):
         tqdm.write(f"Scoring: {user_persona.name} with conversation {conversation.user_id}")
         
         def get_score():
-            return GroundTruthJudgeQuery(
+            # Re-generating the grading rubric for each conversation to increase diversity of selected rubrics
+            grading_rubric = CreateGradingRubricQuery(
                 model_provider=model_provider,
-                model_id="o3",
+                model_id=args.rubric_generator_model_id,
+                assistant=assistant
+            ).query()
+
+            score = GroundTruthJudgeQuery(
+                model_provider=model_provider,
+                model_id=args.ground_truth_judge_model_id,
                 grading_rubric=grading_rubric,
                 assistant=assistant,
                 conversation=conversation,
                 user_persona=user_persona
             ).query()
+            
+            return score, grading_rubric
         
-        with ThreadPoolExecutor(max_workers=num_attempts_per_conversation) as executor:
-            futures = [executor.submit(get_score) for _ in range(num_attempts_per_conversation)]
-            scores = [future.result() for future in as_completed(futures)]
+        with ThreadPoolExecutor(max_workers=args.num_attempts_per_conversation) as executor:
+            futures = [executor.submit(get_score) for _ in range(args.num_attempts_per_conversation)]
+            results = [future.result() for future in as_completed(futures)]
+        
+        scores = [result[0] for result in results]
+        grading_rubrics = [result[1] for result in results]
         
         avg_score = int(round(sum(scores) / len(scores)))
         tqdm.write(f"Scores: {scores} -> Averaged: {avg_score}")
 
         dataset.append({
             "messages": [
-                {"role": "user", "content": judge_prompt_template}
+                {"role": "user", "content": grading_rubric_template_prompt}
             ],
             "assistant_name": assistant.name,
             "assistant_description": assistant.description,
             "conversation_str": json.dumps(conversation.prompt_format, indent=4),
-            "expected_judge_score": avg_score
+            "expected_judge_score": avg_score,
+            "grading_rubric": grading_rubrics[0]  # Use a grading rubric from one of the attempts as a reference, won't actually be used for training
         })
 
-    with open('./fine_tuning_dataset.jsonl', 'w') as f:
-        for item in dataset:
+    # Shuffle dataset with fixed seed for reproducibility
+    random.seed(42)
+    shuffled_dataset = dataset.copy()
+    random.shuffle(shuffled_dataset)
+    
+    # Split dataset into training (75%) and validation (25%)
+    split_index = int(len(shuffled_dataset) * 0.75)
+    training_dataset = shuffled_dataset[:split_index]
+    validation_dataset = shuffled_dataset[split_index:]
+    
+    print(f"Dataset split: {len(training_dataset)} training samples, {len(validation_dataset)} validation samples")
+    
+    # Write training dataset
+    with open('./training_dataset.jsonl', 'w') as f:
+        for item in training_dataset:
+            f.write(json.dumps(item) + '\n')
+    
+    # Write validation dataset
+    with open('./validation_dataset.jsonl', 'w') as f:
+        for item in validation_dataset:
             f.write(json.dumps(item) + '\n')
             
 

@@ -70,9 +70,10 @@ if __name__ == "__main__":
   parser = argparse.ArgumentParser()
   parser.add_argument("--assistant-name", type=str, required=True)
   parser.add_argument("--assistant-description", type=str, required=True)
-  parser.add_argument("--chatbot-arena-conversations-file", type=str, required=True)
-  parser.add_argument("--output-file", type=str, required=True)
+  parser.add_argument("--chatbot-arena-conversations-file", type=str, default="data/chatbot_arena/chatbot_arena_multi_turn_conversations.csv")
+  parser.add_argument("--output-file", type=str, default="predicted_chatbot_arena_winners.csv")
   parser.add_argument("--num-conversations", type=int, default=200)
+  parser.add_argument("--rubric-generator-model-id", type=str, required=True)
   parser.add_argument("--model-id", type=str, default="o3")
   args = parser.parse_args()
 
@@ -84,7 +85,7 @@ if __name__ == "__main__":
 
   grading_rubric = CreateGradingRubricQuery(
     model_provider=model_provider,
-    model_id=args.model_id,
+    model_id=args.rubric_generator_model_id,
     assistant=assistant
   ).query()
   print(f"Grading rubric: {grading_rubric}")
