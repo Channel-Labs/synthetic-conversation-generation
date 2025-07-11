@@ -3,13 +3,11 @@ from typing import List
 
 import yaml
 
-from synthetic_conversation_generation.data_models.assistant import Assistant
 from synthetic_conversation_generation.data_models.character_card import CharacterCard
 
 
 @dataclass
 class ConversationCharacters:
-    assistant: Assistant
     users: List[CharacterCard]
 
     @classmethod
@@ -18,26 +16,20 @@ class ConversationCharacters:
         Load a YAML schema file and convert it into a ConversationCharacters object.
         
         Args:
-            schema_path: Path to the YAML schema file
+            schema_path: Path to the YAML schema file containing user personas
             
         Returns:
-            ConversationCharacters object containing the parsed schema
+            ConversationCharacters object containing the parsed user personas
         """
         with open(schema_path, 'r') as f:
             schema_data = yaml.safe_load(f)
-        
-        # Parse assistant
-        assistant = Assistant.from_dict(schema_data['assistant'])
         
         # Parse users
         users = []
         for user_data in schema_data.get('users', []):
             users.append(CharacterCard.from_dict(user_data))
         
-        return cls(
-            assistant=assistant,
-            users=users
-        )
+        return cls(users=users)
     
     def to_yaml(self, output_path: str):
         """

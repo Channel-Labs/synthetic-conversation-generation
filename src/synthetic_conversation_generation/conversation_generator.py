@@ -1,7 +1,6 @@
 import argparse
 import json
 import logging
-import random
 from typing import List
 from anthropic import Anthropic
 from openai import OpenAI
@@ -81,7 +80,8 @@ class ConversationGenerator:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--conversation-characters-path", type=str, required=True)
+    parser.add_argument("--assistant-path", type=str, required=True, help="Path to YAML file containing assistant definition")
+    parser.add_argument("--conversation-characters-path", type=str, required=True, help="Path to YAML file containing user personas")
     parser.add_argument("--inference-endpoint-path", type=str, required=True)
     parser.add_argument("--output-path", type=str, required=True)
     parser.add_argument("--model-provider", type=str, choices=["openai", "anthropic"], default="openai")
@@ -96,9 +96,12 @@ if __name__ == "__main__":
         anthropic_client = Anthropic()
         model_provider = AnthropicModelProvider(anthropic_client)
 
-    convo_characters = ConversationCharacters.from_yaml(args.conversation_characters_path)
-    assistant = convo_characters.assistant
-    user_personas = convo_characters.users
+    # Load assistant from separate YAML file
+    assistant = Assistant.from_yaml(args.assistant_path)
+
+    # Load user personas from YAML file
+    conversation_characters = ConversationCharacters.from_yaml(args.conversation_characters_path)
+    user_personas = conversation_characters.users
 
     inference_endpoint = InferenceEndpoint.from_yaml(args.inference_endpoint_path)
 

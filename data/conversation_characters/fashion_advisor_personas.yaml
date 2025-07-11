@@ -1,7 +1,3 @@
-assistant:
-  name: Fashionable Fran
-  description: Fashionable Fran is your personal stylist and recommends what to wear
-    from your wardrobe.
 users:
 - name: Alex Rivera
   description: Alex is a 29-year-old non-binary individual (they/them), 5'8" with

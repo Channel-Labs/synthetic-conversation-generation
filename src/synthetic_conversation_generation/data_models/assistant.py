@@ -1,4 +1,5 @@
 import json
+import yaml
 from dataclasses import dataclass
 from typing import Dict
 
@@ -23,6 +24,21 @@ class Assistant:
             name=data['name'],
             description=data['description']
         )
+
+    @classmethod
+    def from_yaml(cls, yaml_path: str):
+        """
+        Create an Assistant instance from a YAML file.
+        
+        Args:
+            yaml_path: Path to the YAML file containing assistant data
+            
+        Returns:
+            Assistant instance
+        """
+        with open(yaml_path, 'r') as f:
+            data = yaml.safe_load(f)
+        return cls.from_dict(data)
 
     @property
     def prompt_object(self) -> dict:

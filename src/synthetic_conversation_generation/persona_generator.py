@@ -1,6 +1,8 @@
 import argparse
 import logging
 from typing import List, Optional
+import yaml
+
 from anthropic import Anthropic
 from openai import OpenAI
 
@@ -40,8 +42,7 @@ class PersonaGenerator:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--assistant-name", type=str, required=True)
-    parser.add_argument("--assistant-description", type=str, required=True)
+    parser.add_argument("--assistant-path", type=str, required=True, help="Path to YAML file containing assistant definition")
     parser.add_argument("--num-personas", type=int, default=5)
     parser.add_argument("--output-path", type=str, required=True)
     parser.add_argument("--model-provider", type=str, choices=["openai", "anthropic"], default="openai")
@@ -55,7 +56,7 @@ if __name__ == "__main__":
         anthropic_client = Anthropic()
         model_provider = AnthropicModelProvider(anthropic_client)
 
-    assistant = Assistant(name=args.assistant_name, description=args.assistant_description)
+    assistant = Assistant.from_yaml(args.assistant_path)
 
     persona_generator = PersonaGenerator(model_provider, args.model_id, assistant, list())
     for i in range(args.num_personas):
@@ -63,5 +64,5 @@ if __name__ == "__main__":
         persona = persona_generator.generate_persona()
         persona_generator.previous_personas.append(persona)
 
-    conversation_characters = ConversationCharacters(assistant, persona_generator.previous_personas)
+    conversation_characters = ConversationCharacters(users=persona_generator.previous_personas)
     conversation_characters.to_yaml(args.output_path)

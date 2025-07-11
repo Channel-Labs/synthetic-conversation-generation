@@ -1,8 +1,7 @@
 <!-- PROJECT LOGO -->
-<br />
 <div align="center">
 
-<h3 align="center">Synthetic Conversation Generation </h3>
+<h1 align="center">Synthetic Conversation Generation </h1>
 
   <p align="center">
 Generate conversations between your AI and synthetic users to test, refine, and improve your models.    
@@ -58,7 +57,7 @@ Here's how to set up the Synthetic Conversation Generation toolkit.
 
 ### Prerequisites
 
-* Python 3.7+
+* Python 3.9+
 * pip (Python package manager)
 * API keys for your chosen LLM provider 
   - [OpenAI](https://platform.openai.com/docs/overview)
@@ -90,7 +89,23 @@ Here's how to set up the Synthetic Conversation Generation toolkit.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-The toolkit provides two main functionalities:
+### 0. Assistant Definition
+
+Before generating personas or conversations, you need to create a YAML file that defines your AI assistant. This file should contain the assistant's name and description.
+
+**Assistant YAML Format:**
+
+```yaml
+name: "Your Assistant Name"
+description: "Brief description of your assistant's purpose and capabilities"
+```
+
+**Example (`data/assistants/fashion_advisor.yaml`):**
+
+```yaml
+name: "Fashionable Fran"
+description: "Fashionable Fran is your personal stylist and recommends what to wear from your wardrobe."
+```
 
 ### 1. User Persona Generation
 
@@ -100,8 +115,7 @@ Generate a diverse set of realistic user personas tailored to your AI assistant.
 
 ```sh
 python src/synthetic_conversation_generation/persona_generator.py \
-  --assistant-name <ASSISTANT_NAME> \
-  --assistant-description <ASSISTANT_DESCRIPTION> \
+  --assistant-path <ASSISTANT_PATH> \
   --num-personas <NUM_PERSONAS> \
   --output-path <OUTPUT_PATH> \
   --model-provider <MODEL_PROVIDER> \
@@ -110,8 +124,7 @@ python src/synthetic_conversation_generation/persona_generator.py \
 
 **Arguments:**
 
-- `--assistant-name`: Name of your AI assistant (e.g., "TaxBot").
-- `--assistant-description`: Brief description of your assistant's purpose and capabilities.
+- `--assistant-path`: Path to YAML file containing your assistant definition (name and description).
 - `--num-personas`: Number of user personas to generate (default: 5).
 - `--output-path`: Path to save the generated personas (YAML format).
 - `--model-provider`: LLM provider to use (`openai` or `anthropic`, default: `openai`).
@@ -121,10 +134,9 @@ python src/synthetic_conversation_generation/persona_generator.py \
 
 ```sh
 python src/synthetic_conversation_generation/persona_generator.py \
-  --assistant-name "Fashionable Fran" \
-  --assistant-description "A personal stylist recommending outfits from your wardrobe." \
+  --assistant-path data/assistants/fashion_advisor.yaml \
   --num-personas 3 \
-  --output-path examples/conversation_characters/fashion_advisor.yaml
+  --output-path data/conversation_characters/fashion_advisor_personas.yaml
 ```
 
 After generation, review and optionally edit the personas in the output YAML file to ensure they fit your use case.
@@ -135,6 +147,7 @@ Generate realistic conversations between synthetic users and your AI assistant. 
 
 ```sh
 python src/synthetic_conversation_generation/conversation_generator.py \
+  --assistant-path <ASSISTANT_PATH> \
   --conversation-characters-path <CONVERSATION_CHARACTERS_PATH> \
   --inference-endpoint-path <INFERENCE_ENDPOINT_PATH> \
   --max-conversation-turns <MAX_CONVERSATION_TURNS> \
@@ -145,7 +158,8 @@ python src/synthetic_conversation_generation/conversation_generator.py \
 
 **Arguments:**
 
-- `--conversation-characters-path`: Path to the YAML file containing the assistant details and user personas (output from persona_generator).
+- `--assistant-path`: Path to YAML file containing your assistant definition (name and description).
+- `--conversation-characters-path`: Path to the YAML file containing user personas (output from persona_generator).
 - `--inference-endpoint-path`: Path to a YAML file specifying how to call your AI assistant via HTTP.
 - `--max-conversation-turns`: Maximum number of turns a conversation can have (default: 10).
 - `--output-path`: Path to save the generated conversations (JSONL format).
@@ -156,10 +170,11 @@ python src/synthetic_conversation_generation/conversation_generator.py \
 
 ```sh
 python src/synthetic_conversation_generation/conversation_generator.py \
-  --conversation-characters-path examples/conversation_characters/fashion_advisor.yaml \
-  --inference-endpoint-path examples/endpoint/openai_chat_completion.yaml \
+  --assistant-path data/assistants/fashion_advisor.yaml \
+  --conversation-characters-path data/conversation_characters/fashion_advisor_personas.yaml \
+  --inference-endpoint-path data/endpoint/openai_chat_completion.yaml \
   --max-conversation-turns 10 \
-  --output-path examples/conversations/fashion_advisor_conversations.jsonl
+  --output-path data/conversations/fashion_advisor_conversations.jsonl
 ```
 
 <!-- CONTRIBUTING -->
@@ -179,6 +194,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Create by [Channel Labs](https://channellabs.ai/)
+Created by [Channel Labs](https://channellabs.ai/)
 
-Interested in understand and improving your AI's behavior even further? Contact scott@channellabs.ai for any inquiries.
+Interested in understanding and improving your AI's behavior even further? Contact scott@channellabs.ai for any inquiries.
