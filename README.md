@@ -119,16 +119,18 @@ python src/synthetic_conversation_generation/persona_generator.py \
   --num-personas <NUM_PERSONAS> \
   --output-path <OUTPUT_PATH> \
   --model-provider <MODEL_PROVIDER> \
-  --model-id <MODEL_ID>
+  --model-id <MODEL_ID> \
+  --previous-personas-path <PREVIOUS_PERSONAS_PATH>
 ```
 
 **Arguments:**
 
 - `--assistant-path`: Path to YAML file containing your assistant definition (name and description).
-- `--num-personas`: Number of user personas to generate (default: 5).
+- `--num-personas`: Number of user personas to generate (default: `5`).
 - `--output-path`: Path to save the generated personas (YAML format).
-- `--model-provider`: LLM provider to use (`openai` or `anthropic`, default: `openai`).
-- `--model-id`: Model ID for persona generation (default: `gpt-4.1`).
+- `--model-provider`: LLM provider to use for generating personas (`openai` or `anthropic`, default: `openai`).
+- `--model-id`: Model ID for persona generation (default: `o3`).
+- `--previous-personas-path`: Path to YAML file containing previous personas to avoid duplication (optional).
 
 **Example:**
 
@@ -150,10 +152,11 @@ python src/synthetic_conversation_generation/conversation_generator.py \
   --assistant-path <ASSISTANT_PATH> \
   --conversation-characters-path <CONVERSATION_CHARACTERS_PATH> \
   --inference-endpoint-path <INFERENCE_ENDPOINT_PATH> \
-  --max-conversation-turns <MAX_CONVERSATION_TURNS> \
   --output-path <OUTPUT_PATH> \
   --model-provider <MODEL_PROVIDER> \
-  --model-id <MODEL_ID>
+  --model-id <MODEL_ID> \
+  --conversation-completion-query-model-id <CONVERSATION_COMPLETION_MODEL_ID> \
+  --max-conversation-turns <MAX_CONVERSATION_TURNS>
 ```
 
 **Arguments:**
@@ -161,10 +164,11 @@ python src/synthetic_conversation_generation/conversation_generator.py \
 - `--assistant-path`: Path to YAML file containing your assistant definition (name and description).
 - `--conversation-characters-path`: Path to the YAML file containing user personas (output from persona_generator).
 - `--inference-endpoint-path`: Path to a YAML file specifying how to call your AI assistant via HTTP.
-- `--max-conversation-turns`: Maximum number of turns a conversation can have (default: 10).
 - `--output-path`: Path to save the generated conversations (JSONL format).
 - `--model-provider`: LLM provider to use for generating user messages (`openai` or `anthropic`, default: `openai`).
-- `--model-id`: Model ID for generating user messages (default: `gpt-4.1`).
+- `--model-id`: Model ID for generating user messages (default: `gpt-4o`).
+- `--conversation-completion-query-model-id`: Model ID for determining when conversations should end (default: `o3`).
+- `--max-conversation-turns`: Maximum number of turns a conversation can have (default: `3`).
 
 **Example:**
 
@@ -173,7 +177,6 @@ python src/synthetic_conversation_generation/conversation_generator.py \
   --assistant-path data/assistants/fashion_advisor.yaml \
   --conversation-characters-path data/conversation_characters/fashion_advisor_personas.yaml \
   --inference-endpoint-path data/endpoint/openai_chat_completion.yaml \
-  --max-conversation-turns 10 \
   --output-path data/conversations/fashion_advisor_conversations.jsonl
 ```
 

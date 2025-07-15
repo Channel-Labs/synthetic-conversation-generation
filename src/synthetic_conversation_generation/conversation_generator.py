@@ -29,13 +29,14 @@ logging.getLogger('anthropic').setLevel(logging.WARNING)
 
 class ConversationGenerator:
 
-    def __init__(self, model_provider: ModelProvider, model_id: str, assistant_endpoint: InferenceEndpoint, assistant: Assistant, user_persona: CharacterCard, max_conversation_turns: int):
+    def __init__(self, model_provider: ModelProvider, model_id: str, assistant_endpoint: InferenceEndpoint, assistant: Assistant, user_persona: CharacterCard, max_conversation_turns: int, conversation_completion_query_model_id: str):
         self.model_provider = model_provider
         self.model_id = model_id
         self.assistant_endpoint = assistant_endpoint
         self.assistant = assistant
         self.user_persona = user_persona
         self.max_conversation_turns = max_conversation_turns
+        self.conversation_completion_query_model_id = conversation_completion_query_model_id
 
     def generate_conversation(self, conversation_id: str) -> Conversation:
         conversation = Conversation(
@@ -53,7 +54,7 @@ class ConversationGenerator:
         )
 
         # Continue conversation until completion or max turns
-        for i in range(self.max_conversation_turns - 1):
+        for i in range(self.max_conversation_turns):
             print(f"Conversation turn: {i}")
 
             # Continue conversation with next user message
@@ -67,7 +68,7 @@ class ConversationGenerator:
             # Check if conversation should end
             completion_checker = ConversationCompletionQuery(
                 model_provider=self.model_provider,
-                model_id=self.model_id,
+                model_id=self.conversation_completion_query_model_id,
                 conversation=conversation,
                 user_persona=self.user_persona,
                 assistant=self.assistant
@@ -82,11 +83,12 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--assistant-path", type=str, required=True, help="Path to YAML file containing assistant definition")
     parser.add_argument("--conversation-characters-path", type=str, required=True, help="Path to YAML file containing user personas")
-    parser.add_argument("--inference-endpoint-path", type=str, required=True)
-    parser.add_argument("--output-path", type=str, required=True)
-    parser.add_argument("--model-provider", type=str, choices=["openai", "anthropic"], default="openai")
-    parser.add_argument("--model-id", type=str, default="gpt-4o")
-    parser.add_argument("--max-conversation-turns", type=int, default=4)
+    parser.add_argument("--inference-endpoint-path", type=str, required=True, help="Path to YAML file specifying how to call your AI assistant via HTTP")
+    parser.add_argument("--output-path", type=str, required=True, help="Path to save the generated conversations (JSONL format)")
+    parser.add_argument("--model-provider", type=str, choices=["openai", "anthropic"], default="openai", help="LLM provider to use for generating user messages")
+    parser.add_argument("--model-id", type=str, default="gpt-4o", help="Model ID for generating user messages")
+    parser.add_argument("--conversation-completion-query-model-id", type=str, default="o3", help="Model ID for determining when conversations should end")
+    parser.add_argument("--max-conversation-turns", type=int, default=3, help="Maximum number of turns a conversation can have")
     args = parser.parse_args()
 
     if args.model_provider == "openai":
@@ -107,13 +109,10 @@ if __name__ == "__main__":
 
     ## Generate synthetic data for each user persona
     conversations = []
-    for conversation_id, user_persona in enumerate(user_personas):
-        if conversation_id > 10:
-            break
-        
+    for conversation_id, user_persona in enumerate(user_personas):        
         logger.info(f"Generating conversation {conversation_id} for user {user_persona.name}")
 
-        conversation_generator = ConversationGenerator(model_provider, args.model_id, inference_endpoint, assistant, user_persona, args.max_conversation_turns)
+        conversation_generator = ConversationGenerator(model_provider, args.model_id, inference_endpoint, assistant, user_persona, args.max_conversation_turns, args.conversation_completion_query_model_id)
         conversation = conversation_generator.generate_conversation(conversation_id)
         conversations.append(conversation)
 

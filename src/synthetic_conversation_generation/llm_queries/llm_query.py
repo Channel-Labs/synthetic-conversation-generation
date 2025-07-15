@@ -113,7 +113,8 @@ class AnthropicModelProvider(ModelProvider):
             ],
             tools=[response_format],
             tool_choice={"type": "tool", "name": response_format["name"]},
-            timeout=timeout
+            timeout=timeout,
+            temperature=1.0
         )
         
         # Parse the response to get the tool use

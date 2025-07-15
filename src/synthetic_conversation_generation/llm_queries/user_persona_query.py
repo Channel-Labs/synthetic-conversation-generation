@@ -34,7 +34,7 @@ These personas will be utilized to generate simulated conversations and evaluate
 {json.dumps(asdict(self.assistant), indent=4)}
 
 ### Previous User Personas
-{json.dumps([persona.summary for persona in self.previous_personas], indent=4)}
+{json.dumps([asdict(persona) for persona in self.previous_personas], indent=4)}
 """
     
     def response_schema(self):
